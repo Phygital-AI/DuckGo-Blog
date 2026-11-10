@@ -1,5 +1,4 @@
 import data from './leaderboard-data.json';
-import './narrative.css';
 
 const text = {
   zh: {
@@ -103,13 +102,22 @@ export function configureNarrative(protocolSection) {
   conclusions.innerHTML = head('07', 'conclusionsKicker', 'conclusionsTitle', 'conclusionsIntro');
 
   main.replaceChildren(document.querySelector('#top'), problems, approach, goals, participants, setting, document.querySelector('#evidence'), document.querySelector('#modes'), conclusions, document.querySelector('#reproduce'));
+  const layout = node('div', 'article-layout');
+  const contents = node('aside', 'article-contents');
+  contents.innerHTML = '<p data-i18n="contentsLabel"></p><nav class="contents-nav" aria-label="Article contents"><a href="#question" data-story="navProblems"></a><a href="#approach" data-story="navApproach"></a><a href="#goals" data-story="navGoals"></a><a href="#participants" data-story="navParticipants"></a><a href="#setting" data-i18n="navSetting"></a><a href="#evidence" data-i18n="navEvidence"></a><a href="#results" data-i18n="navModes"></a><a href="#conclusions" data-story="navConclusions"></a><a href="#reproduce" data-i18n="nextKicker"></a></nav><a class="contents-code" href="https://github.com/HandsomeWuuu/Microduck-Agent-Race" target="_blank" rel="noopener noreferrer">GitHub ↗</a>';
+  const article = node('article', 'article-body');
+  for (const section of [...main.children]) if (section.id !== 'top') article.append(section);
+  const resultsAnchor = node('span', 'section-anchor');
+  resultsAnchor.id = 'results';
+  article.querySelector('#modes').prepend(resultsAnchor);
+  layout.append(contents, article);
+  main.append(layout);
   document.querySelector('#metric-row')?.remove();
   for (const [selector, number] of [['#setting', '04B'], ['#evidence', '05'], ['#modes', '06'], ['#reproduce', '08']]) {
     const label = document.querySelector(`${selector} > .section-head .section-no`) ?? document.querySelector(`${selector} .section-no`);
     if (label?.firstChild?.nodeType === Node.TEXT_NODE) label.firstChild.textContent = `${number} / `;
   }
   document.querySelector('.nav').innerHTML = '<a href="#question" data-story="navProblems"></a><a href="#approach" data-story="navApproach"></a><a href="#participants" data-story="navParticipants"></a><a href="#evidence" data-i18n="navEvidence"></a><a href="#modes" data-i18n="navModes"></a>';
-  document.querySelector('.brand').innerHTML = '<span class="brand-wordmark">Microduck<span class="brand-period">.</span></span>';
 }
 
 export function renderNarrative(lang) {

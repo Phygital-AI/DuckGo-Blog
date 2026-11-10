@@ -1,8 +1,8 @@
-import './showcase.css';
+import './academic.css';
 import { GAUNTLET_CIRCUIT } from '../envs/gauntletCircuit.js';
 import { renderLeaderboard } from './leaderboard.js';
 import { configureNarrative, renderNarrative } from './narrative.js';
-import './presentation.css';
+import { mountArticleNavigation } from './articleNavigation.js';
 
 const courseStages = GAUNTLET_CIRCUIT.fullCourse.stages;
 const stageEnglishTitles = ['Two narrow gates', 'Five-post slalom', 'Two swing gates', 'One swing gate', 'Three rotating sweep bars', 'Three sliding panels', 'Three reciprocating low bars (staggered)', 'Six segmented low rails', 'Four alternating gates', 'Three swing gates', 'Rotating turntable array', 'Reverse conveyor', 'Three lift walls with safe refuges', 'Three reciprocating low bars (synchronized)', 'Three sliding panels', 'Seven full-width ground bars'];
@@ -43,7 +43,8 @@ const copy = {
     heroAlt: 'A Microduck robot approaching the first slalom obstacle', heroEyebrow: 'MICRODUCK AGENT OBSTACLE RACE',
     heroTitle: 'From General Reasoning\nto Embodied Action',
     heroLead: 'General-purpose agents control Microduck through one skill interface, confronting body constraints, moving obstacles and execution errors in a continuously running MuJoCo world.',
-    heroExplore: 'Explore the research question ↓', heroWatch: 'Watch a real trial ↗', heroCaptionLeft: 'SIMULATED ROBOT · PHYSICAL DYNAMICS', heroCaptionRight: 'MICRODUCK · 16 STAGES',
+    heroExplore: 'Read the study ↓', heroWatch: 'Watch a real trial ↗', heroCaptionLeft: 'A simulated obstacle race for general-purpose agents.', heroCaptionRight: 'Microduck · MuJoCo · 16 stages',
+    heroMetaRobot: 'Microduck · MuJoCo', heroMetaCourse: '16 ordered checkpoints', heroMetaSubject: 'General-purpose agents', heroResults: 'View results ↗', heroFigure: 'Figure 1.', contentsLabel: 'ON THIS PAGE',
     questionKicker: 'RESEARCH QUESTION', questionTitle: 'From an image to a decision. From a command to an uncertain outcome.',
     questionStatement: 'When skill outcomes are not guaranteed, and the world keeps changing while an agent thinks, can a general-purpose agent use first-person observation and replanning to bring a simulated robot through an entire obstacle race?',
     subjectLabel: 'WHAT IS EVALUATED', subjectText: 'The complete agent, not a single model response.', subjectNote: 'The model is its reasoning core. The agent must observe, call skills, interpret feedback and remain in control until the referee ends the run.',
@@ -257,7 +258,7 @@ Object.assign(copy.zh, {
   settingAssistanceLabel: '系统辅助', settingAssistanceTitle: '跌倒后自动起身',
 });
 
-Object.assign(copy.en, { heroExplore: 'Enter the simulator ↗', heroSimulatorTitle: 'Enter the simulator', heroSimulatorNote: 'Run in your browser', heroAlt: 'Microduck simulator overview' });
+Object.assign(copy.en, { heroExplore: 'Read the study ↓', heroSimulatorTitle: 'Enter the simulator', heroSimulatorNote: 'Run in your browser', heroAlt: 'Microduck simulator overview' });
 Object.assign(copy.zh, { heroExplore: '进入仿真 ↗', heroSimulatorTitle: '进入仿真场景', heroSimulatorNote: '在浏览器中体验', heroAlt: 'Microduck 仿真赛道全景' });
 
 const stages = [
@@ -443,11 +444,24 @@ function renderStage(lang) {
   document.querySelectorAll('#full-route button').forEach((button, index) => button.setAttribute('aria-pressed', String(index === activeCourseStage)));
   focusSimulatorStage(activeCourseStage);
 }
+Object.assign(copy.zh, {
+  heroMetaRobot: 'Microduck · MuJoCo',
+  heroMetaCourse: '16 个有序检查点',
+  heroMetaSubject: '通用 Agent 的具身能力',
+  heroResults: '查看结果 ↗',
+  heroFigure: '图 1.',
+  contentsLabel: '文章目录',
+  heroExplore: '阅读研究内容 ↓',
+  heroCaptionLeft: '面向通用 Agent 的仿真障碍赛。',
+  heroCaptionRight: 'Microduck · MuJoCo · 16 个关卡',
+});
+
 const url = new URL(location.href);
 let saved;
 try { saved = localStorage.getItem('microduck-showcase-lang'); } catch { /* storage disabled */ }
 const initial = ['en', 'zh'].includes(url.searchParams.get('lang')) ? url.searchParams.get('lang') : ['en', 'zh'].includes(saved) ? saved : navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en';
 render(initial);
+mountArticleNavigation();
 for (const button of document.querySelectorAll('[data-lang]')) button.addEventListener('click', () => {
   const lang = button.dataset.lang;
   render(lang);

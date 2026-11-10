@@ -1,5 +1,4 @@
 import data from './leaderboard-data.json';
-import './leaderboard.css';
 
 const copy = {
   zh: {

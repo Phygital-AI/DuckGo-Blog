@@ -1,0 +1,11 @@
+:root {
+  --document-font: "Times New Roman", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+}
+
+html,
+body,
+body *,
+body *::before,
+body *::after {
+  font-family: var(--document-font) !important;
+}
