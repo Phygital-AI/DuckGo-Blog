@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "retrieved_at": "2026-09-25",
+  "provider": {
+    "name": "Poly Haven",
+    "license": "CC0 1.0 Universal (Public Domain Dedication)",
+    "license_url": "https://polyhaven.com/license",
+    "api_url": "https://api.polyhaven.com/"
+  },
+  "assets": [
+    {
+      "local_file": "daylight.hdr",
+      "original_asset_id": "rostock_laage_airport",
+      "asset_name": "Rostock-Laage Airport",
+      "author": "Greg Zaal",
+      "license": "CC0 1.0 Universal",
+      "original_url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/rostock_laage_airport_1k.hdr",
+      "metadata_url": "https://api.polyhaven.com/files/rostock_laage_airport",
+      "sha256": "9e5e543df28a37130faadaecdcf3e7768fa64c9a06326929505252fa535d1c96",
+      "bytes": 1666919,
+      "dimensions": "1024x512",
+      "format": "Radiance HDR",
+      "usage": "Soft, low-contrast daylight environment lighting for the greenhouse arena."
+    },
+    {
+      "local_file": "concrete-diffuse.jpg",
+      "original_asset_id": "concrete_floor",
+      "asset_name": "Concrete Floor",
+      "author": "eye-candy.xyz",
+      "license": "CC0 1.0 Universal",
+      "original_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor/concrete_floor_diff_1k.jpg",
+      "metadata_url": "https://api.polyhaven.com/files/concrete_floor",
+      "sha256": "5e06d0fb226f671470f59bf7798954b6965c9ed56dd45084dfd012e15737e444",
+      "bytes": 927975,
+      "dimensions": "1024x1024",
+      "format": "JPEG RGB",
+      "usage": "Warm grey, worn concrete base-color map for the arena floor."
+    },
+    {
+      "local_file": "concrete-roughness.jpg",
+      "original_asset_id": "concrete_floor",
+      "asset_name": "Concrete Floor",
+      "author": "eye-candy.xyz",
+      "license": "CC0 1.0 Universal",
+      "original_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor/concrete_floor_rough_1k.jpg",
+      "metadata_url": "https://api.polyhaven.com/files/concrete_floor",
+      "sha256": "342110e685c07af2c56194662a796b2ab4f2a4d992a9745b8fc55943414faead",
+      "bytes": 503981,
+      "dimensions": "1024x1024",
+      "format": "JPEG grayscale data encoded as RGB",
+      "usage": "Roughness map paired with concrete-diffuse.jpg."
+    },
+    {
+      "local_file": "concrete-normal.jpg",
+      "original_asset_id": "concrete_floor",
+      "asset_name": "Concrete Floor",
+      "author": "eye-candy.xyz",
+      "license": "CC0 1.0 Universal",
+      "original_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor/concrete_floor_nor_gl_1k.jpg",
+      "metadata_url": "https://api.polyhaven.com/files/concrete_floor",
+      "sha256": "5a403c176361193b785198ab363d3dc3755773ca5b023f19e05874e50caea302",
+      "bytes": 883889,
+      "dimensions": "1024x1024",
+      "format": "JPEG RGB; tangent-space normal map, OpenGL (+Y) convention",
+      "usage": "Surface normal map paired with concrete-diffuse.jpg."
+    }
+  ]
+}
