@@ -104,9 +104,10 @@ export function configureNarrative(protocolSection) {
   main.replaceChildren(document.querySelector('#top'), problems, approach, goals, participants, setting, document.querySelector('#evidence'), document.querySelector('#modes'), conclusions, document.querySelector('#reproduce'));
   const layout = node('div', 'article-layout');
   const contents = node('aside', 'article-contents');
-  contents.innerHTML = '<p data-i18n="contentsLabel"></p><nav class="contents-nav" aria-label="Article contents"><a href="#question" data-story="navProblems"></a><a href="#approach" data-story="navApproach"></a><a href="#goals" data-story="navGoals"></a><a href="#participants" data-story="navParticipants"></a><a href="#setting" data-i18n="navSetting"></a><a href="#evidence" data-i18n="navEvidence"></a><a href="#results" data-i18n="navModes"></a><a href="#conclusions" data-story="navConclusions"></a><a href="#reproduce" data-i18n="nextKicker"></a></nav><a class="contents-code" href="https://github.com/HandsomeWuuu/Microduck-Agent-Race" target="_blank" rel="noopener noreferrer">GitHub ↗</a>';
+  contents.innerHTML = '<p data-i18n="contentsLabel"></p><nav class="contents-nav" aria-label="Article contents"><a href="#summary">TL;DR</a><a href="#question" data-story="navProblems"></a><a href="#approach" data-story="navApproach"></a><a href="#goals" data-story="navGoals"></a><a href="#participants" data-story="navParticipants"></a><a href="#setting" data-i18n="navSetting"></a><a href="#evidence" data-i18n="navEvidence"></a><a href="#results" data-i18n="navModes"></a><a href="#conclusions" data-story="navConclusions"></a><a href="#reproduce" data-i18n="nextKicker"></a></nav><a class="contents-code" href="https://github.com/HandsomeWuuu/Microduck-Agent-Race" target="_blank" rel="noopener noreferrer">GitHub ↗</a>';
   const article = node('article', 'article-body');
   const summary = node('section', 'article-summary');
+  summary.id = 'summary';
   summary.setAttribute('aria-labelledby', 'article-summary-title');
   summary.innerHTML = '<h2 id="article-summary-title">TL;DR</h2><p data-i18n="articleSummary"></p>';
   article.append(summary);

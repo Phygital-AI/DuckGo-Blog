@@ -43,10 +43,11 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 | --- | --- |
 | 首页结构、图文与媒体入口 | `index.html` |
 | 双语文案、关卡说明与交互 | `src/showcase/showcase.js`、`src/showcase/narrative.js` |
-| 学术文章版式、响应式布局与图表样式 | `src/showcase/academic.css` |
+| 研究文章版式、响应式布局与图表样式 | `src/showcase/academic.css` |
+| 原创概念封面（不是仿真画面或实测轨迹） | `public/showcase/editorial-cover.svg` |
 | 目录高亮与阅读进度 | `src/showcase/articleNavigation.js` |
 | 全站 Times New Roman 字体 | `public/showcase/typography.css` |
-| 详细成绩页的纸面配色 | `public/showcase/academic-document.css` |
+| 详细成绩页的共享样式 | `public/showcase/academic-document.css` |
 | 动态赛道预览 | `showcase-course.html`、`src/showcase/courseViewer.js` |
 | 手动仿真入口 | `simulator.html`、`src/race/main.js` |
 | 共享赛道和障碍运动 | `src/envs/gauntletCircuit.js`、`src/envs/geometryPose.js` |
@@ -56,7 +57,7 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 
 ## 页面设计
 
-版式参考 [AWSM](https://phygital-ai.github.io/agentic-world-simulation-and-mapping/) 的学术研究文章：暖白纸面、深绿文字、大幅图文、桌面左侧目录和克制的表格。保留中英文切换、历史成绩、技能录像与按需启动的赛道预览，不改变源数据及其有效性说明。
+当前版式参考 [Thinking Machines 的 Inkling 文章](https://thinkingmachines.ai/news/introducing-inkling/) 的阅读节奏：白底黑字、居中标题、740 px 正文栏、轻量粘性目录、封面下方的简洁入口和低装饰表格。此前也参考过 [AWSM](https://phygital-ai.github.io/agentic-world-simulation-and-mapping/)。封面为原创 SVG 概念插画，明确标注非仿真画面；环境章节保留真实赛道截图。保留中英文切换、TL;DR、历史成绩及有效性说明、技能录像与按需启动的赛道预览，不改变实验数据。
 
 全站 DOM 文本（含标题、正文、按钮、代码与表格）统一使用 `Times New Roman`。系统无该字体时，中文回退到宋体类字体，其余字符回退到系统衬线字体；不分发未经授权的商业字体。首页阅读目录支持 `#results`，原有 `#modes` 链接仍可使用。
 

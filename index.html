@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f7f6f1" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="description" content="From general reasoning to embodied action: general-purpose agents control Microduck robots through a shared skill interface in a continuously running MuJoCo obstacle race." />
   <title>Microduck · Agent Race</title>
   <link rel="stylesheet" href="/showcase/typography.css" />
@@ -29,16 +29,15 @@
         <h1 data-i18n="heroTitle">From general reasoning to embodied action.</h1>
         <p class="hero-lead" data-i18n="heroLead">General-purpose agents control Microduck through one skill interface, confronting body constraints, moving obstacles and execution errors in a continuously running MuJoCo world.</p>
         <div class="hero-meta"><span data-i18n="heroMetaRobot">Microduck · MuJoCo</span><span data-i18n="heroMetaCourse">16 ordered checkpoints</span><span data-i18n="heroMetaSubject">General-purpose agents</span></div>
-        <div class="hero-actions"><a class="button button-hot" href="#question" data-i18n="heroExplore">Read the study ↓</a><a class="button button-light" href="#results" data-i18n="heroResults">View results ↗</a><a class="button button-light" href="/simulator.html?manual=1&amp;roster=deepseek-1&amp;clock=realtime&amp;view=overview" target="_blank" rel="noopener noreferrer" data-i18n="heroSimulatorTitle">Enter the simulator ↗</a></div>
       </div>
       <figure class="hero-figure">
-      <a class="hero-simulator" href="/simulator.html?manual=1&amp;roster=deepseek-1&amp;clock=realtime&amp;view=overview" target="_blank" rel="noopener noreferrer" aria-labelledby="hero-simulator-title">
-        <img class="hero-image" src="/showcase/article-hero.jpg" alt="Overview of the Microduck simulator" data-alt="heroAlt" fetchpriority="high" />
-        <span class="hero-simulator-entry"><span class="hero-simulator-label">MUJOCO · MICRODUCK</span><strong id="hero-simulator-title" data-i18n="heroSimulatorTitle">Enter the simulator</strong><span data-i18n="heroSimulatorNote">Run in your browser</span></span>
+      <a class="hero-simulator" href="/simulator.html?manual=1&amp;roster=deepseek-1&amp;clock=realtime&amp;view=overview" target="_blank" rel="noopener noreferrer" aria-label="Enter the simulator" data-aria="heroSimulatorTitle">
+        <img class="hero-image" src="/showcase/editorial-cover.svg" alt="Conceptual illustration of a Microduck robot and an obstacle course" data-alt="heroAlt" fetchpriority="high" width="1200" height="648" />
         <span class="hero-simulator-arrow" aria-hidden="true">↗</span>
       </a>
       <figcaption class="hero-caption"><span><b data-i18n="heroFigure">Figure 1.</b> <span data-i18n="heroCaptionLeft">Simulated robot · physical dynamics</span></span><span data-i18n="heroCaptionRight">Microduck · 16 stages</span></figcaption>
       </figure>
+      <div class="hero-actions"><a class="button button-hot" href="#summary" data-i18n="heroExplore">Read the article ↓</a><a class="button button-light" href="#results" data-i18n="heroResults">View results ↗</a><a class="button button-light" href="/simulator.html?manual=1&amp;roster=deepseek-1&amp;clock=realtime&amp;view=overview" target="_blank" rel="noopener noreferrer" data-i18n="heroSimulatorTitle">Enter the simulator ↗</a></div>
     </section>
     <section class="band band-question" id="question"><div class="section-head"><span class="section-no">01 / <span data-i18n="questionKicker">RESEARCH QUESTION</span></span><h2 data-i18n="questionTitle">From an image to a decision. From a command to an uncertain outcome.</h2></div><div class="question-layout"><p class="big-quote" data-i18n="questionStatement">When skill outcomes are not guaranteed, and the world keeps changing while an agent thinks, can a general-purpose agent use first-person observation and replanning to bring a simulated robot through an entire obstacle race?</p><aside class="question-aside"><span data-i18n="subjectLabel">WHAT IS EVALUATED</span><strong data-i18n="subjectText">The complete agent, not a single model response.</strong><p data-i18n="subjectNote">The model is its reasoning core. The agent must observe, call skills, interpret feedback and remain in control until the referee ends the run.</p></aside></div><div class="boundary-row"><span data-i18n="boundaryVln">NOT NAVIGATION ALONE</span><span data-i18n="boundaryTorque">NOT A JOINT-TORQUE BENCHMARK</span></div></section>
     <section class="band band-challenge" id="challenge">
@@ -51,7 +50,7 @@
     </section>
   <section class="band band-setting" id="setting">
     <div class="section-head two-col"><div><span class="section-no">03 / <span data-i18n="settingKicker">EXPERIMENT SETTING</span></span><h2 data-i18n="settingTitle">One body. One course. A known skill set.</h2></div></div>
-    <div class="setting-grid"><figure class="setting-photo"><img src="/showcase/three-agent-arena.png" loading="lazy" alt="Low-angle view of three Microduck robots at the race start" data-alt="arenaAlt" /><figcaption data-i18n="arenaCaption">Arena view for illustration; recorded development trials below each used one robot.</figcaption></figure><div class="setting-facts">
+    <div class="setting-grid"><figure class="setting-photo"><img src="/showcase/article-hero.jpg" loading="lazy" alt="Overview of the Microduck obstacle course in MuJoCo" data-alt="arenaAlt" /><figcaption data-i18n="arenaCaption">The Microduck obstacle course in MuJoCo.</figcaption></figure><div class="setting-facts">
       <article class="condition-card"><div class="condition-label"><span class="condition-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="7" rx="3"/><path d="M12 10v4m-4 0h8M8 14l-2 6m10-6 2 6M5 20h3m8 0h3"/></svg></span><h3 data-i18n="settingRobotLabel">Robot &amp; world</h3></div><strong class="condition-title" data-i18n="settingRobotTitle">Microduck × MuJoCo</strong><p data-i18n="settingRobotDetail">Biped locomotion with contact dynamics.</p><div class="condition-meta"><span data-i18n="settingStageCount">16 ordered stages</span><span data-i18n="settingWorldClock">Continuously running physics</span></div></article>
       <article class="condition-card"><div class="condition-label"><span class="condition-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l4-6 4 3 4-8m-3 0h3v3M4 21h16"/></svg></span><h3 data-i18n="settingActionsLabel">Available skills</h3></div><strong class="condition-title" data-i18n="settingSkillsTitle">Learned motion skills</strong><div class="condition-skills"><span data-i18n="settingSkillWalk">Walk</span><span data-i18n="settingSkillRun">Straight-line Run</span><span data-i18n="settingSkillSit">Sit</span><span data-i18n="settingSkillStand">Stand</span><span data-i18n="settingSkillRoll">Forward Roll</span></div></article>
       <article class="condition-card"><div class="condition-label"><span class="condition-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h5m4 0h7M4 17h9m4 0h3"/><circle cx="11" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg></span><h3 data-i18n="settingAgentLabel">Agent control</h3></div><strong class="condition-title" data-i18n="settingControlTitle">Skill · Parameters · Duration</strong><p data-i18n="settingControlDetail">The agent chooses the action; the controller drives the joints.</p></article>

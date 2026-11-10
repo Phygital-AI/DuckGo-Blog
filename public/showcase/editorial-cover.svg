@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="648" viewBox="0 0 1200 648" fill="none">
+  <title>Microduck, from reasoning to action</title>
+  <desc>A conceptual technical illustration of a small biped robot beside a continuous obstacle course. This is not a simulation frame or a measured trajectory.</desc>
+  <defs>
+    <pattern id="floor" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="matrix(1 0 -.52 .48 0 0)">
+      <path d="M56 0H0V56" stroke="#deded8" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="field" x1="600" y1="210" x2="600" y2="592" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f4f4ee"/>
+      <stop offset="1" stop-color="#eeeee8"/>
+    </linearGradient>
+    <linearGradient id="housing" x1="252" y1="122" x2="368" y2="238" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fffefa"/>
+      <stop offset="1" stop-color="#dfdfd7"/>
+    </linearGradient>
+  </defs>
+  <path fill="#f6f6f0" d="M0 0h1200v648H0z"/>
+  <path d="m70 457 365-174 675 129-294 174Z" fill="url(#field)"/>
+  <path d="m70 457 365-174 675 129-294 174Z" fill="url(#floor)"/>
+  <path d="m70 457 365-174 675 129-294 174Z" stroke="#d4d4cb"/>
+  <path d="M388 465c100 47 242 80 384 51 135-28 237-87 220-132-16-44-143-69-240-52-86 15-150 54-136 82 14 26 89 38 142 26" stroke="#cccac0" stroke-width="45"/>
+  <path d="M388 465c100 47 242 80 384 51 135-28 237-87 220-132-16-44-143-69-240-52-86 15-150 54-136 82 14 26 89 38 142 26" stroke="#292923" stroke-width="1.6" stroke-dasharray="7 10"/>
+  <g stroke="#292923" stroke-width="1.8" stroke-linejoin="round">
+    <path d="m591 493 2-70 14-6-2 70Z" fill="#f7f7f2"/>
+    <path d="m605 487 2-70 12 4-1 70Z" fill="#b2b2a8"/>
+    <path d="m714 515 2-86 14-6-2 86Z" fill="#f7f7f2"/>
+    <path d="m728 509 2-86 12 4-1 86Z" fill="#b2b2a8"/>
+    <path d="m887 447-1-92 16-7 2 92Z" fill="#f7f7f2"/>
+    <path d="m904 440-2-92 12 4 3 92Z" fill="#b2b2a8"/>
+    <path d="m985 393-1-75 16-7 1 75Z" fill="#f7f7f2"/>
+    <path d="m1001 386-1-75 12 4 2 75Z" fill="#b2b2a8"/>
+    <path d="m878 353 113-42 19 6-114 43Z" fill="#292923"/>
+  </g>
+  <path d="m675 373 34-14 20 5-34 15Zm65-15 35-8 20 5-35 9Z" fill="#292923"/>
+  <path d="m731 446 34-12 17 4-34 13Z" fill="#f6f6f0" stroke="#292923" stroke-width="1.5"/>
+  <ellipse cx="325" cy="475" rx="126" ry="25" fill="#d3d3c8" opacity=".65"/>
+  <g stroke="#292923" stroke-width="2.6" stroke-linejoin="round">
+    <path d="m308 289 40 12-18 83-25-5Z" fill="#d7d7ce"/>
+    <path d="m348 301 17-8-17 84-18 7Z" fill="#8c8d83"/>
+    <path d="m307 379 23 5-29 67-19-6Z" fill="#f7f7f1"/>
+    <path d="m282 445 19 6 11 20-35 11-43-10 1-12Z" fill="#292923"/>
+    <path d="m349 374 20-5 29 63-19 11Z" fill="#a9aaa0"/>
+    <path d="m379 443 19-11 39 20-7 15-41 11-17-12Z" fill="#292923"/>
+    <circle cx="321" cy="377" r="13" fill="#7d7e74"/>
+    <circle cx="321" cy="377" r="5" fill="#eeeee7" stroke-width="1.5"/>
+    <circle cx="357" cy="373" r="10" fill="#3e3f37"/>
+    <path d="m303 276 34-13 37 13-8 41-35 13-30-18Z" fill="#eeeee6"/>
+    <path d="m337 263 37 13-8 41-35 13 2-42Z" fill="#b9bab0"/>
+    <path d="m308 285 19-6-2 25-19-5Z" fill="#292923"/>
+    <path d="m325 208 18 1-5 53-14 5Z" fill="#45463d"/>
+    <path d="m343 209 11-6-6 56-10 3Z" fill="#999a90"/>
+    <path d="M264 145c-9 2-15 10-15 23v28c0 19 11 32 30 34l62 5c21 2 37-10 38-29l1-24c1-18-10-31-27-34l-57-8c-11-2-23 1-32 5Z" fill="url(#housing)"/>
+    <path d="M353 148c18 3 29 16 27 34l-1 24c-1 18-17 31-38 29l-9-1c11-4 18-14 18-29l1-29c0-12-4-22-11-29Z" fill="#cccdc3"/>
+    <ellipse cx="285" cy="183" rx="15" ry="18" fill="#292923"/>
+    <ellipse cx="289" cy="179" rx="4" ry="5" fill="#f7f7f1" stroke="none"/>
+    <path d="m249 186-22 9 22 9Z" fill="#292923"/>
+    <path d="m296 152 25 3" stroke="#c2c3b8" stroke-width="1.5"/>
+    <circle cx="363" cy="190" r="4" fill="#f4f4ed" stroke-width="1.5"/>
+  </g>
+  <path d="m370 186 80-18 76 14 45 32" stroke="#8e8e83" stroke-width="1.4" stroke-dasharray="3 6"/>
+  <circle cx="450" cy="168" r="5" fill="#f6f6f0" stroke="#292923" stroke-width="1.6"/>
+  <circle cx="526" cy="182" r="5" fill="#f6f6f0" stroke="#292923" stroke-width="1.6"/>
+  <path d="m569 205 2 9-9-2" stroke="#292923" stroke-width="1.6"/>
+  <path d="M151 90h26m-13-13v26M1038 536h26m-13-13v26" stroke="#a5a59a" stroke-width="1"/>
+</svg>

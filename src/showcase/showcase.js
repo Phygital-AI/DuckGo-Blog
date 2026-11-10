@@ -260,8 +260,17 @@ Object.assign(copy.zh, {
   settingAssistanceLabel: '系统辅助', settingAssistanceTitle: '跌倒后自动起身',
 });
 
-Object.assign(copy.en, { heroExplore: 'Read the study ↓', heroSimulatorTitle: 'Enter the simulator', heroSimulatorNote: 'Run in your browser', heroAlt: 'Microduck simulator overview' });
-Object.assign(copy.zh, { heroExplore: '进入仿真 ↗', heroSimulatorTitle: '进入仿真场景', heroSimulatorNote: '在浏览器中体验', heroAlt: 'Microduck 仿真赛道全景' });
+Object.assign(copy.en, {
+  heroExplore: 'Read the article ↓', heroSimulatorTitle: 'Enter the simulator ↗', heroSimulatorNote: 'Run in your browser',
+  heroAlt: 'Conceptual illustration of a Microduck robot beside an obstacle course',
+  heroCaptionLeft: 'Microduck and an obstacle course. Conceptual illustration, not a simulation frame.',
+  arenaAlt: 'Overview of the Microduck obstacle course in MuJoCo', arenaCaption: 'The Microduck obstacle course in MuJoCo.',
+});
+Object.assign(copy.zh, {
+  heroSimulatorTitle: '进入仿真 ↗', heroSimulatorNote: '在浏览器中体验',
+  heroAlt: 'Microduck 机器人与障碍赛道的概念插画',
+  arenaAlt: 'MuJoCo 中的 Microduck 障碍赛道全景', arenaCaption: 'MuJoCo 中的 Microduck 障碍赛道。',
+});
 
 const stages = [
   { no: '02', stageIndex: 1, assessment: { en: 'Read post positions, steer repeatedly, pass the checkpoint with fewer contacts.', zh: '识别交错桩位、连续修正航向；核验过门与接触。' }, description: { en: 'Five staggered posts require successive turns.', zh: '五根交错桩，要求连续转向。' } },
@@ -453,8 +462,8 @@ Object.assign(copy.zh, {
   heroResults: '查看结果 ↗',
   heroFigure: '图 1.',
   contentsLabel: '文章目录',
-  heroExplore: '阅读研究内容 ↓',
-  heroCaptionLeft: '面向通用 Agent 的仿真障碍赛。',
+  heroExplore: '阅读文章 ↓',
+  heroCaptionLeft: 'Microduck 与障碍赛道。概念插画，非仿真画面。',
   heroCaptionRight: 'Microduck · MuJoCo · 16 个关卡',
 });
 

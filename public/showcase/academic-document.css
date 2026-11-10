@@ -1,21 +1,21 @@
 :root {
-  --paper: #f7f6f1;
-  --ink: #182c29;
-  --green: #196451;
-  --blue: #196451 !important;
-  --line: #d9dfd7 !important;
-  --muted: #60706a !important;
+  --paper: #ffffff;
+  --ink: #282828;
+  --green: #333333;
+  --blue: #333333 !important;
+  --line: #e6e6e3 !important;
+  --muted: #737373 !important;
   color: var(--ink) !important;
   background: var(--paper) !important;
 }
 
 body { background: var(--paper) !important; color: var(--ink) !important; }
 body > main { max-width: 1260px !important; }
-h1 { font-weight: 400 !important; letter-spacing: -.025em !important; }
-h2, h3 { font-weight: 400 !important; }
+h1 { font-weight: 700 !important; letter-spacing: -.02em !important; }
+h2, h3 { font-weight: 700 !important; }
 a { color: var(--green) !important; }
-th { background: #eef1e9 !important; }
-tbody tr:hover td { background: #f0f4ed !important; }
-.panel { background: #fffefa !important; border-color: var(--line) !important; }
+th { background: #f6f6f4 !important; }
+tbody tr:hover td { background: #f6f6f4 !important; }
+.panel { background: #ffffff !important; border-color: var(--line) !important; }
 .overview, .view-controls, .panel, details, footer { border-color: var(--line) !important; }
-code { background: #edf0e8 !important; }
+code { background: #f6f6f4 !important; }
