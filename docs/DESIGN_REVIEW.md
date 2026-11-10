@@ -6,6 +6,7 @@
 
 - 参考 [AWSM](https://phygital-ai.github.io/agentic-world-simulation-and-mapping/#results) 及本地 `/home/yaofangliu/astra-world-model-blog/style.css` 的文章布局；不复制其研究内容、图像或结果。
 - 暖白纸面、深绿文字、细分隔线、大幅标题与插图、桌面粘性目录、阅读进度及移动端单栏。
+- 主标题不插入强制换行；宽屏单行，窄屏自然换行。正文开头提供中英文 TL;DR，概括评测对象、仿真设置与单一机器人形态的适用范围。
 - 所有 DOM 文本以 Times New Roman 为首选，包括按钮、表格和详细成绩页。Times New Roman 不含中文字形，中文使用 Songti / Noto Serif CJK / 思源宋体等衬线回退；不重新分发商业字体。
 - 首图 `public/showcase/article-hero.jpg` 来自本仓库手动仿真器的安全预览，截图时状态为 `ready`、tick 为 0；只隐藏截图中的操作面板，不启动比赛或调用模型。
 - 保留原中英文文案、历史结果、技术有效性说明、技能录像、动态赛道预览与手动仿真入口。比赛代码与 Blog 分属独立仓库，本次仅修改 Blog。

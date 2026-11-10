@@ -51,7 +51,8 @@ code, pre { background: #edf0e8; padding: 2px 5px; font-size: .92em; overflow-wr
 .hero-content { max-width: 1080px; margin: 0 auto; }
 .eyebrow, .section-no { color: var(--green); font-size: 12px; line-height: 1.6; letter-spacing: .13em; }
 .eyebrow { margin-bottom: 20px; }
-h1 { max-width: 1040px; font-size: clamp(48px, 6.3vw, 84px); line-height: 1.08; letter-spacing: -.04em; margin-bottom: 27px; white-space: pre-line; text-wrap: balance; }
+h1 { max-width: 1040px; font-size: clamp(48px, 6.3vw, 84px); line-height: 1.08; letter-spacing: -.04em; margin-bottom: 27px; white-space: normal; text-wrap: balance; }
+html[lang="en"] h1 { font-size: clamp(40px, 4.6vw, 64px); }
 .hero-lead { max-width: 790px; font-size: 21px; line-height: 1.7; color: var(--muted); margin-bottom: 25px; }
 .hero-meta { display: flex; gap: 10px 24px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
 .hero-meta span + span::before { content: '•'; color: var(--gold); margin-right: 24px; }
@@ -78,6 +79,9 @@ h1 { max-width: 1040px; font-size: clamp(48px, 6.3vw, 84px); line-height: 1.08; 
 .contents-nav a:hover, .contents-nav a[aria-current="location"] { border-left-color: var(--green); color: var(--green); }
 .contents-code { display: inline-block; margin-top: 25px; margin-left: 18px; font-size: 12px; text-decoration: none; }
 .article-body { min-width: 0; }
+.article-summary { margin-bottom: 46px; padding-bottom: 30px; border-bottom: 1px solid var(--line); }
+.article-summary h2 { margin-bottom: 12px; font-size: 18px; font-weight: 700; letter-spacing: .04em; }
+.article-summary p { margin-bottom: 0; color: var(--muted); font-size: 19px; line-height: 1.8; }
 .band { position: relative; padding: 42px 0 0; margin-bottom: 57px; border-top: 1px solid var(--line); scroll-margin-top: 28px; }
 .section-anchor { position: absolute; top: 0; scroll-margin-top: 28px; }
 .section-no { display: block; margin-bottom: 13px; }
@@ -326,6 +330,8 @@ summary { color: var(--green); }
   .hero-simulator-arrow { width: 33px; height: 33px; right: 12px; bottom: 13px; font-size: 20px; }
   .hero-caption { gap: 5px; font-size: 12px; }
   .article-layout { margin-top: 41px; padding: 0 21px; }
+  .article-summary { margin-bottom: 32px; padding-bottom: 24px; }
+  .article-summary p { font-size: 17px; }
   h2, .band-problems h2 { font-size: 31px; line-height: 1.32; }
   .section-no { font-size: 10px; }
   .band { padding-top: 28px; margin-bottom: 36px; }
