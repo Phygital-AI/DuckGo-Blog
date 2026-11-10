@@ -1,11 +1,25 @@
-:root {
-  --document-font: "Times New Roman", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+@font-face {
+  font-family: "Source Serif 4";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/showcase/fonts/source-serif-4-latin.woff2") format("woff2");
 }
 
-html,
-body,
-body *,
-body *::before,
-body *::after {
-  font-family: var(--document-font) !important;
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/showcase/fonts/inter-400-800.woff2") format("woff2");
 }
+
+:root {
+  --font-serif: "Iowan Old Style BT", "Iowan Old Style", "Source Serif 4", Georgia, "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+  --font-sans: "GT America", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --document-font: var(--font-serif);
+}
+
+html, body { font-family: var(--font-serif); }
+button, input, select, textarea { font: inherit; }
+code, pre { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; }

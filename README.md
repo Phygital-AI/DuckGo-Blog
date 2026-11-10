@@ -44,9 +44,9 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 | 首页结构、图文与媒体入口 | `index.html` |
 | 双语文案、关卡说明与交互 | `src/showcase/showcase.js`、`src/showcase/narrative.js` |
 | 研究文章版式、响应式布局与图表样式 | `src/showcase/academic.css` |
-| 原创概念封面（不是仿真画面或实测轨迹） | `public/showcase/editorial-cover.svg` |
+| 首屏视频、兼容版本与静态封面 | `public/showcase/broadcast-preview.mp4`、`broadcast-preview.webm`、`broadcast-poster.jpg` |
 | 目录高亮与阅读进度 | `src/showcase/articleNavigation.js` |
-| 全站 Times New Roman 字体 | `public/showcase/typography.css` |
+| 正文衬线与界面无衬线字体 | `public/showcase/typography.css` |
 | 详细成绩页的共享样式 | `public/showcase/academic-document.css` |
 | 动态赛道预览 | `showcase-course.html`、`src/showcase/courseViewer.js` |
 | 手动仿真入口 | `simulator.html`、`src/race/main.js` |
@@ -57,9 +57,13 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 
 ## 页面设计
 
-当前版式参考 [Thinking Machines 的 Inkling 文章](https://thinkingmachines.ai/news/introducing-inkling/) 的阅读节奏：白底黑字、居中标题、740 px 正文栏、轻量粘性目录、封面下方的简洁入口和低装饰表格。此前也参考过 [AWSM](https://phygital-ai.github.io/agentic-world-simulation-and-mapping/)。封面为原创 SVG 概念插画，明确标注非仿真画面；环境章节保留真实赛道截图。保留中英文切换、TL;DR、历史成绩及有效性说明、技能录像与按需启动的赛道预览，不改变实验数据。
+当前版式参考 [Thinking Machines 的 Inkling 文章](https://thinkingmachines.ai/news/introducing-inkling/) 的阅读节奏：白底黑字、居中标题、660 px 正文栏、轻量目录和低装饰表格。首屏及后文的图片、视频、技能合集和交互赛道均不超出正文左右边界；手机按可用宽度缩放。删除重复的摘要标签、章节编号、装饰性眉题和重复小标题，以连续段落组织文章。赛道先呈现画面，再提供关卡选择。首页模型使用竞赛环境相同的展示名，原始模型 ID 与实测数据不变。
 
-全站 DOM 文本（含标题、正文、按钮、代码与表格）统一使用 `Times New Roman`。系统无该字体时，中文回退到宋体类字体，其余字符回退到系统衬线字体；不分发未经授权的商业字体。首页阅读目录支持 `#results`，原有 `#modes` 链接仍可使用。
+首屏使用竞赛仓库提供的 20 秒 `docs/media/broadcast-preview.mp4`，附 WebM 兼容版本和静态海报。点击才播放，不自动下载视频或启动 Agent；支持原生播放控制、键盘操作与结束后重播。视频仅预览赛道、选手展示和转播界面，未发车、未调用模型，不是正式比赛成绩。视频内的 14 个配置属于该预览名单，与历史结果的 16 项 AI 配置不是同一轮比赛。环境章节保留仿真赛道截图、技能录像与按需启动的动态赛道预览。历史成绩及技术有效性说明不变。
+
+参考页的正文使用 `Iowan Old Style BT`，界面使用 `GT America`。本站优先使用设备已安装的同名字体；未安装时分别回退到本地托管的开源 `Source Serif 4` 与 `Inter`，因此不保证各设备与参考页字形完全相同。不复制或分发参考页的商业字体；开源字体许可证随文件附带。中文正文保留宋体类回退。首页阅读目录支持 `#results`，原有 `#modes` 链接仍可使用。
+
+视频封面将真实全局赛道截图与项目的 Microduck 三维模型合成，不是实际比赛帧。底部仅展示预览名单中七个模型提供方的标识，同一家族的模型不重复堆叠；标识来源见 `public/showcase/brands/README.md`，不表示品牌背书。生成脚本为 `tools/render-editorial-cover.mjs`，需可用的 Playwright / Chromium；可通过 `PLAYWRIGHT_MODULE=/absolute/path/to/playwright/index.mjs node tools/render-editorial-cover.mjs` 指定已有安装，避免影响网站运行依赖。
 
 新版设计与浏览器检查记录见 [设计审核](docs/DESIGN_REVIEW.md)。
 

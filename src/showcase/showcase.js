@@ -16,9 +16,8 @@ let currentLanguage = 'zh';
 const courseInfo = document.createElement('div');
 courseInfo.className = 'course-info';
 courseInfo.innerHTML = `
-  <div><small data-i18n="courseVersionLabel"></small><strong data-i18n="courseName"></strong></div>
-  <div><small data-i18n="courseLayoutLabel"></small><strong data-i18n="courseLayoutValue"></strong></div>
-  <div><small data-i18n="courseClockLabel"></small><strong data-i18n="courseClockValue"></strong></div>
+  <p data-i18n="courseLayoutValue"></p>
+  <p data-i18n="courseClockValue"></p>
 `;
 document.querySelector('.course-head').before(courseInfo);
 
@@ -43,8 +42,8 @@ const copy = {
     heroAlt: 'A Microduck robot approaching the first slalom obstacle', heroEyebrow: 'MICRODUCK AGENT OBSTACLE RACE',
     heroTitle: 'From General Reasoning to Embodied Action',
     heroLead: 'General-purpose agents control Microduck through one skill interface, confronting body constraints, moving obstacles and execution errors in a continuously running MuJoCo world.',
-    heroExplore: 'Read the study ↓', heroWatch: 'Watch a real trial ↗', heroCaptionLeft: 'A simulated obstacle race for general-purpose agents.', heroCaptionRight: 'Microduck · MuJoCo · 16 stages',
-    heroMetaRobot: 'Microduck · MuJoCo', heroMetaCourse: '16 ordered checkpoints', heroMetaSubject: 'General-purpose agents', heroResults: 'View results ↗', heroFigure: 'Figure 1.', contentsLabel: 'ON THIS PAGE',
+    heroExplore: 'Read the study', heroWatch: 'Watch a real trial', heroCaptionLeft: 'A simulated obstacle race for general-purpose agents.', heroCaptionRight: 'Microduck · MuJoCo · 16 stages',
+    heroMetaRobot: 'Microduck · MuJoCo', heroMetaCourse: '16 ordered checkpoints', heroMetaSubject: 'General-purpose agents', heroResults: 'View results', heroFigure: 'Figure 1.', contentsLabel: 'ON THIS PAGE',
     questionKicker: 'RESEARCH QUESTION', questionTitle: 'From an image to a decision. From a command to an uncertain outcome.',
     questionStatement: 'When skill outcomes are not guaranteed, and the world keeps changing while an agent thinks, can a general-purpose agent use first-person observation and replanning to bring a simulated robot through an entire obstacle race?',
     subjectLabel: 'WHAT IS EVALUATED', subjectText: 'The complete agent, not a single model response.', subjectNote: 'The model is its reasoning core. The agent must observe, call skills, interpret feedback and remain in control until the referee ends the run.',
@@ -58,7 +57,7 @@ const copy = {
     courseClockLabel: 'RACE CLOCK', courseClockValue: 'Real-time · 1-hour wall / simulation limits',
     settingActionsLabel: 'AVAILABLE SKILLS', settingActionsValue: 'Walk · Straight-line Run · Sit · Stand · Roulade · Recover', settingAgentLabel: 'AGENT CONTROL', settingAgentValue: 'Select skills, parameters and duration; no direct joint torques',
     settingGoalLabel: 'GOAL & REFEREE', settingGoalValue: 'Pass checkpoints in order, remain on track, finish forward',
-    strategyKicker: 'AVAILABLE MOTION SKILLS', strategyTitle: 'Strategy library', strategyIntro: 'Select a card to watch the recorded policy run.', strategyPreviewLabel: 'STRATEGY VIDEO', photoPlaceholder: 'PHOTO PLACEHOLDER', videoComing: 'Video coming soon — this image is a temporary placeholder.', previewAction: 'PLAY VIDEO ↗', cardPlayLabel: '▶ PLAY VIDEO',
+    strategyKicker: 'AVAILABLE MOTION SKILLS', strategyTitle: 'Strategy library', strategyIntro: 'Select a card to watch the recorded policy run.', strategyPreviewLabel: 'STRATEGY VIDEO', photoPlaceholder: 'PHOTO PLACEHOLDER', videoComing: 'Video coming soon — this image is a temporary placeholder.', previewAction: 'PLAY VIDEO', cardPlayLabel: '▶ PLAY VIDEO',
     stagesTitle: 'Representative stages', stagesIntro: 'Select a stage to inspect the moving obstacle and its assessment focus.', assessmentLabel: 'ASSESSES', fullRoute: 'Jump to any of the 16 stages', stageLoading: 'LOADING COURSE VIEW…', livePhysics: 'COURSE PREVIEW · NO ROBOT PHYSICS', viewerControls: 'DRAG TO ORBIT · SCROLL TO ZOOM', liveStageDescription: 'A lightweight spectator view of the same course. Obstacles use the race motion definitions; robot physics runs only in the full simulator.',
     inputNowLabel: 'IMPORTANT / RECORDED RUN INPUT', inputNowText: 'Existing development runs used an expanded diagnostic interface. See the input boundary below; these are provisional core-board results while the final observation contract is being frozen.',
     protocolKicker: 'CURRENT RUN / INPUT BOUNDARY', protocolTitle: 'What does the Agent receive today?', protocolIntro: 'This page records the current development interface. The formal observation protocol will be specified separately when the benchmark track is frozen.',
@@ -79,18 +78,18 @@ const copy = {
     trialFoot: 'Provisional single runs in real-time mode. DNF = did not finish. Precise monetary cost is omitted because account balance differences are not per-run invoices.',
     videoAlt: 'Excerpt from a DSH and DeepSeek development trial', videoEyebrow: 'HISTORICAL RUN / DSH × DEEPSEEK', videoTitle: 'Observe. Act. Inspect what happened.',
     videoBody: 'This excerpt is from an early DSH + DeepSeek development run and illustrates interaction with the physical simulator. The updated selected results are reported in the leaderboard below.',
-    videoReport: 'Inspect this historical run ↗', videoNote: 'Earlier course footage; not a full-course demonstration of the current course.',
+    videoReport: 'Inspect this historical run', videoNote: 'Earlier course footage; not a full-course demonstration of the current course.',
     nextKicker: 'OPEN PROJECT', nextTitle: 'Inspect the setup. Run your own agent.', nextBody: 'The simulator, course, tools and evaluation code are in the repository. Paid model trials require your own credentials and matching harness configuration. The static site does not run the model backend.',
-    repoLink: 'Explore repository ↗', setupLink: 'Installation guide ↗', sourcesTitle: 'Built on & related to', sourcesNote: "Related upstream projects and assets are not all runtime dependencies. See the repository's third-party notices for licenses.",
-    footerNote: 'An independent simulation benchmark, not an upstream-endorsed project or a real-robot validation claim.', backTop: 'BACK TO TOP ↑',
-    detailLabel: 'ASSESSES', report: 'Run record ↗', dnf: 'DNF', outcomeOne: 'Agent exited while race was RUNNING', outcomeTwo: '3,600 s wall-clock limit',
+    repoLink: 'Explore repository', setupLink: 'Installation guide', sourcesTitle: 'Built on & related to', sourcesNote: "Related upstream projects and assets are not all runtime dependencies. See the repository's third-party notices for licenses.",
+    footerNote: 'An independent simulation benchmark, not an upstream-endorsed project or a real-robot validation claim.', backTop: 'BACK TO TOP',
+    detailLabel: 'ASSESSES', report: 'Run record', dnf: 'DNF', outcomeOne: 'Agent exited while race was RUNNING', outcomeTwo: '3,600 s wall-clock limit',
   },
   zh: {
     skip: '跳到正文', navQuestion: '研究问题', navChallenge: '核心挑战', navSetting: '实验设置', navModes: '榜单', navEvidence: '视频',
     heroAlt: 'Microduck 机器人驶向蛇形桩障碍', heroEyebrow: 'MICRODUCK AGENT 障碍赛',
     heroTitle: '从通用推理到具身行动',
     heroLead: '让通用 Agent 通过统一技能接口控制 Microduck，在持续运行的 MuJoCo 物理世界中，应对身体约束、动态障碍和执行误差。',
-    heroExplore: '了解研究问题 ↓', heroWatch: '观看真实试跑 ↗', heroCaptionLeft: '仿真机器人 · 物理动力学', heroCaptionRight: 'MICRODUCK · 16 关',
+    heroExplore: '了解研究问题', heroWatch: '观看真实试跑', heroCaptionLeft: '仿真机器人 · 物理动力学', heroCaptionRight: 'MICRODUCK · 16 关',
     questionKicker: '研究问题', questionTitle: '从影像到决策；从指令到不确定的执行结果。',
     questionStatement: '当技能执行结果不被保证、环境在思考期间仍会变化时，通用 Agent 能否靠第一视角持续观察和重新决策，把一台物理仿真的机器人带过整场障碍赛？',
     subjectLabel: '评测对象', subjectText: '完整的 Agent，而非单次模型回答。', subjectNote: '模型是推理内核；Agent 还需要观察、调用技能、理解反馈，并持续控制，直到裁判真正结束比赛。',
@@ -104,7 +103,7 @@ const copy = {
     courseClockLabel: '比赛时钟', courseClockValue: '实时运行 · 墙钟与仿真各限 1 小时',
     settingActionsLabel: '可用技能', settingActionsValue: '行走 · 直线跑 · 坐下 · 起立 · 前滚翻 · 跌倒恢复', settingAgentLabel: 'Agent 控制', settingAgentValue: '选择技能、参数和时长；不直接输出关节力矩',
     settingGoalLabel: '目标与裁判', settingGoalValue: '按顺序通过检查点，保持在赛道内，正向冲线',
-    strategyKicker: '可调用运控技能', strategyTitle: '策略库', strategyIntro: '点击卡片播放对应策略的仿真录制视频。', strategyPreviewLabel: '策略视频', photoPlaceholder: '照片占位', videoComing: '策略视频待补充 · 当前显示临时照片占位。', previewAction: '播放视频 ↗', cardPlayLabel: '▶ 播放视频',
+    strategyKicker: '可调用运控技能', strategyTitle: '策略库', strategyIntro: '点击卡片播放对应策略的仿真录制视频。', strategyPreviewLabel: '策略视频', photoPlaceholder: '照片占位', videoComing: '策略视频待补充 · 当前显示临时照片占位。', previewAction: '播放视频', cardPlayLabel: '▶ 播放视频',
     stagesTitle: '代表关卡', stagesIntro: '点击关卡，查看动态障碍和具体考核点。', assessmentLabel: '考核点', fullRoute: '跳转到完整 16 关中的任意关卡', stageLoading: '正在加载赛道预览…', livePhysics: '赛道预览 · 不运行机器人物理', viewerControls: '拖动旋转 · 滚轮缩放', liveStageDescription: '轻量观众视图使用与比赛相同的赛道和障碍运动定义；机器人物理仅在完整仿真器中运行。',
     inputNowLabel: '重要说明 / 现有试跑输入', inputNowText: '现有开发试跑使用的是扩展诊断接口。具体输入边界见下方；当前成绩属于正式规则冻结前的暂行核心榜记录。',
     protocolKicker: '当前试跑 / 输入边界', protocolTitle: 'Agent 现在究竟能收到什么？', protocolIntro: '这里记录当前开发接口；正式评测协议将在榜单规则冻结后单独发布。',
@@ -125,11 +124,11 @@ const copy = {
     trialFoot: '实时模式下的单局暂行记录。DNF = 未完赛。账户余额差不是逐局账单，因此暂不列精确费用。',
     videoAlt: 'DSH 与 DeepSeek 开发试跑片段', videoEyebrow: '历史试跑 / DSH × DEEPSEEK', videoTitle: '观察，执行，再看发生了什么。',
     videoBody: '片段来自早期 DSH＋DeepSeek 开发试跑，展示 Agent 与物理仿真器的交互过程。更新后的选用成绩以视频下方的榜单为准。',
-    videoReport: '查看这次历史试跑报告 ↗', videoNote: '早期赛道录像，不代表当前赛道的全程演示。',
+    videoReport: '查看这次历史试跑报告', videoNote: '早期赛道录像，不代表当前赛道的全程演示。',
     nextKicker: '开放项目', nextTitle: '检查设置，运行自己的 Agent。', nextBody: '仿真器、赛道、工具与评测代码均在仓库中。复现付费模型试跑还需要自己的凭据及匹配的 Agent 配置；这个静态网页不会运行模型后端。',
-    repoLink: '查看代码仓库 ↗', setupLink: '查看安装说明 ↗', sourcesTitle: '基于及关联项目', sourcesNote: '相关上游项目和资产不全是运行时依赖；许可信息请查看仓库的第三方声明。',
-    footerNote: '独立的仿真评测项目，不代表上游官方背书，也不声称已验证真实机器人表现。', backTop: '返回顶部 ↑',
-    detailLabel: '考核点', report: '试跑记录 ↗', dnf: '未完赛', outcomeOne: '比赛仍在进行时 Agent 退出', outcomeTwo: '达到 3600 秒墙钟上限',
+    repoLink: '查看代码仓库', setupLink: '查看安装说明', sourcesTitle: '基于及关联项目', sourcesNote: '相关上游项目和资产不全是运行时依赖；许可信息请查看仓库的第三方声明。',
+    footerNote: '独立的仿真评测项目，不代表上游官方背书，也不声称已验证真实机器人表现。', backTop: '返回顶部',
+    detailLabel: '考核点', report: '试跑记录', dnf: '未完赛', outcomeOne: '比赛仍在进行时 Agent 退出', outcomeTwo: '达到 3600 秒墙钟上限',
   },
 };
 
@@ -168,7 +167,7 @@ Object.assign(copy.en, {
   heroTitle: 'From general reasoning to embodied action.',
   heroLead: 'Can a general-purpose agent guide a robot through an obstacle race while the physical world keeps moving?',
   articleSummary: 'We evaluate general-purpose agents controlling Microduck through a shared skill interface in a continuously running MuJoCo obstacle race, observing how they perceive, decide and correct execution errors. The current study covers only Microduck; its results do not establish general embodied competence.',
-  heroExplore: 'Explore the benchmark', heroWatch: 'Watch a trial ↗',
+  heroExplore: 'Explore the benchmark', heroWatch: 'Watch a trial',
   heroCaptionLeft: 'MUJOCO PHYSICS · LEARNED MOTION SKILLS', heroCaptionRight: 'MICRODUCK · 16 STAGES',
   settingKicker: 'EXPERIMENT SETTING', settingTitle: 'Know the conditions.', settingIntro: 'Robot, course, skills and observation channels define the task. The selected records retain their original configuration and course version.',
   settingActionsValue: 'Walk · Straight-line Run · Sit · Stand · Roulade',
@@ -185,7 +184,7 @@ Object.assign(copy.zh, {
   heroTitle: '从通用推理到具身行动。',
   heroLead: '当物理世界不会等待思考，通用 Agent 能否控制机器人，完成整场障碍赛？',
   articleSummary: '我们让通用 Agent 通过统一技能接口控制 Microduck，在持续运行的 MuJoCo 仿真中参加障碍赛，观察它们如何感知、决策并修正执行偏差。目前仅评测 Microduck 一种机器人形态，不将结果泛化为通用具身能力。',
-  heroExplore: '了解评测', heroWatch: '观看试跑 ↗',
+  heroExplore: '了解评测', heroWatch: '观看试跑',
   heroCaptionLeft: 'MUJOCO 物理仿真 · 已有运控技能', heroCaptionRight: 'MICRODUCK · 16 关',
   settingKicker: '实验设置', settingTitle: '明确测试条件。', settingIntro: '机器人、赛道、技能与观察信息共同定义任务。当前选用记录保留每次试跑的原始配置和赛道版本。',
   settingActionsValue: '行走 · 直线跑 · 坐下 · 起立 · 前滚翻',
@@ -213,7 +212,7 @@ Object.assign(copy.en, {
   strategyIntro: ' ',
   evidenceTitle: 'Watch an agent run.', evidenceIntro: ' ',
   videoEyebrow: 'DSH × DEEPSEEK', videoTitle: 'Recorded trial',
-  videoBody: 'Excerpt from an earlier course version.', videoReport: 'Run report ↗',
+  videoBody: 'Excerpt from an earlier course version.', videoReport: 'Run report',
   modesIntro: ' ', soloGroupBody: 'Each agent runs independently.', multiGroupBody: 'Agents start together, adding occlusion and contact.',
   multiBoardStatus: 'Results coming soon',
   nextBody: 'Environment, robot interfaces and evaluation code.',
@@ -232,7 +231,7 @@ Object.assign(copy.zh, {
   strategyIntro: ' ',
   evidenceTitle: '看看 Agent 如何行动。', evidenceIntro: ' ',
   videoEyebrow: 'DSH × DEEPSEEK', videoTitle: '试跑录像',
-  videoBody: '早期赛道版本的试跑片段。', videoReport: '试跑报告 ↗',
+  videoBody: '早期赛道版本的试跑片段。', videoReport: '试跑报告',
   modesIntro: ' ', soloGroupBody: '各 Agent 分别独立运行。', multiGroupBody: '同时出发，加入遮挡与机器人接触。',
   multiBoardStatus: '成绩待补充',
   nextBody: '环境、机器人接口与评测代码。',
@@ -261,14 +260,17 @@ Object.assign(copy.zh, {
 });
 
 Object.assign(copy.en, {
-  heroExplore: 'Read the article ↓', heroSimulatorTitle: 'Enter the simulator ↗', heroSimulatorNote: 'Run in your browser',
-  heroAlt: 'Conceptual illustration of a Microduck robot beside an obstacle course',
-  heroCaptionLeft: 'Microduck and an obstacle course. Conceptual illustration, not a simulation frame.',
+  heroExplore: 'Read the article', heroSimulatorTitle: 'Enter the simulator', heroSimulatorNote: 'Run in your browser',
+  heroVideoLabel: 'Course and broadcast interface preview. No agents are running; this is not a recorded race.',
+  heroVideoPlay: 'Watch the preview', heroVideoDownload: 'Open the preview video',
+  heroVideoCaption: 'A 20-second course and broadcast preview, not a recorded race.', heroVideoNote: '20 seconds · No agents running',
   arenaAlt: 'Overview of the Microduck obstacle course in MuJoCo', arenaCaption: 'The Microduck obstacle course in MuJoCo.',
 });
 Object.assign(copy.zh, {
-  heroSimulatorTitle: '进入仿真 ↗', heroSimulatorNote: '在浏览器中体验',
-  heroAlt: 'Microduck 机器人与障碍赛道的概念插画',
+  heroSimulatorTitle: '进入仿真', heroSimulatorNote: '在浏览器中体验',
+  heroVideoLabel: '赛道与转播界面预览。未启动 Agent，不是正式比赛录像。',
+  heroVideoPlay: '观看预览', heroVideoDownload: '打开预览视频',
+  heroVideoCaption: '20 秒赛道与转播预览，未启动 Agent，非实测比赛。', heroVideoNote: '20 秒 · 未启动 Agent，非实测比赛',
   arenaAlt: 'MuJoCo 中的 Microduck 障碍赛道全景', arenaCaption: 'MuJoCo 中的 Microduck 障碍赛道。',
 });
 
@@ -447,10 +449,11 @@ function renderStage(lang) {
   const item = stages.find((stage) => stage.stageIndex === activeCourseStage) ?? stageNotes[activeCourseStage];
   const routeTitle = courseStageTitle(courseStages[activeCourseStage], lang);
   const number = String(activeCourseStage + 1).padStart(2, '0');
-  document.querySelector('#stage-label').textContent = item
-    ? `STAGE ${number} / 16 · ${routeTitle}`
-    : `STAGE ${number} / 16 · ${routeTitle}`;
+  document.querySelector('#stage-label').textContent = `${lang === 'zh' ? '关卡' : 'Stage'} ${number} / 16 · ${routeTitle}`;
   document.querySelector('#stage-description').textContent = item?.description[lang] ?? copy[lang].liveStageDescription;
+  const assessment = document.querySelector('#stage-assessment');
+  assessment.textContent = item?.assessment?.[lang] ?? '';
+  assessment.hidden = !assessment.textContent;
   document.querySelectorAll('#stage-list button').forEach((button, index) => button.setAttribute('aria-pressed', String(stages[index].stageIndex === activeCourseStage)));
   document.querySelectorAll('#full-route button').forEach((button, index) => button.setAttribute('aria-pressed', String(index === activeCourseStage)));
   focusSimulatorStage(activeCourseStage);
@@ -459,12 +462,33 @@ Object.assign(copy.zh, {
   heroMetaRobot: 'Microduck · MuJoCo',
   heroMetaCourse: '16 个有序检查点',
   heroMetaSubject: '通用 Agent 的具身能力',
-  heroResults: '查看结果 ↗',
+  heroResults: '查看结果',
   heroFigure: '图 1.',
   contentsLabel: '文章目录',
-  heroExplore: '阅读文章 ↓',
-  heroCaptionLeft: 'Microduck 与障碍赛道。概念插画，非仿真画面。',
-  heroCaptionRight: 'Microduck · MuJoCo · 16 个关卡',
+  heroExplore: '阅读文章',
+});
+
+const heroVideo = document.querySelector('#hero-video');
+const heroPlay = document.querySelector('#hero-play');
+heroVideo.controls = false;
+heroPlay.hidden = false;
+heroPlay.addEventListener('click', async () => {
+  heroVideo.controls = true;
+  heroPlay.hidden = true;
+  try {
+    await heroVideo.play();
+    heroVideo.focus();
+  } catch {
+    heroPlay.hidden = false;
+  }
+});
+heroVideo.addEventListener('play', () => { heroPlay.hidden = true; });
+heroVideo.addEventListener('ended', () => {
+  heroVideo.controls = false;
+  heroPlay.hidden = false;
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) heroVideo.pause();
 });
 
 const url = new URL(location.href);
@@ -476,8 +500,9 @@ mountArticleNavigation();
 for (const button of document.querySelectorAll('[data-lang]')) button.addEventListener('click', () => {
   const lang = button.dataset.lang;
   render(lang);
-  url.searchParams.set('lang', lang);
-  history.replaceState(null, '', url);
+  const currentUrl = new URL(location.href);
+  currentUrl.searchParams.set('lang', lang);
+  history.replaceState(null, '', currentUrl);
 });
 document.querySelector('#strategy-dialog').addEventListener('click', (event) => {
   if (event.target === event.currentTarget) event.currentTarget.close();

@@ -9,8 +9,9 @@
   background: var(--paper) !important;
 }
 
-body { background: var(--paper) !important; color: var(--ink) !important; }
-body > main { max-width: 1260px !important; }
+body { background: var(--paper) !important; color: var(--ink) !important; font-family: var(--font-serif) !important; }
+nav, table, button, select, .meta, .view-controls, .stats, footer { font-family: var(--font-sans); }
+body > main { max-width: 1440px !important; }
 h1 { font-weight: 700 !important; letter-spacing: -.02em !important; }
 h2, h3 { font-weight: 700 !important; }
 a { color: var(--green) !important; }
@@ -19,3 +20,9 @@ tbody tr:hover td { background: #f6f6f4 !important; }
 .panel { background: #ffffff !important; border-color: var(--line) !important; }
 .overview, .view-controls, .panel, details, footer { border-color: var(--line) !important; }
 code { background: #f6f6f4 !important; }
+
+.document-nav { display: flex; gap: 16px; margin: 0 0 28px; font-size: 14px; }
+.document-nav a { text-decoration: none; }
+.document-nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.scroll { scrollbar-color: #b5b5b0 #f6f6f4 !important; }
+.scroll:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }

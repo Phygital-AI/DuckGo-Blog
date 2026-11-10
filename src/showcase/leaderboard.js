@@ -1,4 +1,5 @@
 import data from './leaderboard-data.json';
+import { modelName } from './modelNames.js';
 
 const copy = {
   zh: {
@@ -15,7 +16,7 @@ const copy = {
     provisional: 'Grok 的 0% 沿用来源展示约定，未开展正式比赛，其他指标保留未知。',
     humanNote: '独立参考，不参与 AI 排名；视角与控制条件不同，赛道版本为 V2 / V20。',
     foot: '用时为结束时的仿真时间；— 表示未记录。',
-    details: '详细结果 ↗', source: '选用来源', low: 'LOW 推理档位',
+    details: '详细结果', source: '选用来源', low: 'LOW 推理档位',
     tokens: 'Token（输入 / 输出）', noTokens: 'Token 未报告', seconds: '秒', scroll: '可横向滚动查看全部指标',
   },
   en: {
@@ -32,7 +33,7 @@ const copy = {
     provisional: 'Grok’s 0% follows the source display convention: no formal race was run, and all other metrics remain unknown.',
     humanNote: 'Separate reference, excluded from AI ranks. Views and controls differ; course version V2 / V20.',
     foot: 'Sim time is elapsed time at termination. — indicates an unrecorded value.',
-    details: 'Full results ↗', source: 'SELECTED SOURCE', low: 'LOW REASONING EFFORT',
+    details: 'Full results', source: 'SELECTED SOURCE', low: 'LOW REASONING EFFORT',
     tokens: 'Tokens (input / output)', noTokens: 'Token usage not reported', seconds: 's', scroll: 'Scroll horizontally to view all metrics',
   },
 };
@@ -71,7 +72,6 @@ export function renderLeaderboard(lang) {
   }
   const head = element('div', 'board-heading');
   const heading = element('div');
-  heading.append(element('small', 'board-eyebrow', t.label));
   const title = element('h3', '', t.title);
   title.id = 'solo-results-title';
   heading.append(title);
@@ -83,7 +83,7 @@ export function renderLeaderboard(lang) {
   const summary = element('div', 'board-summary');
   const stats = [
     [String(data.displayCounts.ai_configurations_displayed), t.configurations, `${measured.length} ${t.measured} · ${data.unranked.length} ${t.compatibility}`],
-    [`${number(Math.max(...measured.map(row => row.progressPercent)), 2)}%`, t.best, measured[0].model],
+    [`${number(Math.max(...measured.map(row => row.progressPercent)), 2)}%`, t.best, modelName(measured[0].model)],
     [`${measured.filter(row => row.finish != null).length} / ${measured.length}`, t.finishers, t.finishRule],
   ];
   for (const [value, label, detail] of stats) {
@@ -115,7 +115,8 @@ export function renderLeaderboard(lang) {
     tr.append(element('td', 'board-rank', String(row.rank).padStart(2, '0')));
     const name = element('th', 'board-agent');
     name.scope = 'row';
-    name.append(element('strong', '', row.model), element('small', '', `${row.harness} · ${row.effort.toUpperCase()}`));
+    name.title = row.model;
+    name.append(element('strong', '', modelName(row.model)), element('small', '', `${row.harness} · ${row.effort.toUpperCase()}`));
     tr.append(name);
     const progress = element('td', 'board-progress');
     progress.append(element('strong', '', `${number(row.progressPercent, 2)}%`), element('small', '', `${t.checkpoints} ${String(row.cp).padStart(2, '0')} / 16`));
@@ -136,7 +137,8 @@ export function renderLeaderboard(lang) {
     tr.append(element('td', 'board-rank', '—'));
     const name = element('th', 'board-agent');
     name.scope = 'row';
-    name.append(element('strong', '', row.model), element('small', '', row.harness));
+    name.title = row.model;
+    name.append(element('strong', '', modelName(row.model)), element('small', '', row.harness));
     tr.append(name);
     const progress = element('td', 'board-progress');
     progress.append(element('strong', '', '—'), element('small', '', t.unmeasured));
@@ -159,5 +161,5 @@ export function renderLeaderboard(lang) {
     humanMetrics.append(metric);
   }
   humanCard.append(humanScore, humanCopy, humanMetrics);
-  root.replaceChildren(head, element('p', 'board-intro', t.intro), summary, humanCard, scroll, element('p', 'board-foot', t.foot));
+  root.replaceChildren(head, element('p', 'board-intro', t.intro), summary, scroll, element('p', 'board-foot', t.foot), humanCard);
 }
