@@ -278,6 +278,9 @@ summary { color: var(--green); }
 .sources { margin-top: 34px; padding-top: 25px; border-top: 1px solid var(--line); }
 .sources h3 { font-size: 20px; margin-bottom: 14px; }
 .sources > a { display: inline-block; font-size: 15px; margin: 0 20px 9px 0; }
+.article-citation pre { margin: 24px 0 18px; padding: 20px; border: 1px solid var(--line); font-size: 13px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.article-citation code { display: block; padding: 0; background: transparent; font-size: inherit; }
+.citation-download { font-family: var(--font-sans); font-size: 13px; }
 .footer { max-width: var(--reading-width); margin: 30px auto 0; padding: 27px 0 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-family: var(--font-sans); font-size: 11px; }
 .footer a { text-decoration: none; }
 .strategy-dialog { width: min(var(--reading-width), calc(100vw - 36px)); padding: 0; border: 1px solid var(--line); border-radius: 5px; background: var(--white); color: var(--ink); max-height: calc(100vh - 48px); }

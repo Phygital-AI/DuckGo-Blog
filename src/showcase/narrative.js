@@ -1,5 +1,7 @@
 import data from './leaderboard-data.json';
 import { modelName } from './modelNames.js';
+import bibtexText from './duckrace.bib?raw';
+import bibtexUrl from './duckrace.bib?url&no-inline';
 
 const text = {
   zh: {
@@ -21,6 +23,7 @@ const text = {
     compatibilityNote: '工具兼容失败，未开展正式比赛。', inputDetails: '查看观察信息与动作接口',
     conclusionsKicker: '结论', conclusionsTitle: '初步观察',
     conclusionsIntro: '现有 AI 试跑尚未完成全程。后续将通过重复实验与统一条件对照，分析实时决策与物理执行中的主要瓶颈。',
+    citationTitle: '引用本工作', citationIntro: '如在研究中使用 DuckRace、仿真环境或评测协议，请引用这篇交互式文章。', citationDownload: '下载 BibTeX',
   },
   en: {
     navProblems: 'Motivation', navApproach: 'Environment', navGoals: 'Goals', navParticipants: 'Agents', navConclusions: 'Findings',
@@ -41,6 +44,7 @@ const text = {
     compatibilityNote: 'Tool compatibility failed; no formal race was run.', inputDetails: 'Observation channels & action interface',
     conclusionsKicker: 'FINDINGS', conclusionsTitle: 'Early observations',
     conclusionsIntro: 'No AI run has completed the course yet. Repeated trials under matched conditions will help identify the main bottlenecks in real-time decisions and physical execution.',
+    citationTitle: 'Cite this work', citationIntro: 'If you use DuckRace, its simulation environment, or its evaluation protocol in your work, please cite this interactive article.', citationDownload: 'Download BibTeX',
   },
 };
 
@@ -100,10 +104,25 @@ export function configureNarrative(protocolSection) {
   conclusions.id = 'conclusions';
   conclusions.innerHTML = head('conclusionsTitle', 'conclusionsIntro');
 
-  main.replaceChildren(document.querySelector('#top'), problems, approach, participants, setting, document.querySelector('#evidence'), document.querySelector('#modes'), conclusions, document.querySelector('#reproduce'));
+  const citation = node('section', 'band article-citation');
+  citation.id = 'citation';
+  citation.setAttribute('aria-labelledby', 'citation-title');
+  citation.innerHTML = head('citationTitle', 'citationIntro');
+  citation.querySelector('h2').id = 'citation-title';
+  const bibliography = node('pre');
+  bibliography.tabIndex = 0;
+  bibliography.setAttribute('aria-label', 'BibTeX');
+  bibliography.append(node('code', 'language-bibtex', bibtexText));
+  const download = node('a', 'citation-download');
+  download.href = bibtexUrl;
+  download.download = 'duckrace.bib';
+  download.dataset.story = 'citationDownload';
+  citation.append(bibliography, download);
+
+  main.replaceChildren(document.querySelector('#top'), problems, approach, participants, setting, document.querySelector('#evidence'), document.querySelector('#modes'), conclusions, document.querySelector('#reproduce'), citation);
   const layout = node('div', 'article-layout');
   const contents = node('aside', 'article-contents');
-  contents.innerHTML = '<nav class="contents-nav" aria-label="Article contents"><a href="#question" data-story="navProblems"></a><a href="#approach" data-story="navApproach"></a><a href="#participants" data-story="navParticipants"></a><a href="#setting" data-i18n="navSetting"></a><a href="#evidence" data-i18n="navEvidence"></a><a href="#results" data-i18n="navModes"></a><a href="#conclusions" data-story="navConclusions"></a></nav>';
+  contents.innerHTML = '<nav class="contents-nav" aria-label="Article contents"><a href="#question" data-story="navProblems"></a><a href="#approach" data-story="navApproach"></a><a href="#participants" data-story="navParticipants"></a><a href="#setting" data-i18n="navSetting"></a><a href="#evidence" data-i18n="navEvidence"></a><a href="#results" data-i18n="navModes"></a><a href="#conclusions" data-story="navConclusions"></a><a href="#citation" data-story="citationTitle"></a></nav>';
   const article = node('article', 'article-body');
   const summary = node('section', 'article-summary');
   summary.id = 'summary';

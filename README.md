@@ -37,6 +37,12 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 
 在输出的地址后添加 `/?lang=zh` 或 `/?lang=en#results` 即可分享。访问者无需 GitHub 登录；地址为公开临时预览，仅在静态服务器与隧道均运行时有效，重建隧道会更换地址，不作为正式发布地址。固定地址需要由仓库管理员配置支持私有仓库的 GitHub Pages 或独立静态托管；推送代码不会自动发布网页，也不需要将源码仓库改为公开。
 
+## 引用与发布检查
+
+文末提供中英文引用说明、BibTeX 与下载链接，展示和下载均使用 `src/showcase/duckrace.bib`，避免内容不一致。
+
+**正式发布前记得补充 `src/showcase/duckrace.bib` 中的 `url` 字段。** 当前按约定留空，不使用临时预览地址；补填后重新运行 `npm run build`。
+
 ## 从哪里改
 
 | 内容 | 文件 |
