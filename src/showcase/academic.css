@@ -49,11 +49,13 @@ code, pre { background: var(--surface); padding: 2px 5px; font-size: .92em; over
 .languages button { min-width: 26px; min-height: 32px; border: 0; border-bottom: 1px solid transparent; padding: 3px 0; background: none; color: var(--muted); font-size: 13px; }
 .languages button[aria-pressed="true"] { border-color: var(--green); color: var(--green); }
 .github { font-size: 13px; }
-.hero { width: calc(100% - 64px); max-width: var(--reading-width); margin: 0 auto; padding: 44px 0 0; }
+.hero { width: calc(100% - 64px); max-width: var(--reading-width); margin: 0 auto; padding: clamp(56px, 6vw, 88px) 0 0; }
 .hero-content { margin: 0 auto; text-align: center; }
 .eyebrow, .section-no { color: var(--muted); font-size: 12px; line-height: 1.6; letter-spacing: .035em; }
 .eyebrow { margin-bottom: 10px; }
-h1 { margin: 0 auto; font-size: clamp(28px, 2.5vw, 32px); line-height: 1.25; letter-spacing: -.025em; white-space: normal; text-wrap: balance; }
+h1 { margin: 0 auto; font-size: clamp(30px, 3.3vw, 42px); line-height: 1.16; letter-spacing: -.03em; white-space: normal; text-wrap: balance; }
+.hero-title-name { display: block; font-family: var(--font-sans); font-weight: 700; }
+.hero-title-question { display: block; margin-top: 6px; font-family: var(--font-serif); font-weight: 400; letter-spacing: -.025em; }
 .hero-lead { max-width: 620px; margin: 0 auto; font-size: 18px; line-height: 1.5; color: var(--muted); text-wrap: pretty; }
 .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 28px; margin: 16px auto 0; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 6px 17px; border: 1px solid transparent; border-radius: 4px; color: var(--ink); background: transparent; font-family: var(--font-sans); font-size: 13px; text-decoration: none; line-height: 1.6; }
@@ -61,7 +63,7 @@ h1 { margin: 0 auto; font-size: clamp(28px, 2.5vw, 32px); line-height: 1.25; let
 .button-hot { background: #eeeeec; }
 .button-hot:hover { background: #e3e3df; }
 .hero-actions .button-light { padding-inline: 2px; }
-.hero-figure { width: 100%; margin: 32px auto 0; }
+.hero-figure { width: 100%; margin: 56px auto 0; }
 .hero-media { position: relative; background: var(--surface); }
 .hero-media video { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
 .hero-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid #0001; border-radius: 50%; background: #fffffff0; color: var(--ink); box-shadow: 0 2px 16px #0001; }
@@ -318,14 +320,14 @@ summary { color: var(--green); }
   .languages { gap: 10px; }
   .languages button { min-height: 44px; }
   .github { font-size: 12px; }
-  .hero { width: calc(100% - 40px); padding: 27px 0 0; }
+  .hero { width: calc(100% - 40px); padding: 44px 0 0; }
   .hero-content { padding: 0; }
   .eyebrow { font-size: 11px; margin-bottom: 13px; }
-  h1 { font-size: 28px; line-height: 1.25; }
+  h1 { font-size: 30px; line-height: 1.18; }
   .hero-lead { font-size: 17px; line-height: 1.5; }
   .hero-actions { gap: 8px 17px; margin-top: 22px; }
   .button { padding: 8px 15px; min-height: 42px; font-size: 14px; }
-  .hero-figure { margin-top: 25px; }
+  .hero-figure { margin-top: 36px; }
   .hero-play { width: 44px; height: 44px; padding: 0; }
   .hero-play-duration { padding-left: 10px; font-size: 13px; }
   .hero-caption { font-size: 11px; line-height: 1.6; }
