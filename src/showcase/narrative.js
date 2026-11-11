@@ -133,7 +133,11 @@ export function configureNarrative(protocolSection) {
   const resultsAnchor = node('span', 'section-anchor');
   resultsAnchor.id = 'results';
   article.querySelector('#modes').prepend(resultsAnchor);
-  layout.append(contents, article);
+  const hero = document.querySelector('#top');
+  const feature = hero.querySelector('.hero-feature');
+  const metadata = feature.querySelector('.hero-metadata');
+  const actions = hero.querySelector('.hero-actions');
+  layout.append(feature, metadata, actions, contents, article);
   main.append(layout);
   document.querySelector('#metric-row')?.remove();
   article.querySelectorAll('.section-no, .story-card-number, .condition-label, .stage-list-heading, .video-copy > span, .setting-feedback h3, .assistance-mark, .group-copy > b, .course-head > p').forEach(label => label.remove());
