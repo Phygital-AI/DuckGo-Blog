@@ -28,17 +28,38 @@
       <div class="hero-content">
         <h1><span class="hero-title-name" data-i18n="heroName">DuckRace:</span> <span class="hero-title-question" data-i18n="heroQuestion">Can AI Control a Microduck?</span></h1>
       </div>
-      <figure class="hero-figure">
-        <div class="hero-media">
-          <video id="hero-video" controls playsinline preload="none" poster="/showcase/broadcast-poster-v2.jpg" width="1920" height="1080" aria-describedby="hero-caption" data-aria="heroVideoLabel">
-            <source src="/showcase/broadcast-preview.mp4" type="video/mp4" />
-            <source src="/showcase/broadcast-preview.webm" type="video/webm" />
-            <a href="/showcase/broadcast-preview.mp4" data-i18n="heroVideoDownload">Open the preview video</a>
-          </video>
-          <button class="hero-play" id="hero-play" type="button" aria-controls="hero-video" data-aria="heroVideoPlay" hidden><span class="hero-play-icon" aria-hidden="true">▶</span></button>
-        </div>
-        <figcaption class="hero-caption" id="hero-caption" data-i18n="heroVideoCaption">A 20-second course and broadcast preview, not a recorded race.</figcaption>
-      </figure>
+      <div class="hero-feature">
+        <figure class="hero-figure">
+          <div class="hero-media">
+            <video id="hero-video" controls playsinline preload="none" poster="/showcase/broadcast-poster-v2.jpg" width="1920" height="1080" aria-describedby="hero-caption" data-aria="heroVideoLabel">
+              <source src="/showcase/broadcast-preview.mp4" type="video/mp4" />
+              <source src="/showcase/broadcast-preview.webm" type="video/webm" />
+              <a href="/showcase/broadcast-preview.mp4" data-i18n="heroVideoDownload">Open the preview video</a>
+            </video>
+            <button class="hero-play" id="hero-play" type="button" aria-controls="hero-video" data-aria="heroVideoPlay" hidden><span class="hero-play-icon" aria-hidden="true">▶</span></button>
+          </div>
+          <figcaption class="hero-caption" id="hero-caption" data-i18n="heroVideoCaption">A 20-second course and broadcast preview, not a recorded race.</figcaption>
+        </figure>
+        <aside class="hero-metadata" data-aria="articleInfoLabel" aria-label="Article information">
+          <dl>
+            <div>
+              <dt data-i18n="publishedLabel">Published</dt>
+              <dd><time datetime="2026-11-23" data-i18n="publishedDate">Nov 23, 2026</time></dd>
+            </div>
+            <div>
+              <dt data-i18n="teamLabel">Team</dt>
+              <dd>Phygital AI Team</dd>
+            </div>
+            <div class="metadata-topics">
+              <dt data-i18n="topicsLabel">Topics</dt>
+              <dd>
+                <ul><li data-i18n="topicRobotics">Robotics</li><li data-i18n="topicBenchmarks">Benchmarks</li><li data-i18n="topicAgent">Agent</li></ul>
+                <a class="metadata-more" href="#reproduce" data-i18n="metadataMore">See more...</a>
+              </dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
       <div class="hero-actions"><a class="button button-light" href="#results" data-i18n="heroResults">View results</a><a class="button button-light" href="/simulator.html?manual=1&amp;roster=deepseek-1&amp;clock=realtime&amp;view=overview" target="_blank" rel="noopener noreferrer" data-i18n="heroSimulatorTitle">Enter the simulator</a></div>
     </section>
     <section class="band band-question" id="question"><div class="section-head"><span class="section-no">01 / <span data-i18n="questionKicker">RESEARCH QUESTION</span></span><h2 data-i18n="questionTitle">From an image to a decision. From a command to an uncertain outcome.</h2></div><div class="question-layout"><p class="big-quote" data-i18n="questionStatement">When skill outcomes are not guaranteed, and the world keeps changing while an agent thinks, can a general-purpose agent use first-person observation and replanning to bring a simulated robot through an entire obstacle race?</p><aside class="question-aside"><span data-i18n="subjectLabel">WHAT IS EVALUATED</span><strong data-i18n="subjectText">The complete agent, not a single model response.</strong><p data-i18n="subjectNote">The model is its reasoning core. The agent must observe, call skills, interpret feedback and remain in control until the referee ends the run.</p></aside></div><div class="boundary-row"><span data-i18n="boundaryVln">NOT NAVIGATION ALONE</span><span data-i18n="boundaryTorque">NOT A JOINT-TORQUE BENCHMARK</span></div></section>

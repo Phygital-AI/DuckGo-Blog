@@ -5,10 +5,8 @@ const text = {
   zh: {
     navProblems: '动机', navApproach: '环境', navGoals: '目标', navParticipants: '评测对象', navConclusions: '结论',
     problemsKicker: '面临的问题', problemsTitle: '从推理到物理行动',
-    problem1Title: '指令不保证结果。', problem1Body: '碰撞、摩擦、惯性与身体平衡，都会改变运动。调用一次技能，不代表机器人一定到达预期位置。',
-    problem2Title: '环境不会暂停。', problem2Body: 'Agent 思考时，障碍继续运动，机器人也可能被推移。依据上一帧作出的判断，执行时可能已经过期。',
-    problem3Title: '决策需要持续。', problem3Body: '整场比赛需要反复观察、行动和修正。一次合理的选择，无法替代对实际执行结果的持续判断。',
-    physicalRationale: '物理仿真降低了真实机器人测试的硬件、维护与安全成本。',
+    problemsBody: '碰撞、摩擦、惯性与身体平衡共同影响机器人的实际运动，因此调用一次技能并不保证到达预期位置。同时，Agent 推理期间障碍仍在运动，依据上一帧作出的判断，到执行时可能已经过期。',
+    problemsContext: '一场连续障碍赛，考察的是 Agent 能否持续观察、行动并修正，用实际执行结果检验自己的选择。物理仿真让我们能以较低的硬件、维护与安全成本研究这一过程。',
     approachKicker: '我们做了什么', approachTitle: 'Microduck 障碍赛',
     approachBody: '在 MuJoCo 中，Agent 通过统一接口选择技能、参数和持续时间，控制 Microduck 双足机器人通过连续障碍。底层控制器驱动关节，物理仿真决定实际运动。',
     loop1: '第一视角与状态反馈', loop2: 'Agent 选择技能', loop3: '物理执行', loop4: '观察结果，再次决策',
@@ -27,10 +25,8 @@ const text = {
   en: {
     navProblems: 'Motivation', navApproach: 'Environment', navGoals: 'Goals', navParticipants: 'Agents', navConclusions: 'Findings',
     problemsKicker: 'THE PROBLEM', problemsTitle: 'From reasoning to physical action',
-    problem1Title: 'Commands are uncertain.', problem1Body: 'Contact, friction, inertia and balance change the motion. Calling a skill does not guarantee the intended position.',
-    problem2Title: 'The scene keeps moving.', problem2Body: 'Obstacles move and robots can be displaced during inference. A decision based on the last frame may already be out of date.',
-    problem3Title: 'One decision is not enough.', problem3Body: 'A full race needs repeated observation, action and correction. A plausible choice must be checked against its physical outcome.',
-    physicalRationale: 'Physics simulation reduces the hardware, maintenance and safety costs of physical robot trials.',
+    problemsBody: 'Contact, friction, inertia and balance shape a robot’s motion, so a skill call does not guarantee the intended position. Obstacles also keep moving during inference: by the time an agent acts, its last observation may already be out of date.',
+    problemsContext: 'An obstacle race tests whether an agent can sustain a loop of observation, action and correction, checking its choices against physical outcomes. Simulation lets us study this process with lower hardware, maintenance and safety costs than physical robot trials.',
     approachKicker: 'WHAT WE BUILT', approachTitle: 'The Microduck obstacle course',
     approachBody: 'Agents select motion skills, parameters and durations through a shared interface to guide a Microduck biped through a MuJoCo obstacle course. Controllers drive the joints; physics determines the motion.',
     loop1: 'First-person & state', loop2: 'Agent chooses skill', loop3: 'Physical execution', loop4: 'Observe & decide again',
@@ -65,13 +61,12 @@ const node = (tag, className, content) => {
   return el;
 };
 const head = (title, intro) => `<div class="section-head"><h2 data-story="${title}"></h2>${intro ? `<p class="story-intro" data-story="${intro}"></p>` : ''}</div>`;
-const cards = (prefix, count) => Array.from({length: count}, (_, index) => `<div class="story-card"><p data-story="${prefix}${index + 1}Body"></p></div>`).join('');
 
 export function configureNarrative(protocolSection) {
   const main = document.querySelector('#main');
   const problems = node('section', 'band band-problems');
   problems.id = 'question';
-  problems.innerHTML = head('problemsTitle') + `<div class="problem-grid">${cards('problem', 3)}</div><p class="physical-rationale" data-story="physicalRationale"></p>`;
+  problems.innerHTML = head('problemsTitle') + '<p data-story="problemsBody"></p><p data-story="problemsContext"></p>';
 
   const approach = node('section', 'band story-approach');
   approach.id = 'approach';
