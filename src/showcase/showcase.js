@@ -40,7 +40,7 @@ const copy = {
   en: {
     skip: 'Skip to content', navQuestion: 'Question', navChallenge: 'Why hard', navSetting: 'Setting', navModes: 'Results', navEvidence: 'Videos',
     heroAlt: 'A Microduck robot approaching the first slalom obstacle', heroEyebrow: 'MICRODUCK AGENT OBSTACLE RACE',
-    heroTitle: 'From General Reasoning to Embodied Action',
+    heroTitle: 'DuckRace: Can AI Control a Microduck?',
     heroLead: 'General-purpose agents control Microduck through one skill interface, confronting body constraints, moving obstacles and execution errors in a continuously running MuJoCo world.',
     heroExplore: 'Read the study', heroWatch: 'Watch a real trial', heroCaptionLeft: 'A simulated obstacle race for general-purpose agents.', heroCaptionRight: 'Microduck · MuJoCo · 16 stages',
     heroMetaRobot: 'Microduck · MuJoCo', heroMetaCourse: '16 ordered checkpoints', heroMetaSubject: 'General-purpose agents', heroResults: 'View results', heroFigure: 'Figure 1.', contentsLabel: 'ON THIS PAGE',
@@ -87,7 +87,7 @@ const copy = {
   zh: {
     skip: '跳到正文', navQuestion: '研究问题', navChallenge: '核心挑战', navSetting: '实验设置', navModes: '榜单', navEvidence: '视频',
     heroAlt: 'Microduck 机器人驶向蛇形桩障碍', heroEyebrow: 'MICRODUCK AGENT 障碍赛',
-    heroTitle: '从通用推理到具身行动',
+    heroTitle: 'DuckRace：AI 能控制 Microduck 吗？',
     heroLead: '让通用 Agent 通过统一技能接口控制 Microduck，在持续运行的 MuJoCo 物理世界中，应对身体约束、动态障碍和执行误差。',
     heroExplore: '了解研究问题', heroWatch: '观看真实试跑', heroCaptionLeft: '仿真机器人 · 物理动力学', heroCaptionRight: 'MICRODUCK · 16 关',
     questionKicker: '研究问题', questionTitle: '从影像到决策；从指令到不确定的执行结果。',
@@ -164,7 +164,7 @@ Object.assign(copy.zh, {
 
 
 Object.assign(copy.en, {
-  heroTitle: 'From general reasoning to embodied action.',
+  heroTitle: 'DuckRace: Can AI Control a Microduck?',
   heroLead: 'Can a general-purpose agent guide a robot through an obstacle race while the physical world keeps moving?',
   articleSummary: 'We evaluate general-purpose agents controlling Microduck through a shared skill interface in a continuously running MuJoCo obstacle race, observing how they perceive, decide and correct execution errors. The current study covers only Microduck; its results do not establish general embodied competence.',
   heroExplore: 'Explore the benchmark', heroWatch: 'Watch a trial',
@@ -181,7 +181,7 @@ Object.assign(copy.en, {
   nextTitle: 'Explore the project.', nextBody: 'The environment, robot tools and evaluation code are available in the repository. Inspect the setup and the original run records.',
 });
 Object.assign(copy.zh, {
-  heroTitle: '从通用推理到具身行动。',
+  heroTitle: 'DuckRace：AI 能控制 Microduck 吗？',
   heroLead: '当物理世界不会等待思考，通用 Agent 能否控制机器人，完成整场障碍赛？',
   articleSummary: '我们让通用 Agent 通过统一技能接口控制 Microduck，在持续运行的 MuJoCo 仿真中参加障碍赛，观察它们如何感知、决策并修正执行偏差。目前仅评测 Microduck 一种机器人形态，不将结果泛化为通用具身能力。',
   heroExplore: '了解评测', heroWatch: '观看试跑',
@@ -340,7 +340,7 @@ function render(lang) {
   currentLanguage = lang;
   const t = copy[lang];
   document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-  document.title = lang === 'zh' ? '从通用推理到具身行动 · Microduck Agent 障碍赛' : 'From General Reasoning to Embodied Action · Microduck Agent Race';
+  document.title = t.heroTitle;
   for (const node of document.querySelectorAll('[data-i18n]')) node.textContent = t[node.dataset.i18n] ?? '';
   for (const node of document.querySelectorAll('[data-alt]')) node.alt = t[node.dataset.alt] ?? '';
   for (const node of document.querySelectorAll('[data-aria]')) node.setAttribute('aria-label', t[node.dataset.aria] ?? '');

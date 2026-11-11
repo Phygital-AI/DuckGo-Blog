@@ -79,8 +79,8 @@ h1 { margin: 0 auto; font-size: clamp(28px, 2.5vw, 32px); line-height: 1.25; let
 .contents-nav a[aria-current="location"] { font-weight: 500; }
 .contents-code { display: inline-block; margin-top: 22px; margin-left: 15px; font-size: 13px; text-decoration: none; color: var(--muted); }
 .article-body { grid-column: 2; grid-row: 1; min-width: 0; }
-.article-summary { margin-bottom: 44px; }
-.article-summary h2 { margin-bottom: 13px; font-size: 14px; font-weight: 400; letter-spacing: .02em; color: var(--muted); }
+.article-summary { margin-bottom: 44px; padding-left: 20px; border-left: 2px solid var(--line); }
+.article-summary h2 { margin-bottom: 12px; font-family: var(--font-sans); font-size: 12px; font-weight: 600; letter-spacing: .07em; color: var(--ink); }
 .article-summary p { margin-bottom: 0; text-wrap: pretty; }
 .band { position: relative; padding: 0; margin-bottom: 56px; scroll-margin-top: 32px; }
 .section-anchor { position: absolute; top: 0; scroll-margin-top: 28px; }

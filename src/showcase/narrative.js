@@ -112,7 +112,8 @@ export function configureNarrative(protocolSection) {
   const article = node('article', 'article-body');
   const summary = node('section', 'article-summary');
   summary.id = 'summary';
-  summary.innerHTML = '<p data-i18n="articleSummary"></p>';
+  summary.setAttribute('aria-labelledby', 'summary-title');
+  summary.innerHTML = '<h2 id="summary-title">TL;DR</h2><p data-i18n="articleSummary"></p>';
   article.append(summary);
   for (const section of [...main.children]) if (section.id !== 'top') article.append(section);
   const resultsAnchor = node('span', 'section-anchor');
