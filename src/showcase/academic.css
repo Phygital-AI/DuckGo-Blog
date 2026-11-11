@@ -65,7 +65,7 @@ h1 { margin: 0 auto; font-size: clamp(30px, 3.3vw, 42px); line-height: 1.16; let
 .hero-actions .button-light { padding-inline: 2px; }
 .hero-feature { grid-column: 2; grid-row: 1; min-width: 0; }
 .hero-figure { width: 100%; margin: 0; }
-.hero-metadata { position: sticky; top: 32px; grid-column: 3; grid-row: 1 / 4; align-self: start; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; }
+.hero-metadata { grid-column: 3; grid-row: 1 / 4; align-self: start; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; }
 .hero-metadata dl { margin: 0; }
 .hero-metadata dl > div { padding: 14px 0; border-top: 1px solid var(--line); }
 .hero-metadata dt { font-weight: 500; }
