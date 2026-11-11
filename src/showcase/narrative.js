@@ -1,7 +1,7 @@
 import data from './leaderboard-data.json';
 import { modelName } from './modelNames.js';
-import bibtexText from './duckrace.bib?raw';
-import bibtexUrl from './duckrace.bib?url&no-inline';
+import bibtexText from './duckgo.bib?raw';
+import bibtexUrl from './duckgo.bib?url&no-inline';
 
 const text = {
   zh: {
@@ -23,7 +23,7 @@ const text = {
     compatibilityNote: '工具兼容失败，未开展正式比赛。', inputDetails: '查看观察信息与动作接口',
     conclusionsKicker: '结论', conclusionsTitle: '初步观察',
     conclusionsIntro: '现有 AI 试跑尚未完成全程。后续将通过重复实验与统一条件对照，分析实时决策与物理执行中的主要瓶颈。',
-    citationTitle: '引用本工作', citationIntro: '如在研究中使用 DuckRace、仿真环境或评测协议，请引用这篇交互式文章。', citationDownload: '下载 BibTeX',
+    citationTitle: '引用本工作', citationIntro: '如在研究中使用 DuckGo、仿真环境或评测协议，请引用这篇交互式文章。', citationDownload: '下载 BibTeX',
   },
   en: {
     navProblems: 'Motivation', navApproach: 'Environment', navGoals: 'Goals', navParticipants: 'Agents', navConclusions: 'Findings',
@@ -44,7 +44,7 @@ const text = {
     compatibilityNote: 'Tool compatibility failed; no formal race was run.', inputDetails: 'Observation channels & action interface',
     conclusionsKicker: 'FINDINGS', conclusionsTitle: 'Early observations',
     conclusionsIntro: 'No AI run has completed the course yet. Repeated trials under matched conditions will help identify the main bottlenecks in real-time decisions and physical execution.',
-    citationTitle: 'Cite this work', citationIntro: 'If you use DuckRace, its simulation environment, or its evaluation protocol in your work, please cite this interactive article.', citationDownload: 'Download BibTeX',
+    citationTitle: 'Cite this work', citationIntro: 'If you use DuckGo, its simulation environment, or its evaluation protocol in your work, please cite this interactive article.', citationDownload: 'Download BibTeX',
   },
 };
 
@@ -115,7 +115,7 @@ export function configureNarrative(protocolSection) {
   bibliography.append(node('code', 'language-bibtex', bibtexText));
   const download = node('a', 'citation-download');
   download.href = bibtexUrl;
-  download.download = 'duckrace.bib';
+  download.download = 'duckgo.bib';
   download.dataset.story = 'citationDownload';
   citation.append(bibliography, download);
 

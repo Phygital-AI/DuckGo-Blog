@@ -40,8 +40,8 @@ const copy = {
   en: {
     skip: 'Skip to content', navQuestion: 'Question', navChallenge: 'Why hard', navSetting: 'Setting', navModes: 'Results', navEvidence: 'Videos',
     heroAlt: 'A Microduck robot approaching the first slalom obstacle', heroEyebrow: 'MICRODUCK AGENT OBSTACLE RACE',
-    heroTitle: 'DuckRace: Can AI Control a Microduck?',
-    heroName: 'DuckRace:',
+    heroTitle: 'DuckGo: Can AI Control a Microduck?',
+    heroName: 'DuckGo:',
     heroQuestion: 'Can AI Control a Microduck?',
     articleInfoLabel: 'Article information', publishedLabel: 'Published', publishedDate: 'Nov 23, 2026', teamLabel: 'Team', topicsLabel: 'Topics',
     topicRobotics: 'Robotics', topicBenchmarks: 'Benchmarks', topicAgent: 'Agent', metadataMore: 'See more...',
@@ -91,8 +91,8 @@ const copy = {
   zh: {
     skip: '跳到正文', navQuestion: '研究问题', navChallenge: '核心挑战', navSetting: '实验设置', navModes: '榜单', navEvidence: '视频',
     heroAlt: 'Microduck 机器人驶向蛇形桩障碍', heroEyebrow: 'MICRODUCK AGENT 障碍赛',
-    heroTitle: 'DuckRace：AI 能控制 Microduck 吗？',
-    heroName: 'DuckRace：',
+    heroTitle: 'DuckGo：AI 能控制 Microduck 吗？',
+    heroName: 'DuckGo：',
     heroQuestion: 'AI 能控制 Microduck 吗？',
     articleInfoLabel: '文章信息', publishedLabel: '发布日期', publishedDate: '2026年11月23日', teamLabel: '团队', topicsLabel: '主题',
     topicRobotics: '机器人', topicBenchmarks: '评测基准', topicAgent: 'Agent', metadataMore: '了解更多...',
@@ -172,7 +172,7 @@ Object.assign(copy.zh, {
 
 
 Object.assign(copy.en, {
-  heroTitle: 'DuckRace: Can AI Control a Microduck?',
+  heroTitle: 'DuckGo: Can AI Control a Microduck?',
   heroLead: 'Can a general-purpose agent guide a robot through an obstacle race while the physical world keeps moving?',
   articleSummary: 'We evaluate general-purpose agents controlling Microduck through a shared skill interface in a continuously running MuJoCo obstacle race, observing how they perceive, decide and correct execution errors. The current study covers only Microduck; its results do not establish general embodied competence.',
   heroExplore: 'Explore the benchmark', heroWatch: 'Watch a trial',
@@ -189,7 +189,7 @@ Object.assign(copy.en, {
   nextTitle: 'Explore the project.', nextBody: 'The environment, robot tools and evaluation code are available in the repository. Inspect the setup and the original run records.',
 });
 Object.assign(copy.zh, {
-  heroTitle: 'DuckRace：AI 能控制 Microduck 吗？',
+  heroTitle: 'DuckGo：AI 能控制 Microduck 吗？',
   heroLead: '当物理世界不会等待思考，通用 Agent 能否控制机器人，完成整场障碍赛？',
   articleSummary: '我们让通用 Agent 通过统一技能接口控制 Microduck，在持续运行的 MuJoCo 仿真中参加障碍赛，观察它们如何感知、决策并修正执行偏差。目前仅评测 Microduck 一种机器人形态，不将结果泛化为通用具身能力。',
   heroExplore: '了解评测', heroWatch: '观看试跑',

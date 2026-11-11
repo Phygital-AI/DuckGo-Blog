@@ -1,4 +1,4 @@
-# Microduck Benchmark Blog
+# DuckGo
 
 中英文项目展示站，包含 V3 动态赛道预览、可手动操作的 MuJoCo 仿真、技能演示和历史试跑成绩。
 
@@ -39,9 +39,9 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 
 ## 引用与发布检查
 
-文末提供中英文引用说明、BibTeX 与下载链接，展示和下载均使用 `src/showcase/duckrace.bib`，避免内容不一致。
+文末提供中英文引用说明、BibTeX 与下载链接，展示和下载均使用 `src/showcase/duckgo.bib`，避免内容不一致。
 
-**正式发布前记得补充 `src/showcase/duckrace.bib` 中的 `url` 字段。** 当前按约定留空，不使用临时预览地址；补填后重新运行 `npm run build`。
+**正式发布前记得补充 `src/showcase/duckgo.bib` 中的 `url` 字段。** 当前按约定留空，不使用临时预览地址；补填后重新运行 `npm run build`。
 
 ## 从哪里改
 
