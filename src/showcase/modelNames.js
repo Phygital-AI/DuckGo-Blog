@@ -7,7 +7,7 @@ const modelNames = {
   'claude-sonnet-5-5': 'Sonnet 5.5',
   'claude-haiku-5-5': 'Haiku 5.5',
   'claude-opus-5-5': 'Opus 5.5',
-  'deepseek-flash': 'DeepSeek V4.1 Flash',
+  'deepseek-flash': 'DeepSeek V4.1 Flash 1017',
   'glm-5.3-flash': 'GLM-5.3-Flash',
   'kimi-k3': 'Kimi K3',
   'qwen3.8-max': 'Qwen3.8 Max',

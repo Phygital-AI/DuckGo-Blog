@@ -8,6 +8,33 @@
   <title>DuckGo: Can AI Control a Microduck?</title>
   <link rel="stylesheet" href="/showcase/typography.css" />
   <link rel="preload" as="image" href="/showcase/broadcast-poster-v2.jpg" />
+  <style>
+    #single-agent-evaluation { scroll-margin-top: 6rem; }
+    #single-agent-evaluation .solo-video-figure { margin-bottom: 24px; }
+    #single-agent-evaluation .solo-video-figure .hero-media { border-radius: 10px; overflow: hidden; }
+    #single-agent-evaluation .solo-video-figure video { display: block; }
+    html:not(:lang(zh)) #single-agent-evaluation .solo-video-zh,
+    html:lang(zh) #single-agent-evaluation .solo-video-en { display: none; }
+  </style>
+  <script type="module" src="/showcase/solo-cost-findings-20261123.js"></script>
+  <style>
+    .solo-findings-list { margin: 25px 0 0; padding-inline-start: 1.65em; }
+    .solo-findings-list > li { padding-inline-start: .25em; }
+    .solo-findings-list > li + li { margin-top: 22px; }
+    .solo-findings-list > li::marker { color: #52738b; font-weight: 700; }
+    .solo-findings-list h3 { margin: 0 0 9px; font-size: 1.15rem; line-height: 1.35; }
+    #solo-cost-finding figure { margin: 16px 0 0; }
+    #solo-cost-finding figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line, #dbe4e8); border-radius: 10px; }
+    #solo-cost-finding figcaption { margin-top: 9px; font-size: .84rem; line-height: 1.55; }
+    #solo-cost-finding details { margin-top: 12px; font-size: .84rem; line-height: 1.55; }
+    #solo-cost-finding details summary { cursor: pointer; }
+    #solo-latency-finding figure { margin: 16px 0 0; }
+    #solo-latency-finding figure a { display: block; }
+    #solo-latency-finding figure img { display: block; width: 100%; height: auto; }
+    #solo-latency-finding figcaption { margin-top: 9px; font-size: .84rem; line-height: 1.55; }
+    html:lang(zh) #conclusions .solo-findings-list .cost-en,
+    html:not(:lang(zh)) #conclusions .solo-findings-list .cost-zh { display: none; }
+  </style>
 </head>
 <body>
   <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
@@ -19,7 +46,6 @@
       <a href="#challenge" data-i18n="navChallenge">Why hard</a>
       <a href="#setting" data-i18n="navSetting">Setting</a>
       <a href="#modes" data-i18n="navModes">Two modes</a>
-      <a href="#evidence" data-i18n="navEvidence">Evidence</a>
     </nav>
     <div class="header-end"><div class="languages" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="zh">中文</button></div><a class="github" href="https://github.com/HandsomeWuuu/Microduck-Agent-Race" target="_blank" rel="noopener noreferrer">GitHub</a></div>
   </header>
@@ -79,12 +105,32 @@
       <article class="condition-card"><div class="condition-label"><span class="condition-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V4m0 0c5-4 9 4 14 0v9c-5 4-9-4-14 0"/></svg></span><h3 data-i18n="settingGoalLabel">Finish rules</h3></div><strong class="condition-title" data-i18n="settingFinishTitle">Pass all 16 checkpoints</strong><p data-i18n="settingFinishDetail">In order, within the track, then cross the finish forward.</p></article>
     </div></div>
     <div class="strategy-head"><div><span class="section-no" data-i18n="strategyKicker">AVAILABLE MOTION SKILLS</span><h3 data-i18n="strategyTitle">Strategy Library</h3></div></div><div class="strategy-grid" id="strategy-grid"></div>
-    <div class="course-head"><h3 data-i18n="stagesTitle">Representative stages</h3><p data-i18n="stagesIntro">Select a stage to inspect the moving obstacle and its assessment focus.</p></div>
-    <div class="stage-layout"><div class="stage-panel"><h4 class="stage-list-heading" id="representative-stages-heading" data-i18n="representativeStages">Representative Stages</h4><div class="stage-list" id="stage-list" role="group" aria-labelledby="representative-stages-heading"></div></div><figure class="stage-preview"><iframe id="course-simulator" data-src="/showcase-course.html?stage=10&visual=v22" title="Interactive course preview with moving obstacles"></iframe><div class="stage-loading" id="stage-loading"><img src="/showcase/course-preview-v3.jpg" alt="" loading="lazy" /><div><strong data-i18n="stageLoading">Explore the moving course</strong><button type="button" id="start-course-preview" data-i18n="startPreview">Start the preview</button></div></div><div class="simulator-badge"><b data-i18n="livePhysics">COURSE PREVIEW · NO ROBOT PHYSICS</b><span data-i18n="viewerControls">DRAG TO ORBIT · SCROLL TO ZOOM</span></div><figcaption><span id="stage-label"></span><p id="stage-description"></p><p id="stage-assessment"></p></figcaption></figure></div>
+    <div class="stage-layout"><div class="stage-panel"><h4 class="stage-list-heading" id="representative-stages-heading" data-i18n="representativeStages">Representative Stages</h4><div class="stage-list" id="stage-list" role="group" aria-labelledby="representative-stages-heading"></div></div><figure class="stage-preview"><iframe id="course-simulator" data-src="/showcase-course.html?stage=10&visual=v22" title="Interactive course preview with moving obstacles"></iframe><div class="stage-loading" id="stage-loading"><img src="/showcase/course-preview-v3.jpg" alt="" loading="lazy" /><div><button type="button" id="start-course-preview" data-i18n="startPreview">Explore the course</button></div></div><div class="simulator-badge"><b data-i18n="livePhysics">COURSE PREVIEW · NO ROBOT PHYSICS</b><span data-i18n="viewerControls">DRAG TO ORBIT · SCROLL TO ZOOM</span></div><figcaption><span id="stage-label"></span><p id="stage-description"></p><p id="stage-assessment"></p></figcaption></figure></div>
     <details class="full-route" open><summary data-i18n="fullRoute">View all 16 stages</summary><ol id="full-route"></ol></details><div class="setting-feedback"><div class="feedback-input"><h3 data-i18n="settingInputLabel">Agent input</h3><strong data-i18n="settingInputTitle">First-person RGB + state feedback</strong><p data-i18n="settingInputDetail">Odometry, posture, contacts and action receipts.</p></div><div class="feedback-assistance"><span class="assistance-mark" aria-hidden="true"></span><div><h3 data-i18n="settingAssistanceLabel">System assistance</h3><strong data-i18n="settingAssistanceTitle">Automatic stand-up after falls</strong></div></div></div>
   </section>
-    <section class="band band-modes" id="modes"><div class="section-head two-col"><div><span class="section-no">04 / <span data-i18n="modesKicker">REAL-TIME LEADERBOARDS</span></span><h2 data-i18n="modesTitle">Two race formats. One physical benchmark.</h2></div></div><div class="leaderboard-groups"><details class="leaderboard-group solo" open><summary><span class="group-index">01</span><span class="group-copy"><b data-i18n="soloGroupLabel">SOLO RACE</b><strong data-i18n="soloGroupTitle">Single-agent evaluation</strong><em data-i18n="soloGroupBody">Run each Agent independently to isolate its embodied control ability.</em></span><span class="group-toggle" aria-hidden="true">＋</span></summary><div class="leaderboard-group-body"></div></details><details class="leaderboard-group multi"><summary><span class="group-index">02</span><span class="group-copy"><b data-i18n="multiGroupLabel">MULTI-AGENT RACE</b><strong data-i18n="multiGroupTitle">Simultaneous-agent evaluation</strong><em data-i18n="multiGroupBody">Agents start together; visual interference, racing lines and contact become part of the task.</em></span><span class="group-toggle" aria-hidden="true">＋</span></summary><div class="leaderboard-group-body"><article class="leaderboard-card core multi"><div class="leaderboard-status" data-i18n="multiBoardStatus">CORE BOARD · RESULTS PENDING</div></article></div></details></div></section>
-    <section class="band band-evidence" id="evidence"><div class="section-head two-col"><div><span class="section-no">05 / <span data-i18n="evidenceKicker">RESULTS & EVIDENCE</span></span><h2 data-i18n="evidenceTitle">Show what happened, not just a score.</h2></div></div><div class="metric-row" id="metric-row"></div><div class="evidence-media"><div class="video-wrap"><video controls playsinline preload="none" poster="/showcase/hero.jpg" aria-label="Excerpt from a DSH and DeepSeek development trial" data-aria="videoAlt"><source src="/showcase/dsh-preview.webm" type="video/webm" /></video></div><div class="video-copy"><span data-i18n="videoEyebrow">RECORDED SIMULATION / DSH × DEEPSEEK</span><h3 data-i18n="videoTitle">The agent stopped before the race did.</h3><p data-i18n="videoBody">After checkpoint 6, it struggled near a moving low bar. The agent eventually exited while the referee still reported RUNNING. Sustaining control until a real terminal state is part of the task.</p><a href="/showcase/reports.html" target="_blank" rel="noopener noreferrer" data-i18n="videoReport">Inspect run reports</a></div></div></section>
+    <section class="band band-modes" id="modes">
+      <div class="section-head two-col"><div><span class="section-no">04 / <span data-i18n="modesKicker">RESULTS</span></span><h2 data-i18n="modesTitle">How far did they get?</h2></div><p data-i18n="modesIntro">Solo agents run independently; multi-agent races add simultaneous interaction.</p></div>
+      <div class="leaderboard-groups">
+        <details class="leaderboard-group solo" id="single-agent-evaluation" open>
+          <summary><span class="group-index">01</span><span class="group-copy"><b data-i18n="soloGroupLabel">SOLO RACE</b><strong data-i18n="soloGroupTitle">Single-agent evaluation</strong><em data-i18n="soloGroupBody">Each agent runs independently.</em><span class="group-status" data-i18n="soloGroupStatus">REAL-TIME · RESULTS AVAILABLE</span></span><span class="group-toggle" aria-hidden="true">＋</span></summary>
+          <div class="leaderboard-group-body">
+            <figure class="hero-figure solo-video-figure">
+              <div class="hero-media">
+                <video id="single-agent-leaderboard-video" controls playsinline preload="none" poster="/showcase/single-agent-leaderboard-poster.jpg" width="1920" height="1080" aria-labelledby="single-agent-video-caption">
+                  <source src="/showcase/single-agent-leaderboard-v4.mp4" type="video/mp4" />
+                  <a href="/showcase/single-agent-leaderboard-v4.mp4"><span class="solo-video-en" lang="en">Open the leaderboard video</span><span class="solo-video-zh" lang="zh-CN">打开榜单视频</span></a>
+                </video>
+              </div>
+              <figcaption class="hero-caption" id="single-agent-video-caption"><span class="solo-video-en" lang="en">Leaderboard walkthrough · Overall standings, checkpoint times and entrant tracking</span><span class="solo-video-zh" lang="zh-CN">榜单导览 · 最远进度、各关卡用时与选手跟拍</span></figcaption>
+            </figure>
+          </div>
+        </details>
+        <details class="leaderboard-group multi">
+          <summary><span class="group-index">02</span><span class="group-copy"><b data-i18n="multiGroupLabel">MULTI-AGENT RACE</b><strong data-i18n="multiGroupTitle">Simultaneous-agent evaluation</strong><em data-i18n="multiGroupBody">Agents start together, adding occlusion and contact.</em><span class="group-status" data-i18n="multiGroupStatus">REAL-TIME · RESULTS PENDING</span></span><span class="group-toggle" aria-hidden="true">＋</span></summary>
+          <div class="leaderboard-group-body"></div>
+        </details>
+      </div>
+    </section>
     <section class="band band-next" id="reproduce">
       <div><span class="section-no">06 / <span data-i18n="nextKicker">OPEN PROJECT</span></span><h2 data-i18n="nextTitle">Inspect the setup. Run your own agent.</h2><p data-i18n="nextBody">The simulator, course, tools and evaluation code are in the repository. Paid model trials require your own credentials and matching harness configuration. The static site does not run the model backend.</p>
         <div class="links"><a class="button button-hot" href="https://github.com/HandsomeWuuu/Microduck-Agent-Race" target="_blank" rel="noopener noreferrer" data-i18n="repoLink">Explore repository</a><a class="button button-light" href="https://github.com/HandsomeWuuu/Microduck-Agent-Race#readme" target="_blank" rel="noopener noreferrer" data-i18n="setupLink">Installation guide</a></div>
@@ -95,5 +141,52 @@
   <dialog class="strategy-dialog" id="strategy-dialog" aria-labelledby="strategy-dialog-title"><form method="dialog"><button class="dialog-close" aria-label="Close preview">×</button></form><div class="dialog-content"><div class="dialog-visual"><img id="strategy-dialog-image" src="" alt="" /><video id="strategy-dialog-video" controls playsinline loop muted hidden></video><span id="strategy-dialog-placeholder" data-i18n="photoPlaceholder">PHOTO PLACEHOLDER</span></div><div class="dialog-copy"><small data-i18n="strategyPreviewLabel">STRATEGY PREVIEW</small><h2 id="strategy-dialog-title"></h2><p id="strategy-dialog-description"></p><p class="dialog-note" id="strategy-dialog-note" data-i18n="videoComing">Video coming soon — this image is a temporary placeholder.</p></div></div></dialog>
   <footer class="footer"><span>DuckGo / Phygital AI</span><a href="#top" data-i18n="backTop">BACK TO TOP</a></footer>
   <script type="module" src="/src/showcase/showcase.js"></script>
+  <template id="solo-cost-findings-template">
+    <ol class="solo-findings-list">
+      <li id="solo-progress-finding">
+        <h3><span class="cost-en" lang="en">CLI agents can drive through several obstacles</span><span class="cost-zh" lang="zh-CN">CLI Agent 已能通过多道障碍</span></h3>
+        <p class="cost-en" lang="en">Of the 15 configurations with measured results, five cleared at least six checkpoints and two reached CP 8. Completing the course requires clearing all 16 checkpoints.</p>
+        <p class="cost-zh" lang="zh-CN">15 个有实测成绩的组合中，5 个通过了至少 6 个关卡，2 个到达 CP 8。完赛需要通过全部 16 个关卡。</p>
+      </li>
+      <li id="solo-astra-finding">
+        <h3><span class="cost-en" lang="en">Codex CLI × GPT-6 Astra went furthest</span><span class="cost-zh" lang="zh-CN">Codex CLI × GPT-6 Astra 跑得最远</span></h3>
+        <p class="cost-en" lang="en">Astra led the selected runs with 50.85% route progress and eight checkpoints cleared. GPT-6 Sol and GPT-6.1 Sol both reached CP 6 and placed third and fourth. GPT-6 Luna reached CP 2.</p>
+        <p class="cost-zh" lang="zh-CN">Astra 通过 8 个关卡，以 50.85% 的路线进度位列第一。GPT-6 Sol 和 GPT-6.1 Sol 都到达 CP 6，分列第三、第四。GPT-6 Luna 到达 CP 2。</p>
+      </li>
+      <li id="solo-cost-finding">
+        <h3 id="solo-cost-title"><span class="cost-en" lang="en">DSH × DeepSeek V4.1 Flash reached CP 8 for about $1</span><span class="cost-zh" lang="zh-CN">DSH × DeepSeek V4.1 Flash 以约 1 美元的 API 成本到达 CP 8</span></h3>
+        <p class="cost-en" lang="en">DeepSeek reached CP 8 in 31:08 and ended at 49.94% progress. Its estimated full-run API cost was <strong>$1.02</strong>. Astra reached CP 8 in 58:10 and ended at 50.85% progress, with an estimated full-run cost of <strong>$41.90</strong>. The DeepSeek API reported cache hits for 99.6% of its input tokens.</p>
+        <p class="cost-zh" lang="zh-CN">DeepSeek 用 31 分 08 秒到达 CP 8，最终路线进度为 49.94%，整轮 API 成本估算为 <strong>1.02 美元</strong>。Astra 用 58 分 10 秒到达 CP 8，最终进度为 50.85%，整轮成本估算为 <strong>41.90 美元</strong>。DeepSeek 日志记录的输入 token 缓存命中率为 99.6%。</p>
+        <figure>
+          <a href="/showcase/solo-cost-progress-20261123.svg" aria-labelledby="solo-cost-caption">
+            <img src="/showcase/solo-cost-progress-20261123.svg" width="1060" height="640" loading="lazy" decoding="async" alt="" aria-describedby="solo-cost-caption" />
+          </a>
+          <figcaption id="solo-cost-caption"><span class="cost-en" lang="en">Each point is a selected solo run. The horizontal axis shows estimated API cost on a log scale. Open circles indicate missing token counts for at least one successful request.</span><span class="cost-zh" lang="zh-CN">每个点是一条选定的单人试跑。横轴是估算 API 成本（对数刻度），纵轴是最终路线进度。空心点表示至少有一条成功请求缺少 token 用量记录。</span></figcaption>
+        </figure>
+        <details>
+          <summary><span class="cost-en" lang="en">How cost was estimated</span><span class="cost-zh" lang="zh-CN">成本估算方法</span></summary>
+          <p class="cost-en" lang="en">Logged uncached input, cache reads, cache writes and output were priced separately at public API rates. The DeepSeek run took place on a Saturday and uses off-peak rates ($2.03 at peak rates for the same tokens). Relay billing, cache storage and hardware are outside this estimate. The selected runs span course versions.</p>
+          <p class="cost-zh" lang="zh-CN">按公开 API 费率对未缓存输入、缓存读取、缓存写入和输出分别计价。DeepSeek 这轮发生在周六，采用非高峰费率，同样的 token 用量按高峰费率为 2.03 美元。估算范围为 API token 费用，试跑来自不同赛道版本。</p>
+          <p><a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek</a> · <a href="https://developers.openai.com/api/docs/pricing">OpenAI</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic</a> · <a href="https://docs.qwencloud.com/developer-guides/getting-started/model-prices">QwenCloud</a> · <a href="https://docs.z.ai/guides/overview/pricing">Z.AI</a> · <a href="https://www.kimi.com/en/blog/kimi-k3">Kimi</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini</a></p>
+        </details>
+      </li>
+      <li id="solo-claude-finding">
+        <h3><span class="cost-en" lang="en">Strong coding skills do not guarantee strong robot control</span><span class="cost-zh" lang="zh-CN">Coding 能力强的 Agent，机器人控制能力不一定强</span></h3>
+        <p class="cost-en" lang="en">Fable 5.1 reached CP 6 and placed fifth overall. Haiku 5.5, Sonnet 5.5, and Opus 5.5 reached CP 4, CP 3, and CP 2, respectively.</p>
+        <p class="cost-zh" lang="zh-CN">Fable 5.1 到达 CP 6，位列总榜第五。Haiku 5.5、Sonnet 5.5 和 Opus 5.5 分别到达 CP 4、CP 3 和 CP 2。</p>
+      </li>
+      <li id="solo-latency-finding" lang="en">
+        <h3>API latency shapes the pace of real-time control</h3>
+        <p>In the DeepSeek trials, average API response time rose from 5.03 to 12.10 to 24.38 seconds, and accepted actions fell from 228 to 141 to 70. Final progress dropped by 12.51 percentage points in the first comparison and by 0.74 in the second. The slowest run also cleared one fewer checkpoint than the middle run.</p>
+        <p>Similar response times and action counts can still yield very different results. DeepSeek and Gemini both averaged about five seconds per request and each had about 230 accepted actions. They cleared eight and zero checkpoints, respectively. In the second group, three runs averaged 13.70–14.18 seconds and had 122–125 accepted actions. Their final progress ranged from 18.66% to 31.17%.</p>
+        <figure>
+          <a href="/showcase/solo-api-latency-progress-refined-20261124.svg" aria-label="Open the full-size API latency and course progress figure">
+            <img src="/showcase/solo-api-latency-progress-refined-20261124.svg" width="1800" height="830" loading="lazy" decoding="async" alt="Three DeepSeek channels show a large first drop in progress and a smaller second drop. Two groups of solo leaderboard runs show differences in course progress across similar action counts."/>
+          </a>
+          <figcaption>Each channel contributed one 60-minute trial. API protocols, output limits and runtime code differed across channels. The selected leaderboard runs span course revisions.</figcaption>
+        </figure>
+      </li>
+    </ol>
+  </template>
 </body>
 </html>

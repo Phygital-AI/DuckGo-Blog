@@ -2,6 +2,7 @@ import data from './leaderboard-data.json';
 import { modelName } from './modelNames.js';
 import bibtexText from './duckgo.bib?raw';
 import bibtexUrl from './duckgo.bib?url&no-inline';
+import { HUMAN_PLAY_SPACE } from './links.js';
 
 const text = {
   zh: {
@@ -11,7 +12,17 @@ const text = {
     problemsContext: '一场连续障碍赛，考察的是 Agent 能否持续观察、行动并修正，用实际执行结果检验自己的选择。物理仿真让我们能以较低的硬件、维护与安全成本研究这一过程。',
     approachKicker: '我们做了什么', approachTitle: 'Microduck 障碍赛',
     approachBody: '在 MuJoCo 中，Agent 通过统一接口选择技能、参数和持续时间，控制 Microduck 双足机器人通过连续障碍。底层控制器驱动关节，物理仿真决定实际运动。',
-    loop1: '第一视角与状态反馈', loop2: 'Agent 选择技能', loop3: '物理执行', loop4: '观察结果，再次决策',
+    playLabel: '手动体验', playTitle: '亲自驾驶 Microduck',
+    playBody: '用键盘或 Xbox 手柄，在浏览器里驾驶机器人穿过障碍赛道。',
+    playAction: '进入游戏环境 ↗',
+    loopEyebrow: '闭环控制', loopTitle: 'Agent 如何驾驭 Microduck',
+    loopIntro: '每次动作都会改变机器人的实际状态。Agent 根据新观察继续调整，直到比赛结束。',
+    loop1: '观察场景', loop1Detail: '获取第一视角影像与允许的本体状态',
+    loop2: '选择动作', loop2Detail: 'Agent 决定技能、参数和持续时间',
+    loop3: '物理执行', loop3Detail: '机器人与障碍接触，动作结果并不保证',
+    loop4: '核对结果', loop4Detail: '查看实际位移、碰撞与姿态，再作决策',
+    loop1Phase: '输入', loop2Phase: 'Agent', loop3Phase: '物理环境', loop4Phase: '反馈',
+    loopRepeat: '执行结果成为下一次观察的起点',
     goalsKicker: '评测目标', goalsTitle: '完成全程。\n用时更短，摔倒更少。',
     goalsIntro: '按顺序通过全部检查点，保持在赛道内并正向冲线。在完成任务的基础上，比较用时、跌倒和碰撞。',
     goal1Title: '能否完成任务？', goal1Body: '通过有序检查点并有效冲线；未完赛时记录路线进度。',
@@ -32,7 +43,17 @@ const text = {
     problemsContext: 'An obstacle race tests whether an agent can sustain a loop of observation, action and correction, checking its choices against physical outcomes. Simulation lets us study this process with lower hardware, maintenance and safety costs than physical robot trials.',
     approachKicker: 'WHAT WE BUILT', approachTitle: 'The Microduck obstacle course',
     approachBody: 'Agents select motion skills, parameters and durations through a shared interface to guide a Microduck biped through a MuJoCo obstacle course. Controllers drive the joints; physics determines the motion.',
-    loop1: 'First-person & state', loop2: 'Agent chooses skill', loop3: 'Physical execution', loop4: 'Observe & decide again',
+    playLabel: 'HANDS-ON PLAY', playTitle: 'Take the controls yourself',
+    playBody: 'Drive Microduck through the obstacle course in your browser with a keyboard or Xbox controller.',
+    playAction: 'Open the game environment ↗',
+    loopEyebrow: 'CLOSED-LOOP CONTROL', loopTitle: 'How an agent drives Microduck',
+    loopIntro: 'Every action changes the robot’s actual state. The agent uses each new observation to adjust its next decision until the run ends.',
+    loop1: 'Observe the scene', loop1Detail: 'First-person view and permitted robot state',
+    loop2: 'Choose an action', loop2Detail: 'The agent selects a skill, parameters and duration',
+    loop3: 'Execute in physics', loop3Detail: 'Contact and balance shape what actually happens',
+    loop4: 'Check the outcome', loop4Detail: 'Inspect motion, contacts and posture before deciding again',
+    loop1Phase: 'INPUT', loop2Phase: 'AGENT', loop3Phase: 'PHYSICAL WORLD', loop4Phase: 'FEEDBACK',
+    loopRepeat: 'The outcome becomes the next observation',
     goalsKicker: 'EVALUATION GOALS', goalsTitle: 'Finish the course.\nFaster. With fewer falls.',
     goalsIntro: 'Pass every checkpoint in order, stay on the course and cross the finish in the right direction. Compare time, falls and collisions alongside completion.',
     goal1Title: 'Can it finish?', goal1Body: 'Verify ordered checkpoints and a valid finish; record route progress for unfinished runs.',
@@ -75,20 +96,30 @@ export function configureNarrative(protocolSection) {
   const approach = node('section', 'band story-approach');
   approach.id = 'approach';
   approach.innerHTML = head('approachTitle', 'approachBody');
-  const arena = document.querySelector('.setting-photo');
-  approach.append(arena);
-  const loop = node('div', 'approach-loop');
-  loop.innerHTML = '<ol class="story-loop">' + [1,2,3,4].map(index => `<li><strong data-story="loop${index}"></strong></li>`).join('') + '</ol>';
-  approach.append(loop);
-  for (const selector of ['.strategy-head', '#strategy-grid', '.course-info', '.course-head', '.stage-layout', '.full-route']) approach.append(document.querySelector(selector));
-  const stageLayout = approach.querySelector('.stage-layout');
-  stageLayout.append(stageLayout.querySelector('.stage-panel'));
-  approach.querySelector('.full-route').removeAttribute('open');
-
   const goals = node('div', 'course-goals');
   goals.id = 'goals';
   goals.innerHTML = '<p data-story="goalsIntro"></p>';
-  approach.querySelector('.section-head').after(goals);
+  const stageLayout = document.querySelector('.stage-layout');
+  stageLayout.append(stageLayout.querySelector('.stage-panel'));
+  const fullRoute = document.querySelector('.full-route');
+  fullRoute.removeAttribute('open');
+  const playCard = node('aside', 'manual-play');
+  const playCopy = node('div', 'manual-play-copy');
+  playCopy.innerHTML = '<span data-story="playLabel"></span><h3 data-story="playTitle"></h3><p data-story="playBody"></p>';
+  const playLink = node('a', 'manual-play-link');
+  playLink.href = HUMAN_PLAY_SPACE;
+  playLink.target = '_blank';
+  playLink.rel = 'noopener noreferrer';
+  playLink.dataset.story = 'playAction';
+  playCard.append(playCopy, playLink);
+  approach.append(document.querySelector('.setting-photo'), goals,
+    document.querySelector('.course-info'), stageLayout, playCard, fullRoute);
+
+  const loop = node('section', 'approach-loop');
+  loop.setAttribute('aria-labelledby', 'control-loop-title');
+  loop.innerHTML = '<div class="loop-heading"><span data-story="loopEyebrow"></span><h3 id="control-loop-title" data-story="loopTitle"></h3><p data-story="loopIntro"></p></div><ol class="story-loop">' + [1,2,3,4].map(index => `<li><div class="loop-topline"><span class="loop-number">0${index}</span><span data-story="loop${index}Phase"></span></div><strong data-story="loop${index}"></strong><p data-story="loop${index}Detail"></p></li>`).join('') + '</ol><p class="loop-repeat" data-story="loopRepeat"></p>';
+  approach.append(loop,
+    document.querySelector('.strategy-head'), document.querySelector('#strategy-grid'));
 
   const participants = node('section', 'band story-participants');
   participants.id = 'participants';
@@ -119,10 +150,10 @@ export function configureNarrative(protocolSection) {
   download.dataset.story = 'citationDownload';
   citation.append(bibliography, download);
 
-  main.replaceChildren(document.querySelector('#top'), problems, approach, participants, setting, document.querySelector('#evidence'), document.querySelector('#modes'), conclusions, document.querySelector('#reproduce'), citation);
+  main.replaceChildren(document.querySelector('#top'), problems, approach, participants, setting, document.querySelector('#modes'), conclusions, document.querySelector('#reproduce'), citation);
   const layout = node('div', 'article-layout');
   const contents = node('aside', 'article-contents');
-  contents.innerHTML = '<nav class="contents-nav" aria-label="Article contents"><a href="#question" data-story="navProblems"></a><a href="#approach" data-story="navApproach"></a><a href="#participants" data-story="navParticipants"></a><a href="#setting" data-i18n="navSetting"></a><a href="#evidence" data-i18n="navEvidence"></a><a href="#results" data-i18n="navModes"></a><a href="#conclusions" data-story="navConclusions"></a><a href="#citation" data-story="citationTitle"></a></nav>';
+  contents.innerHTML = '<nav class="contents-nav" aria-label="Article contents"><a href="#question" data-story="navProblems"></a><a href="#approach" data-story="navApproach"></a><a href="#participants" data-story="navParticipants"></a><a href="#setting" data-i18n="navSetting"></a><a href="#results" data-i18n="navModes"></a><a href="#conclusions" data-story="navConclusions"></a><a href="#citation" data-story="citationTitle"></a></nav>';
   const article = node('article', 'article-body');
   const summary = node('section', 'article-summary');
   summary.id = 'summary';
@@ -139,7 +170,7 @@ export function configureNarrative(protocolSection) {
   layout.append(feature, metadata, contents, article);
   main.append(layout);
   document.querySelector('#metric-row')?.remove();
-  article.querySelectorAll('.section-no, .story-card-number, .condition-label, .stage-list-heading, .video-copy > span, .setting-feedback h3, .assistance-mark, .group-copy > b, .course-head > p').forEach(label => label.remove());
+  article.querySelectorAll('.section-no, .story-card-number, .condition-label, .stage-list-heading, .video-copy > span, .setting-feedback h3, .assistance-mark').forEach(label => label.remove());
   const stageList = document.querySelector('#stage-list');
   stageList.removeAttribute('aria-labelledby');
   stageList.setAttribute('aria-label', 'Representative stages');

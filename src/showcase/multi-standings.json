@@ -1,0 +1,23 @@
+{
+  "schema": "microduck.blog-multi-standings",
+  "snapshotDate": "2026-11-09",
+  "raceId": "2026-11-09T12-20-26-380Z",
+  "sourcePath": "/userhome/cs3/u3010415/microduck-race-v2/artifacts/astra-independent-seven-v3-20261109T121643Z/snapshot/artifacts/agent-race-7-2026-11-09T12-20-26-380Z/analysis.json",
+  "sourceSha256": "91c4b88c448f389bbe6a8cd22bb4fdecbeba403aecdf36a97b4c2da6dc835d3d",
+  "clockMode": "realtime",
+  "simulationSeconds": 3600,
+  "wallSeconds": 3599.9871,
+  "realTimeFactor": 1.000003583346167,
+  "executionValid": true,
+  "validForRanking": false,
+  "validationNote": "Physical validation pending; display is one observed simultaneous run, not an official ranking.",
+  "rows": [
+    { "rank": 1, "entrantId": "deepseek-1", "model": "gpt-6-astra", "harness": "Codex CLI", "checkpoints": 8, "progressPercent": 52.83849393519382, "falls": 13, "recoverySeconds": 71.42, "modelRequests": 218, "completedActions": 181, "outcome": "COURSE_BOUNDARY_OR_TIMEOUT" },
+    { "rank": 2, "entrantId": "deepseek-2", "model": "deepseek-flash", "harness": "DSH", "checkpoints": 6, "progressPercent": 35.53649350970419, "falls": 18, "recoverySeconds": 40.82, "modelRequests": 621, "completedActions": 211, "outcome": "COURSE_BOUNDARY_OR_TIMEOUT" },
+    { "rank": 3, "entrantId": "deepseek-3", "model": "claude-fable-5-1", "harness": "Claude Code", "checkpoints": 5, "progressPercent": 29.01932627963139, "falls": 11, "recoverySeconds": 64.1, "modelRequests": 376, "completedActions": 165, "outcome": "COURSE_BOUNDARY_OR_TIMEOUT" },
+    { "rank": 4, "entrantId": "deepseek-5", "model": "glm-5.3-flash", "harness": "ZCode", "checkpoints": 3, "progressPercent": 16.679390832403442, "falls": 4, "recoverySeconds": 19.5, "modelRequests": 659, "completedActions": 302, "outcome": "COURSE_BOUNDARY_OR_TIMEOUT" },
+    { "rank": 5, "entrantId": "deepseek-6", "model": "kimi-k3", "harness": "Kimi Code", "checkpoints": 2, "progressPercent": 10.270113204126782, "falls": 0, "recoverySeconds": 0, "modelRequests": 269, "completedActions": 129, "outcome": "COURSE_BOUNDARY_OR_TIMEOUT" },
+    { "rank": 5, "entrantId": "deepseek-7", "model": "gemini-3.8-flash", "harness": "Gemini CLI", "checkpoints": 2, "progressPercent": 10.270113204126782, "falls": 2, "recoverySeconds": 3.36, "modelRequests": 412, "completedActions": 179, "outcome": "COURSE_BOUNDARY_OR_TIMEOUT" },
+    { "rank": 7, "entrantId": "deepseek-4", "model": "qwen3.8-flash", "harness": "Qwen Code", "checkpoints": 1, "progressPercent": 4.9513186247173175, "falls": 1, "recoverySeconds": 2.06, "modelRequests": 43, "completedActions": 9, "outcome": "COURSE_BOUNDARY_OR_TIMEOUT" }
+  ]
+}

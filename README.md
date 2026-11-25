@@ -1,6 +1,6 @@
 # DuckGo
 
-中英文项目展示站，包含 V3 动态赛道预览、可手动操作的 MuJoCo 仿真、技能演示和历史试跑成绩。
+中英文项目展示站，包含 V3 动态赛道预览、可手动操作的 MuJoCo 仿真、技能演示、选定试跑榜单和结果分析。
 
 ## 本地运行
 
@@ -57,7 +57,10 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 | 动态赛道预览 | `showcase-course.html`、`src/showcase/courseViewer.js` |
 | 手动仿真入口 | `simulator.html`、`src/race/main.js` |
 | 共享赛道和障碍运动 | `src/envs/gauntletCircuit.js`、`src/envs/geometryPose.js` |
-| 历史试跑数据与详细成绩 | `src/showcase/leaderboard-data.json`、`public/race-results.html` |
+| 2026-11-20 选定单鸭展示榜 | `src/showcase/selected-standings.json` |
+| 2026-11-09 七鸭同场试跑榜 | `src/showcase/multi-standings.json` |
+| 单人榜导览视频与成本、延迟图表 | `public/showcase/single-agent-leaderboard-v4.mp4`、`public/showcase/solo-cost-progress-20261123.svg`、`public/showcase/solo-api-latency-progress-refined-20261124.svg` |
+| 早期详细成绩快照 | `src/showcase/leaderboard-data.json`、`public/race-results.html` |
 | 截图、技能录像与字体 | `public/showcase/` |
 | 机器人模型、策略与场景贴图 | `public/robot/`、`public/policies/`、`public/assets/venue/` |
 
@@ -77,6 +80,10 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 
 预览和手动仿真直接引用同一份 Microduck Race V3 源码。几何、物理控制与场景文件保留服务器导出的内容，浏览器入口使用手动模式。赛道内部 ID 沿用 `gauntlet_gp_v2`，物理修订为 `lift-extremes-20261106T165526Z`。文件散列记录在 `src/showcase/course-provenance.json`。
 
-V3 的第 9 关改为四道交错窄门，第 11 关提高转盘转速，第 12 关提高逆向传送带速度，第 13 关收窄升降墙开口并按左、右、左排列。页面的成绩和试跑视频保留各自的历史版本。
+V3 的第 9 关改为四道交错窄门，第 11 关提高转盘转速，第 12 关提高逆向传送带速度，第 13 关收窄升降墙开口并按左、右、左排列。视频保留其历史版本。
+
+首页选定榜采用服务器 `artifacts/final-selected-leaderboard-20261119/leaderboard.json` 和 `leaderboard-with-metrics.json`：Astra、DeepSeek 与 Gemini 为 V3 选定场次，其余 12 项为 V1 旧选定场次；V3 人类完赛成绩单独列示。该榜是混合版本展示，不是同条件重测或已完成物理有效性验证的正式排名。旧 `/race-results.html` 保留为 2026-10-29 的详细快照，不应与新选定榜混读。
+
+多人赛展示的是 2026-11-09 的一场七鸭同场实时试跑，数据来自 `src/showcase/multi-standings.json` 中记录的服务器 `analysis.json`，按照检查点和精确路线进度排序。该分析文件标记执行记录有效，但物理有效性验证仍待完成，因此网页将其标为单场试跑结果，而不是正式同条件排名。来源对所有参赛者统一记录 `COURSE_BOUNDARY_OR_TIMEOUT`，网页不推断各自究竟是越界还是到时。
 
 源码、素材、依赖锁文件和说明均在此目录。上传仓库时可直接使用本目录，生成的 `dist/` 和 `node_modules/` 已加入忽略规则。机器人模型、策略、字体和贴图的许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 及对应素材目录。
