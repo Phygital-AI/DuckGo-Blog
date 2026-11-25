@@ -50,7 +50,7 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 | 首页结构、图文与媒体入口 | `index.html` |
 | 双语文案、关卡说明与交互 | `src/showcase/showcase.js`、`src/showcase/narrative.js` |
 | 研究文章版式、响应式布局与图表样式 | `src/showcase/academic.css` |
-| 首屏视频、兼容版本与静态封面 | `public/showcase/broadcast-preview.mp4`、`broadcast-preview.webm`、`broadcast-poster.jpg` |
+| 首屏视频与静态封面 | `public/showcase/duckgo-benchmark-review-10.mp4`、`duckgo-benchmark-review-10-poster.jpg` |
 | 目录高亮与阅读进度 | `src/showcase/articleNavigation.js` |
 | 正文衬线与界面无衬线字体 | `public/showcase/typography.css` |
 | 详细成绩页的共享样式 | `public/showcase/academic-document.css` |
@@ -68,7 +68,7 @@ cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 
 当前版式参考 [Thinking Machines 的 Inkling 文章](https://thinkingmachines.ai/news/introducing-inkling/) 的阅读节奏：白底黑字、居中标题、660 px 正文栏、轻量目录和低装饰表格。首屏及后文的图片、视频、技能合集和交互赛道均不超出正文左右边界；手机按可用宽度缩放。删除重复的摘要标签、章节编号、装饰性眉题和重复小标题，以连续段落组织文章。赛道先呈现画面，再提供关卡选择。首页模型使用竞赛环境相同的展示名，原始模型 ID 与实测数据不变。
 
-首屏使用竞赛仓库提供的 20 秒 `docs/media/broadcast-preview.mp4`，附 WebM 兼容版本和静态海报。点击才播放，不自动下载视频或启动 Agent；支持原生播放控制、键盘操作与结束后重播。视频仅预览赛道、选手展示和转播界面，未发车、未调用模型，不是正式比赛成绩。视频内的 14 个配置属于该预览名单，与历史结果的 16 项 AI 配置不是同一轮比赛。环境章节保留仿真赛道截图、技能录像与按需启动的动态赛道预览。历史成绩及技术有效性说明不变。
+首屏使用 70 秒的 `public/showcase/duckgo-benchmark-review-10.mp4` 项目介绍视频，封面取自该视频内嵌的海报帧。点击才播放，不自动下载视频或启动 Agent；支持原生播放控制、键盘操作与结束后重播。影片介绍赛道、控制问题与选定成绩，不能当作完整赛事实录或正式同条件排名。环境章节保留仿真赛道截图、技能录像与按需启动的动态赛道预览。
 
 参考页的正文使用 `Iowan Old Style BT`，界面使用 `GT America`。本站优先使用设备已安装的同名字体；未安装时分别回退到本地托管的开源 `Source Serif 4` 与 `Inter`，因此不保证各设备与参考页字形完全相同。不复制或分发参考页的商业字体；开源字体许可证随文件附带。中文正文保留宋体类回退。首页阅读目录支持 `#results`，原有 `#modes` 链接仍可使用。
 

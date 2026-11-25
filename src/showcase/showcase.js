@@ -263,16 +263,16 @@ Object.assign(copy.zh, {
 
 Object.assign(copy.en, {
   heroExplore: 'Read the article', heroSimulatorTitle: 'Enter the simulator', heroSimulatorNote: 'Run in your browser',
-  heroVideoLabel: 'Course and broadcast interface preview. No agents are running; this is not a recorded race.',
-  heroVideoPlay: 'Watch the preview', heroVideoDownload: 'Open the preview video',
-  heroVideoCaption: 'A 20-second course and broadcast preview, not a recorded race.', heroVideoNote: '20 seconds · No agents running',
+  heroVideoLabel: 'DuckGO film introducing the obstacle course, agent control and selected results.',
+  heroVideoPlay: 'Watch the film', heroVideoDownload: 'Open the DuckGO film',
+  heroVideoCaption: 'A 70-second introduction to DuckGO’s course, agent control and selected results.', heroVideoNote: '70 seconds · DuckGO overview',
   arenaAlt: 'Overview of the Microduck obstacle course in MuJoCo', arenaCaption: 'The Microduck obstacle course in MuJoCo.',
 });
 Object.assign(copy.zh, {
   heroSimulatorTitle: '进入仿真', heroSimulatorNote: '在浏览器中体验',
-  heroVideoLabel: '赛道与转播界面预览。未启动 Agent，不是正式比赛录像。',
-  heroVideoPlay: '观看预览', heroVideoDownload: '打开预览视频',
-  heroVideoCaption: '20 秒赛道与转播预览，未启动 Agent，非实测比赛。', heroVideoNote: '20 秒 · 未启动 Agent，非实测比赛',
+  heroVideoLabel: '介绍 DuckGO 障碍赛道、Agent 控制和选定成绩的影片。',
+  heroVideoPlay: '观看影片', heroVideoDownload: '打开 DuckGO 影片',
+  heroVideoCaption: '70 秒了解 DuckGO 的赛道、Agent 控制和选定成绩。', heroVideoNote: '70 秒 · DuckGO 项目介绍',
   arenaAlt: 'MuJoCo 中的 Microduck 障碍赛道全景', arenaCaption: 'MuJoCo 中的 Microduck 障碍赛道。',
 });
 
