@@ -32,6 +32,10 @@
     #solo-latency-finding figure a { display: block; }
     #solo-latency-finding figure img { display: block; width: 100%; height: auto; }
     #solo-latency-finding figcaption { margin-top: 9px; font-size: .84rem; line-height: 1.55; }
+    #solo-s-bend-finding h4 { margin: 22px 0 8px; font-size: 1.02rem; line-height: 1.45; }
+    #solo-s-bend-finding figure { margin: 14px 0 0; }
+    #solo-s-bend-finding video { display: block; width: 100%; height: auto; border-radius: 10px; }
+    #solo-s-bend-finding figcaption { margin-top: 8px; font-size: .84rem; line-height: 1.55; }
     html:lang(zh) #conclusions .solo-findings-list .cost-en,
     html:not(:lang(zh)) #conclusions .solo-findings-list .cost-zh { display: none; }
   </style>
@@ -192,6 +196,33 @@
             <img src="./showcase/solo-api-latency-progress-refined-20261124.svg?v=2" width="1800" height="830" loading="lazy" decoding="async" alt=""/>
           </a>
           <figcaption id="solo-latency-caption"><span class="cost-en" lang="en">Panel A compares one 60-minute run per DeepSeek channel. The channels used different API protocols, output limits and runtime code. Panel B draws from the selected solo runs on V1 and V3.</span><span class="cost-zh" lang="zh-CN">图 A 对比三个 DeepSeek 渠道各自的一轮 60 分钟试跑，各渠道的 API 协议、输出限制和运行代码不同。图 B 的场次取自 V1 和 V3 两版赛道的单人榜。</span></figcaption>
+        </figure>
+      </li>
+      <li id="solo-s-bend-finding">
+        <h3><span class="cost-en" lang="en">Why DeepSeek missed the S-bend entrance four times</span><span class="cost-zh" lang="zh-CN">DeepSeek 为什么四次走到 S 弯门前，却没进去？</span></h3>
+        <p class="cost-en" lang="en">After clearing CP 8, DeepSeek approached the first divider four times. The replays pair the images the agent received with its recorded trajectory and actions. The rear and first-person camera sequences are reconstructed from the recorded poses.</p>
+        <p class="cost-zh" lang="zh-CN">通过 CP 8 后，DeepSeek 四次走到 S 弯的第一道隔墙前。回放把它实际收到的图像、运动轨迹和执行的动作对齐。连续的后方跟拍和第一视角画面由记录的姿态重建。</p>
+
+        <h4 id="solo-s-bend-visibility"><span class="cost-en" lang="en">A close wall can hide the opening or make its depth hard to judge</span><span class="cost-zh" lang="zh-CN">贴近隔墙时，入口可能被遮住，也可能看不出纵深</span></h4>
+        <p class="cost-en" lang="en">On the first approach, the wall filled the frame. On the third, DeepSeek saw a gap on the right, with another orange wall beyond it. It initially took the gap as a sign that it was passing the divider. Seconds later it interpreted the near wall as the course boundary and turned left, away from the opening.</p>
+        <p class="cost-zh" lang="zh-CN">第一次，近墙几乎占满画面，缺口落在视野外。第三次，DeepSeek 看到了右侧的空隙，但后面还有一道同色的墙。它起先以为自己正在从隔板旁通过，几秒后又把近墙当成赛道边界，按预想的路线向左转，离开了右侧入口。</p>
+        <figure>
+          <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-visibility-zh.jpg" aria-labelledby="solo-s-bend-visibility-caption">
+            <source src="./showcase/s-bend-visibility-zh.mp4" type="video/mp4" />
+            <track kind="captions" src="./showcase/s-bend-visibility-zh.vtt" srclang="zh-CN" label="简体中文" />
+          </video>
+          <figcaption id="solo-s-bend-visibility-caption"><span class="cost-en" lang="en">Approaches 1 and 3 · First-person visibility · Mandarin narration and Chinese captions · 1:04</span><span class="cost-zh" lang="zh-CN">第 1、3 次到墙 · 第一视角里的缺口 · 中文解说与字幕 · 1 分 04 秒</span></figcaption>
+        </figure>
+
+        <h4 id="solo-s-bend-timing"><span class="cost-en" lang="en">The duck can move past an opening between observation and action</span><span class="cost-zh" lang="zh-CN">从取图到转向，鸭子可能已经错过入口</span></h4>
+        <p class="cost-en" lang="en">On the second approach, DeepSeek received a new image at 35:58.48 while the duck was still walking. The duck had drawn level with the opening, but kept moving along the wall. On the fourth, DeepSeek chose the open lane on its right from the image at 52:14.06. The turn began at 52:21.74, <strong>7.68 seconds later</strong>. By then the duck was level with the entrance and the right turn took it back toward the low rails.</p>
+        <p class="cost-zh" lang="zh-CN">第二次，鸭子还在走，DeepSeek 就在 35:58.48 收到了新图。此时鸭身已横向对上缺口，它仍沿墙直走，从门前经过。第四次，DeepSeek 根据 52:14.06 的图像选了右侧的开阔路面。到 52:21.74 右转开始，已过去 <strong>7.68 秒</strong>。此时鸭身已对上入口，这次右转把它带回了低栏区。</p>
+        <figure>
+          <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-timing-zh.jpg" aria-labelledby="solo-s-bend-timing-caption">
+            <source src="./showcase/s-bend-timing-zh.mp4" type="video/mp4" />
+            <track kind="captions" src="./showcase/s-bend-timing-zh.vtt" srclang="zh-CN" label="简体中文" />
+          </video>
+          <figcaption id="solo-s-bend-timing-caption"><span class="cost-en" lang="en">Approaches 2 and 4 · Observation and turn timing · Mandarin narration and Chinese captions · 1:12</span><span class="cost-zh" lang="zh-CN">第 2、4 次到墙 · 取图与转向的时间差 · 中文解说与字幕 · 1 分 12 秒</span></figcaption>
         </figure>
       </li>
     </ol>
