@@ -31,14 +31,10 @@
     solo-cost-chart .cost-selected { background: #edf3f6; font-weight: 650; }
     solo-cost-chart select { font: inherit; font-size: .88rem; max-width: 100%; padding: .3em .55em; }
     solo-cost-chart output { margin-inline-start: .7em; font-variant-numeric: tabular-nums; font-size: .9rem; }
-    .turn-timeline { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .6rem; }
+    .turn-timeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .3rem .7rem; margin: 1rem 0 1.5rem; font-variant-numeric: tabular-nums; }
+    .turn-timeline .view-row { grid-column: 1 / -1; }
+    .turn-timeline .view-label { margin-top: .3rem; font-size: .85rem; color: var(--muted); }
     .turn-timeline img { display: block; width: 100%; height: auto; border-radius: 6px; }
-    .turn-timeline strong { display: block; font-variant-numeric: tabular-nums; }
-    .turn-timeline .elapsed { border-block: 1px solid #ccd7db; color: #285b65; font-weight: 600; }
-    @media (max-width: 560px) {
-      .turn-timeline { grid-template-columns: 1fr; }
-      .turn-timeline .elapsed { justify-self: start; margin-block: .25em; }
-    }
     #solo-cost-finding details { margin-top: 12px; font-size: .84rem; line-height: 1.55; }
     #solo-cost-finding details summary { cursor: pointer; }
     #solo-latency-finding figure { margin: 16px 0 0; }
@@ -226,28 +222,28 @@
         <p class="cost-en" lang="en">On the second approach, the duck was walking alongside the wall when DeepSeek received an image at 35:58.48. The trajectory shows it was level with the opening. It kept walking, and by the next image at 36:10.84, <strong>12.36 seconds later</strong>, it had already passed the entrance.</p>
         <p class="cost-zh" lang="zh-CN">第二次，35:58.48 取图时，鸭子正在沿墙走。俯视轨迹显示，鸭身此时已经与缺口齐平，但仍沿墙向前走。下一帧到来已是 36:10.84，<strong>相隔 12.36 秒</strong>，鸭子已经走过了入口。</p>
         <div class="turn-timeline">
-          <div>
-            <img src="./showcase/s-bend-approach-2-observation-107924.jpg" width="1280" height="720" loading="lazy" alt="" />
-            <strong>35:58.48</strong><span class="cost-en" lang="en">Latest image DeepSeek had at replay time 36:04</span><span class="cost-zh" lang="zh-CN">回放到 36:04 时，DS 手里的最近一张原图</span>
-          </div>
-          <span class="elapsed"><span class="cost-en" lang="en">+12.36 s</span><span class="cost-zh" lang="zh-CN">+12.36 秒</span></span>
-          <div>
-            <img src="./showcase/s-bend-approach-2-observation-108542.jpg" width="1280" height="720" loading="lazy" alt="" />
-            <strong>36:10.84</strong><span class="cost-en" lang="en">Next image DeepSeek received. The arrows on the wall are still ahead.</span><span class="cost-zh" lang="zh-CN">DS 收到的下一张原图，前方仍是带箭头的墙</span>
-          </div>
+          <strong class="view-row"><span class="cost-zh" lang="zh-CN">第二次接近 · 两次取图相隔 12.36 秒</span><span class="cost-en" lang="en">Approach 2 · 12.36 s between observations</span></strong>
+          <div><span class="cost-zh" lang="zh-CN">前一帧</span><span class="cost-en" lang="en">Earlier</span> <b>35:58.48</b></div>
+          <div><span class="cost-zh" lang="zh-CN">后一帧</span><span class="cost-en" lang="en">Next</span> <b>36:10.84</b></div>
+          <div class="view-row view-label"><span class="cost-zh" lang="zh-CN">DS 收到的第一视角原图</span><span class="cost-en" lang="en">First-person images received by DeepSeek</span></div>
+          <img src="./showcase/s-bend-approach-2-observation-107924.jpg" width="1280" height="720" loading="lazy" alt="First-person images received by DeepSeek, 35:58.48" />
+          <img src="./showcase/s-bend-approach-2-observation-108542.jpg" width="1280" height="720" loading="lazy" alt="First-person images received by DeepSeek, 36:10.84" />
+          <div class="view-row view-label"><span class="cost-zh" lang="zh-CN">后方跟拍重建（最近的姿态采样）</span><span class="cost-en" lang="en">Rear-view replay (nearest pose samples)</span></div>
+          <img src="./showcase/s-bend-approach-2-rear-107920.jpg" width="704" height="396" loading="lazy" alt="Rear-view replay (nearest pose samples), 35:58.48" />
+          <img src="./showcase/s-bend-approach-2-rear-108540.jpg" width="704" height="396" loading="lazy" alt="Rear-view replay (nearest pose samples), 36:10.84" />
         </div>
         <p class="cost-en" lang="en">On the fourth approach, the duck was still beside the divider in the image at 52:14.06. It drew level with the opening and started its next turn before another image arrived. By the next observation at 52:25.16, it was facing the low rails. The opportunity to steer into the opening fell between the two observations.</p>
         <p class="cost-zh" lang="zh-CN">第四次，52:14.06 的画面里，鸭子还在隔板旁。接下来的 <strong>11.10 秒</strong>里，它先沿墙走到与缺口齐平的位置，随后开始转向。等到 52:25.16 再次取图，镜头已经朝向低栏区。最适合转入缺口的时机，就落在这两帧之间。</p>
         <div class="turn-timeline">
-          <div>
-            <img src="./showcase/s-bend-before-turn.jpg" width="704" height="396" loading="lazy" alt="" />
-            <strong>52:14.06</strong><span class="cost-en" lang="en">Rear-view reconstruction at observation time</span><span class="cost-zh" lang="zh-CN">取图时的后方重建视角，鸭子还在隔板旁</span>
-          </div>
-          <span class="elapsed"><span class="cost-en" lang="en">+11.10 s</span><span class="cost-zh" lang="zh-CN">+11.10 秒</span></span>
-          <div>
-            <img src="./showcase/s-bend-next-observation.jpg" width="704" height="396" loading="lazy" alt="" />
-            <strong>52:25.16</strong><span class="cost-en" lang="en">Rear-view reconstruction at the next observation</span><span class="cost-zh" lang="zh-CN">下一次取图时的后方重建视角</span>
-          </div>
+          <strong class="view-row"><span class="cost-zh" lang="zh-CN">第四次接近 · 两次取图相隔 11.10 秒</span><span class="cost-en" lang="en">Approach 4 · 11.10 s between observations</span></strong>
+          <div><span class="cost-zh" lang="zh-CN">前一帧</span><span class="cost-en" lang="en">Earlier</span> <b>52:14.06</b></div>
+          <div><span class="cost-zh" lang="zh-CN">后一帧</span><span class="cost-en" lang="en">Next</span> <b>52:25.16</b></div>
+          <div class="view-row view-label"><span class="cost-zh" lang="zh-CN">DS 收到的第一视角原图</span><span class="cost-en" lang="en">First-person images received by DeepSeek</span></div>
+          <img src="./showcase/s-bend-approach-4-observation-156703.jpg" width="1280" height="720" loading="lazy" alt="First-person images received by DeepSeek, 52:14.06" />
+          <img src="./showcase/s-bend-approach-4-observation-157258.jpg" width="1280" height="720" loading="lazy" alt="First-person images received by DeepSeek, 52:25.16" />
+          <div class="view-row view-label"><span class="cost-zh" lang="zh-CN">后方跟拍重建（最近的姿态采样）</span><span class="cost-en" lang="en">Rear-view replay (nearest pose samples)</span></div>
+          <img src="./showcase/s-bend-before-turn.jpg" width="704" height="396" loading="lazy" alt="Rear-view replay (nearest pose samples), 52:14.06" />
+          <img src="./showcase/s-bend-next-observation.jpg" width="704" height="396" loading="lazy" alt="Rear-view replay (nearest pose samples), 52:25.16" />
         </div>
         <figure>
           <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-timing-en.jpg" aria-labelledby="solo-s-bend-timing-caption">
