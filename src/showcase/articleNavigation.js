@@ -9,9 +9,12 @@ export function mountArticleNavigation() {
   const update = () => {
     scheduled = false;
     if (desktop.matches) {
-      const board = standings.getBoundingClientRect();
       const menu = contents.getBoundingClientRect();
-      contents.classList.toggle('yield-to-standings', board.top < menu.bottom + 40 && board.bottom > menu.top);
+      const nearTable = [...standings.querySelectorAll('details[open] .board-scroll')].some(table => {
+        const rect = table.getBoundingClientRect();
+        return rect.left < menu.right + 24 && rect.top < menu.bottom + 40 && rect.bottom > menu.top;
+      });
+      contents.classList.toggle('yield-to-standings', nearTable);
     } else {
       contents.classList.remove('yield-to-standings');
     }
