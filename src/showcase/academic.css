@@ -373,7 +373,7 @@ summary { color: var(--green); }
 .multi-number { white-space: nowrap; }
 .multi-outcome { color: #806b58; }
 .board-scroll {
-  background: var(--white);
+  background: #fcfdfe;
   color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -382,15 +382,15 @@ summary { color: var(--green); }
   font-variant-numeric: tabular-nums;
 }
 .board-scroll table { color: inherit; }
-.board-scroll table thead th, .compact-heading { background: var(--surface); color: var(--muted); }
+.board-scroll table thead th, .compact-heading { background: #edf1f5; color: #465568; }
 .board-scroll table :is(td, th, caption) { border-color: var(--line); }
-.board-scroll tbody tr:nth-child(odd), .compact-entrant:nth-of-type(odd) { background: #fcfcfb; }
-.board-scroll tbody tr:first-child { background: #f3f6f3; }
-.board-scroll tbody tr:hover, .compact-entrant > summary:hover { background: #eff3f1; }
+.board-scroll tbody tr:nth-child(odd), .compact-entrant:nth-of-type(odd) { background: #f7f9fb; }
+.board-scroll tbody tr:first-child, .compact-entrant:first-of-type { background: #eaf2ed; }
+.board-scroll tbody tr:hover, .compact-entrant > summary:hover { background: #edf2f5; }
 .board-scroll :is(caption, .board-rank, .multi-rank, .board-ending, .multi-outcome, small) { color: var(--muted); }
 .board-scroll :is(.board-progress, .multi-progress) strong, .compact-score strong { color: #305443; }
-.board-scroll .board-bar { background: #e5eae6; }
-.board-scroll .board-bar span, .board-scroll .multi-progress-bar { background: #7d9581; }
+.board-scroll .board-bar { background: #e0e6e7; }
+.board-scroll .board-bar span, .board-scroll .multi-progress-bar { background: #648572; }
 .entrant-identity { display: flex; align-items: center; gap: 9px; min-width: 0; }
 .entrant-mark {
   flex: 0 0 28px; height: 26px; display: grid; place-items: center;
