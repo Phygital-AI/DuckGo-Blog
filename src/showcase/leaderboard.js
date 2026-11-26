@@ -24,10 +24,9 @@ const copy = {
     multiCaption: '同一场七鸭实时比赛 · 2026-11-09',
     multiNote: '单场试跑，尚待物理有效性验证，不作为正式同条件排名。第 5 名并列。来源对所有鸭子的终止原因统一记为「越界或超时」，无法再细分。',
     multiSource: '来源记录', multiRun: '比赛 ID', multiHash: '分析文件 SHA-256',
-    multiScrollHint: '横向滑动查看跌倒、恢复、请求与动作指标 →',
     foot: '成绩来自不同时期的选定试跑，未统一重测；不作为同条件正式排名。平均响应仅统计比赛期间的成功请求；接受动作含开赛准备，不含程序内部片段。Gemini 场次有 64 次请求 ID 冲突、7 次过期画面错误，原生历史恢复风险尚未排除。— 表示未记录。',
     source: '选用来源', low: 'LOW 推理档位',
-    tokens: 'Token（输入 / 输出）', noTokens: 'Token 未报告', seconds: '秒', scroll: '可横向滚动查看全部指标',
+    tokens: 'Token（输入 / 输出）', noTokens: 'Token 未报告', seconds: '秒',
   },
   en: {
     label: 'SOLO · REAL-TIME',
@@ -48,10 +47,9 @@ const copy = {
     multiCaption: 'One simultaneous seven-agent real-time race · 2026-11-09',
     multiNote: 'One observed race; physical validation is pending, so this is not an official same-condition ranking. Fifth place is tied. The source uses “boundary or timeout” for every entrant and does not separate the two causes.',
     multiSource: 'Source record', multiRun: 'Race ID', multiHash: 'Analysis SHA-256',
-    multiScrollHint: 'Swipe to view falls, recovery, requests and actions →',
     foot: 'Selected trials span different dates and conditions; they were not rerun uniformly and are not an official same-condition ranking. Mean response counts successful requests during the race; accepted actions include READY arming but not program segments. Gemini had 64 request-ID conflicts and 7 expired-frame errors; native history restoration risk remains unresolved. — means unrecorded.',
     source: 'SELECTED SOURCE', low: 'LOW REASONING EFFORT',
-    tokens: 'Tokens (input / output)', noTokens: 'Token usage not reported', seconds: 's', scroll: 'Scroll horizontally to view all metrics',
+    tokens: 'Tokens (input / output)', noTokens: 'Token usage not reported', seconds: 's',
   },
 };
 
@@ -61,6 +59,18 @@ function element(tag, className, text) {
   if (text != null) node.textContent = text;
   return node;
 }
+function populateStandingsTable(table, caption, thead, tbody) {
+  const headers = thead.rows[0].cells;
+  for (const row of tbody.rows) {
+    for (const cell of row.cells) {
+      const label = element('span', 'standings-field-label', headers[cell.cellIndex].textContent);
+      label.setAttribute('aria-hidden', 'true');
+      cell.prepend(label);
+    }
+  }
+  table.append(caption, thead, tbody);
+}
+
 function rankCell(rank, lang, className) {
   const cell = element('td', className);
   if (rank > 3) {
@@ -116,7 +126,6 @@ export function renderLeaderboard(lang) {
   }
 
   const scroll = element('div', 'board-scroll');
-  scroll.tabIndex = 0;
   scroll.setAttribute('role', 'region');
   scroll.setAttribute('aria-label', t.label);
   const table = element('table', 'results-table');
@@ -170,7 +179,7 @@ export function renderLeaderboard(lang) {
     tr.append(element('td', 'board-ending', t.failed));
     tbody.append(tr);
   }
-  table.append(caption, thead, tbody);
+  populateStandingsTable(table, caption, thead, tbody);
   scroll.append(table);
   const humanCard = element('aside', 'board-human');
   const humanScore = element('div');
@@ -214,7 +223,6 @@ function renderMultiLeaderboard(lang, number) {
   }
 
   const scroll = element('div', 'board-scroll multi-scroll');
-  scroll.tabIndex = 0;
   scroll.setAttribute('role', 'region');
   scroll.setAttribute('aria-label', lang === 'zh' ? '七鸭同场成绩表' : 'Seven-agent race standings');
   const table = element('table', 'multi-results-table');
@@ -248,7 +256,7 @@ function renderMultiLeaderboard(lang, number) {
       element('td', 'multi-outcome', t.multiOutcome));
     tbody.append(tr);
   }
-  table.append(caption, thead, tbody);
+  populateStandingsTable(table, caption, thead, tbody);
   scroll.append(table);
 
   const note = element('p', 'multi-note', t.multiNote);
@@ -256,6 +264,6 @@ function renderMultiLeaderboard(lang, number) {
   source.append(element('summary', '', t.multiSource),
     element('p', '', `${t.multiRun}: ${multi.raceId}`),
     element('p', '', `${t.multiHash}: ${multi.sourceSha256}`));
-  root.replaceChildren(facts, element('p', 'multi-scroll-hint', t.multiScrollHint), scroll, note, source);
+  root.replaceChildren(facts, scroll, note, source);
   body.replaceChildren(root);
 }
