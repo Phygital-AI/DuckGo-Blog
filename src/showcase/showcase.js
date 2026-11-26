@@ -1,4 +1,5 @@
 import './academic.css';
+import './soloCostChart.js';
 import { GAUNTLET_CIRCUIT } from '../envs/gauntletCircuit.js';
 import { renderLeaderboard } from './leaderboard.js';
 import { configureNarrative, renderNarrative } from './narrative.js';

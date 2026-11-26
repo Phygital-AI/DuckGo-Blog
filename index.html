@@ -24,7 +24,17 @@
     .solo-findings-list > li::marker { color: #52738b; font-weight: 700; }
     .solo-findings-list h3 { margin: 0 0 9px; font-size: 1.15rem; line-height: 1.35; }
     #solo-cost-finding figure { margin: 16px 0 0; }
-    #solo-cost-finding figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line, #dbe4e8); border-radius: 10px; }
+    solo-cost-chart, solo-cost-chart svg { display: block; width: 100%; }
+    solo-cost-chart select { font: inherit; font-size: .88rem; max-width: 100%; padding: .3em .55em; }
+    solo-cost-chart output { margin-inline-start: .7em; font-variant-numeric: tabular-nums; font-size: .9rem; }
+    .turn-timeline { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .6rem; }
+    .turn-timeline img { display: block; width: 100%; height: auto; border-radius: 6px; }
+    .turn-timeline strong { display: block; font-variant-numeric: tabular-nums; }
+    .turn-timeline .elapsed { border-block: 1px solid #ccd7db; color: #285b65; font-weight: 600; }
+    @media (max-width: 560px) {
+      .turn-timeline { grid-template-columns: 1fr; }
+      .turn-timeline .elapsed { justify-self: start; margin-block: .25em; }
+    }
     #solo-cost-finding details { margin-top: 12px; font-size: .84rem; line-height: 1.55; }
     #solo-cost-finding details summary { cursor: pointer; }
     #solo-latency-finding figure { margin: 16px 0 0; }
@@ -164,13 +174,9 @@
       </li>
       <li id="solo-cost-finding">
         <h3 id="solo-cost-title"><span class="cost-en" lang="en">DSH × DeepSeek V4.1 Flash reached CP 8 for about $1</span><span class="cost-zh" lang="zh-CN">DSH × DeepSeek V4.1 Flash 以约 1 美元的 API 成本到达 CP 8</span></h3>
-        <p class="cost-en" lang="en">DeepSeek reached CP 8 in 31:08 and ended at 49.94% progress. Its estimated full-run API cost was <strong>$1.02</strong>. Astra reached CP 8 in 58:10 and ended at 50.85% progress, with an estimated full-run cost of <strong>$41.90</strong>. The DeepSeek API reported cache hits for 99.6% of its input tokens.</p>
-        <p class="cost-zh" lang="zh-CN">DeepSeek 用 31 分 08 秒到达 CP 8，最终路线进度为 49.94%，整轮 API 成本估算为 <strong>1.02 美元</strong>。Astra 用 58 分 10 秒到达 CP 8，最终进度为 50.85%，整轮成本估算为 <strong>41.90 美元</strong>。DeepSeek 日志记录的输入 token 缓存命中率为 99.6%。</p>
-        <figure>
-          <a href="./showcase/solo-cost-progress-20261123.svg?v=3" aria-labelledby="solo-cost-title">
-            <img src="./showcase/solo-cost-progress-20261123.svg?v=3" width="1060" height="640" loading="lazy" decoding="async" alt="" />
-          </a>
-        </figure>
+        <p class="cost-en" lang="en">DeepSeek reached CP 8 in 31:08 and ended at 49.94% progress. Its estimated full-run API cost was <strong>$1.02</strong>. Astra reached CP 8 in 58:10 and ended at 50.85% progress, with an estimated full-run cost of <strong>$41.90</strong>, about 41 times DeepSeek’s. The DeepSeek API reported cache hits for 99.6% of its input tokens.</p>
+        <p class="cost-zh" lang="zh-CN">DeepSeek 用 31 分 08 秒到达 CP 8，最终路线进度为 49.94%，整轮 API 成本估算为 <strong>1.02 美元</strong>。Astra 用 58 分 10 秒到达 CP 8，最终进度为 50.85%，整轮成本估算为 <strong>41.90 美元</strong>，约为 DeepSeek 的 41 倍。DeepSeek 日志记录的输入 token 缓存命中率为 99.6%。</p>
+        <figure><solo-cost-chart></solo-cost-chart></figure>
         <details>
           <summary><span class="cost-en" lang="en">How cost was estimated</span><span class="cost-zh" lang="zh-CN">成本估算方法</span></summary>
           <p class="cost-en" lang="en">Logged uncached input, cache reads, cache writes and output were priced separately at public API rates. The DeepSeek run took place on a Saturday and uses off-peak rates ($2.03 at peak rates for the same tokens). Relay billing, cache storage and hardware are outside this estimate. The selected runs span course versions. Open circles mark runs missing token counts for at least one successful request.</p>
@@ -215,6 +221,17 @@
         <h4 id="solo-s-bend-timing"><span class="cost-en" lang="en">The duck can move past an opening between observation and action</span><span class="cost-zh" lang="zh-CN">从取图到转向，鸭子可能已经错过入口</span></h4>
         <p class="cost-en" lang="en">On the second approach, DeepSeek received a new image at 35:58.48 while the duck was still walking. The duck had drawn level with the opening, but kept moving along the wall. On the fourth, DeepSeek chose the open lane on its right from the image at 52:14.06. The turn began at 52:21.74, <strong>7.68 seconds later</strong>. By then the duck was level with the entrance and the right turn took it back toward the low rails.</p>
         <p class="cost-zh" lang="zh-CN">第二次，鸭子还在走，DeepSeek 就在 35:58.48 收到了新图。此时鸭身已横向对上缺口，它仍沿墙直走，从门前经过。第四次，DeepSeek 根据 52:14.06 的图像选了右侧的开阔路面。到 52:21.74 右转开始，已过去 <strong>7.68 秒</strong>。此时鸭身已对上入口，这次右转把它带回了低栏区。</p>
+        <div class="turn-timeline">
+          <div>
+            <img src="./showcase/s-bend-before-turn.jpg" width="704" height="396" loading="lazy" alt="" />
+            <strong>52:14.06</strong><span class="cost-en" lang="en">Observation taken beside the divider</span><span class="cost-zh" lang="zh-CN">取图时，鸭子还在隔板旁</span>
+          </div>
+          <span class="elapsed"><span class="cost-en" lang="en">+7.68 s</span><span class="cost-zh" lang="zh-CN">+7.68 秒</span></span>
+          <div>
+            <img src="./showcase/s-bend-turn-start.jpg" width="704" height="396" loading="lazy" alt="" />
+            <strong>52:21.74</strong><span class="cost-en" lang="en">Right turn starts level with the opening</span><span class="cost-zh" lang="zh-CN">右转开始时，鸭身已对上缺口</span>
+          </div>
+        </div>
         <figure>
           <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-timing-en.jpg" aria-labelledby="solo-s-bend-timing-caption">
             <source src="./showcase/s-bend-timing-en.mp4" type="video/mp4" />
