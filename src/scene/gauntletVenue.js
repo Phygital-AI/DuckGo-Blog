@@ -704,7 +704,7 @@ function applyApronConcrete(THREE, material) {
   if (typeof document === "undefined" || typeof THREE.TextureLoader !== "function") return;
   const loader = new THREE.TextureLoader();
   const load = (filename, repeats) => {
-    const texture = loader.load(`/assets/venue/${filename}`, undefined, undefined, () => {});
+    const texture = loader.load(`./assets/venue/${filename}`, undefined, undefined, () => {});
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
     texture.repeat.set(...repeats);
     texture.anisotropy = 4;

@@ -73,7 +73,7 @@ function entrantName(model, harness) {
   mark.setAttribute('aria-hidden', 'true');
   if (provider) {
     const [, brand, color] = provider;
-    const src = `/showcase/brands/${brand}.svg`;
+    const src = `./showcase/brands/${brand}.svg`;
     if (color) {
       mark.classList.add('entrant-symbol');
       mark.style.setProperty('--mark-image', `url("${src}")`);

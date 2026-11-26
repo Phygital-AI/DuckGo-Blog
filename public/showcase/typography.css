@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url("/showcase/fonts/source-serif-4-latin.woff2") format("woff2");
+  src: url("./fonts/source-serif-4-latin.woff2") format("woff2");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 400 800;
   font-display: swap;
-  src: url("/showcase/fonts/inter-400-800.woff2") format("woff2");
+  src: url("./fonts/inter-400-800.woff2") format("woff2");
 }
 
 :root {

@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#ffffff" />
   <meta name="description" content="From general reasoning to embodied action: general-purpose agents control Microduck robots through a shared skill interface in a continuously running MuJoCo obstacle race." />
   <title>DuckGo: Can AI Control a Microduck?</title>
-  <link rel="stylesheet" href="/showcase/typography.css" />
-  <link rel="preload" as="image" href="/showcase/duckgo-benchmark-review-10-poster.jpg" />
+  <link rel="stylesheet" href="./showcase/typography.css" />
+  <link rel="preload" as="image" href="./showcase/duckgo-benchmark-review-10-poster.jpg" />
   <style>
     #single-agent-evaluation { scroll-margin-top: 6rem; }
     #single-agent-evaluation .solo-video-figure { margin-bottom: 24px; }
@@ -16,7 +16,7 @@
     html:not(:lang(zh)) #single-agent-evaluation .solo-video-zh,
     html:lang(zh) #single-agent-evaluation .solo-video-en { display: none; }
   </style>
-  <script type="module" src="/showcase/solo-cost-findings-20261123.js"></script>
+  <script type="module" src="./showcase/solo-cost-findings-20261123.js"></script>
   <style>
     .solo-findings-list { margin: 25px 0 0; padding-inline-start: 1.65em; }
     .solo-findings-list > li { padding-inline-start: .25em; }
@@ -57,9 +57,9 @@
       <div class="hero-feature">
         <figure class="hero-figure">
           <div class="hero-media">
-            <video id="hero-video" controls playsinline preload="none" poster="/showcase/duckgo-benchmark-review-10-poster.jpg" width="1920" height="1080" data-aria="heroVideoLabel">
-              <source src="/showcase/duckgo-benchmark-review-10.mp4" type="video/mp4" />
-              <a href="/showcase/duckgo-benchmark-review-10.mp4" data-i18n="heroVideoDownload">Open the DuckGO film</a>
+            <video id="hero-video" controls playsinline preload="none" poster="./showcase/duckgo-benchmark-review-10-poster.jpg" width="1920" height="1080" data-aria="heroVideoLabel">
+              <source src="./showcase/duckgo-benchmark-review-10.mp4" type="video/mp4" />
+              <a href="./showcase/duckgo-benchmark-review-10.mp4" data-i18n="heroVideoDownload">Open the DuckGO film</a>
             </video>
             <button class="hero-play" id="hero-play" type="button" aria-controls="hero-video" data-aria="heroVideoPlay" hidden><span class="hero-play-icon" aria-hidden="true">▶</span></button>
           </div>
@@ -104,14 +104,14 @@
     </section>
   <section class="band band-setting" id="setting">
     <div class="section-head two-col"><div><span class="section-no">03 / <span data-i18n="settingKicker">EXPERIMENT SETTING</span></span><h2 data-i18n="settingTitle">One body. One course. A known skill set.</h2></div></div>
-    <div class="setting-grid"><figure class="setting-photo"><img src="/showcase/article-hero.jpg" loading="lazy" alt="Overview of the Microduck obstacle course in MuJoCo" data-alt="arenaAlt" /><figcaption data-i18n="arenaCaption">The Microduck obstacle course in MuJoCo.</figcaption></figure><div class="setting-facts">
+    <div class="setting-grid"><figure class="setting-photo"><img src="./showcase/article-hero.jpg" loading="lazy" alt="Overview of the Microduck obstacle course in MuJoCo" data-alt="arenaAlt" /><figcaption data-i18n="arenaCaption">The Microduck obstacle course in MuJoCo.</figcaption></figure><div class="setting-facts">
       <article class="condition-card"><div class="condition-label"><span class="condition-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="7" rx="3"/><path d="M12 10v4m-4 0h8M8 14l-2 6m10-6 2 6M5 20h3m8 0h3"/></svg></span><h3 data-i18n="settingRobotLabel">Robot &amp; world</h3></div><strong class="condition-title" data-i18n="settingRobotTitle">Microduck × MuJoCo</strong><p data-i18n="settingRobotDetail">Biped locomotion with contact dynamics.</p><div class="condition-meta"><span data-i18n="settingStageCount">16 ordered stages</span><span data-i18n="settingWorldClock">Continuously running physics</span></div></article>
       <article class="condition-card"><div class="condition-label"><span class="condition-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l4-6 4 3 4-8m-3 0h3v3M4 21h16"/></svg></span><h3 data-i18n="settingActionsLabel">Available skills</h3></div><strong class="condition-title" data-i18n="settingSkillsTitle">Learned motion skills</strong><div class="condition-skills"><span data-i18n="settingSkillWalk">Walk</span><span data-i18n="settingSkillRun">Straight-line Run</span><span data-i18n="settingSkillSit">Sit</span><span data-i18n="settingSkillStand">Stand</span><span data-i18n="settingSkillRoll">Forward Roll</span></div></article>
       <article class="condition-card"><div class="condition-label"><span class="condition-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h5m4 0h7M4 17h9m4 0h3"/><circle cx="11" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg></span><h3 data-i18n="settingAgentLabel">Agent control</h3></div><strong class="condition-title" data-i18n="settingControlTitle">Skill · Parameters · Duration</strong><p data-i18n="settingControlDetail">The agent chooses the action; the controller drives the joints.</p></article>
       <article class="condition-card"><div class="condition-label"><span class="condition-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V4m0 0c5-4 9 4 14 0v9c-5 4-9-4-14 0"/></svg></span><h3 data-i18n="settingGoalLabel">Finish rules</h3></div><strong class="condition-title" data-i18n="settingFinishTitle">Pass all 16 checkpoints</strong><p data-i18n="settingFinishDetail">In order, within the track, then cross the finish forward.</p></article>
     </div></div>
     <div class="strategy-head"><div><span class="section-no" data-i18n="strategyKicker">AVAILABLE MOTION SKILLS</span><h3 data-i18n="strategyTitle">Strategy Library</h3></div></div><div class="strategy-grid" id="strategy-grid"></div>
-    <div class="stage-layout"><div class="stage-panel"><h4 class="stage-list-heading" id="representative-stages-heading" data-i18n="representativeStages">Representative Stages</h4><div class="stage-list" id="stage-list" role="group" aria-labelledby="representative-stages-heading"></div></div><figure class="stage-preview"><iframe id="course-simulator" data-src="/showcase-course.html?stage=10&visual=v22" title="Interactive course preview with moving obstacles"></iframe><div class="stage-loading" id="stage-loading"><img src="/showcase/course-preview-v3.jpg" alt="" loading="lazy" /><div><button type="button" id="start-course-preview" data-i18n="startPreview">Explore the course</button></div></div><div class="simulator-badge"><b data-i18n="livePhysics">COURSE PREVIEW · NO ROBOT PHYSICS</b><span data-i18n="viewerControls">DRAG TO ORBIT · SCROLL TO ZOOM</span></div><figcaption><span id="stage-label"></span><p id="stage-description"></p><p id="stage-assessment"></p></figcaption></figure></div>
+    <div class="stage-layout"><div class="stage-panel"><h4 class="stage-list-heading" id="representative-stages-heading" data-i18n="representativeStages">Representative Stages</h4><div class="stage-list" id="stage-list" role="group" aria-labelledby="representative-stages-heading"></div></div><figure class="stage-preview"><iframe id="course-simulator" data-src="./showcase-course.html?stage=10&visual=v22" title="Interactive course preview with moving obstacles"></iframe><div class="stage-loading" id="stage-loading"><img src="./showcase/course-preview-v3.jpg" alt="" loading="lazy" /><div><button type="button" id="start-course-preview" data-i18n="startPreview">Explore the course</button></div></div><div class="simulator-badge"><b data-i18n="livePhysics">COURSE PREVIEW · NO ROBOT PHYSICS</b><span data-i18n="viewerControls">DRAG TO ORBIT · SCROLL TO ZOOM</span></div><figcaption><span id="stage-label"></span><p id="stage-description"></p><p id="stage-assessment"></p></figcaption></figure></div>
     <details class="full-route" open><summary data-i18n="fullRoute">View all 16 stages</summary><ol id="full-route"></ol></details><div class="setting-feedback"><div class="feedback-input"><h3 data-i18n="settingInputLabel">Agent input</h3><strong data-i18n="settingInputTitle">First-person RGB + state feedback</strong><p data-i18n="settingInputDetail">Odometry, posture, contacts and action receipts.</p></div><div class="feedback-assistance"><span class="assistance-mark" aria-hidden="true"></span><div><h3 data-i18n="settingAssistanceLabel">System assistance</h3><strong data-i18n="settingAssistanceTitle">Automatic stand-up after falls</strong></div></div></div>
   </section>
     <section class="band band-modes" id="modes">
@@ -122,9 +122,9 @@
           <div class="leaderboard-group-body">
             <figure class="hero-figure solo-video-figure">
               <div class="hero-media">
-                <video id="single-agent-leaderboard-video" controls playsinline preload="none" poster="/showcase/single-agent-leaderboard-poster.jpg" width="1920" height="1080" aria-labelledby="single-agent-video-caption">
-                  <source src="/showcase/single-agent-leaderboard-v4.mp4" type="video/mp4" />
-                  <a href="/showcase/single-agent-leaderboard-v4.mp4"><span class="solo-video-en" lang="en">Open the leaderboard video</span><span class="solo-video-zh" lang="zh-CN">打开榜单视频</span></a>
+                <video id="single-agent-leaderboard-video" controls playsinline preload="none" poster="./showcase/single-agent-leaderboard-poster.jpg" width="1920" height="1080" aria-labelledby="single-agent-video-caption">
+                  <source src="./showcase/single-agent-leaderboard-v4.mp4" type="video/mp4" />
+                  <a href="./showcase/single-agent-leaderboard-v4.mp4"><span class="solo-video-en" lang="en">Open the leaderboard video</span><span class="solo-video-zh" lang="zh-CN">打开榜单视频</span></a>
                 </video>
               </div>
               <figcaption class="hero-caption" id="single-agent-video-caption"><span class="solo-video-en" lang="en">Leaderboard walkthrough · Overall standings, checkpoint times and entrant tracking</span><span class="solo-video-zh" lang="zh-CN">榜单导览 · 最远进度、各关卡用时与选手跟拍</span></figcaption>
@@ -164,8 +164,8 @@
         <p class="cost-en" lang="en">DeepSeek reached CP 8 in 31:08 and ended at 49.94% progress. Its estimated full-run API cost was <strong>$1.02</strong>. Astra reached CP 8 in 58:10 and ended at 50.85% progress, with an estimated full-run cost of <strong>$41.90</strong>. The DeepSeek API reported cache hits for 99.6% of its input tokens.</p>
         <p class="cost-zh" lang="zh-CN">DeepSeek 用 31 分 08 秒到达 CP 8，最终路线进度为 49.94%，整轮 API 成本估算为 <strong>1.02 美元</strong>。Astra 用 58 分 10 秒到达 CP 8，最终进度为 50.85%，整轮成本估算为 <strong>41.90 美元</strong>。DeepSeek 日志记录的输入 token 缓存命中率为 99.6%。</p>
         <figure>
-          <a href="/showcase/solo-cost-progress-20261123.svg" aria-labelledby="solo-cost-caption">
-            <img src="/showcase/solo-cost-progress-20261123.svg" width="1060" height="640" loading="lazy" decoding="async" alt="" aria-describedby="solo-cost-caption" />
+          <a href="./showcase/solo-cost-progress-20261123.svg" aria-labelledby="solo-cost-caption">
+            <img src="./showcase/solo-cost-progress-20261123.svg" width="1060" height="640" loading="lazy" decoding="async" alt="" aria-describedby="solo-cost-caption" />
           </a>
           <figcaption id="solo-cost-caption"><span class="cost-en" lang="en">Each point is a selected solo run. The horizontal axis shows estimated API cost on a log scale. Open circles indicate missing token counts for at least one successful request.</span><span class="cost-zh" lang="zh-CN">每个点是一条选定的单人试跑。横轴是估算 API 成本（对数刻度），纵轴是最终路线进度。空心点表示至少有一条成功请求缺少 token 用量记录。</span></figcaption>
         </figure>
@@ -188,8 +188,8 @@
         <p class="cost-en" lang="en">DeepSeek and Gemini averaged 5.03 and 5.50 seconds per request in the two selected runs, with about 230 accepted actions each. DeepSeek cleared eight checkpoints and Gemini cleared zero. Gemini’s run also logged 64 request-ID conflicts and seven stale-frame errors. Three other runs averaged 13.70–14.18 seconds per request and recorded 123–126 accepted actions, with final course progress of 18.66%–31.17%.</p>
         <p class="cost-zh" lang="zh-CN">选定的 DeepSeek 和 Gemini 场次平均响应分别为 5.03 和 5.50 秒，接受动作数都在 230 次左右。两场分别通过了 8 和 0 个检查点。Gemini 这轮还记录到 64 次请求 ID 冲突和 7 次画面过期错误。另一组三场试跑的平均响应时间为 13.70–14.18 秒，接受动作数为 123–126 次，最终路线进度介于 18.66% 和 31.17% 之间。</p>
         <figure>
-          <a href="/showcase/solo-api-latency-progress-refined-20261124.svg?v=2" aria-labelledby="solo-latency-title" aria-describedby="solo-latency-caption">
-            <img src="/showcase/solo-api-latency-progress-refined-20261124.svg?v=2" width="1800" height="830" loading="lazy" decoding="async" alt=""/>
+          <a href="./showcase/solo-api-latency-progress-refined-20261124.svg?v=2" aria-labelledby="solo-latency-title" aria-describedby="solo-latency-caption">
+            <img src="./showcase/solo-api-latency-progress-refined-20261124.svg?v=2" width="1800" height="830" loading="lazy" decoding="async" alt=""/>
           </a>
           <figcaption id="solo-latency-caption"><span class="cost-en" lang="en">Panel A compares one 60-minute run per DeepSeek channel. The channels used different API protocols, output limits and runtime code. Panel B draws from the selected solo runs on V1 and V3.</span><span class="cost-zh" lang="zh-CN">图 A 对比三个 DeepSeek 渠道各自的一轮 60 分钟试跑，各渠道的 API 协议、输出限制和运行代码不同。图 B 的场次取自 V1 和 V3 两版赛道的单人榜。</span></figcaption>
         </figure>

@@ -1,5 +1,7 @@
 # DuckGo
 
+[中文博客](https://phygital-ai.github.io/DuckGo-Blog/?lang=zh) · [English blog](https://phygital-ai.github.io/DuckGo-Blog/?lang=en)
+
 中英文项目展示站，包含 V3 动态赛道预览、可手动操作的 MuJoCo 仿真、技能演示、选定试跑榜单和结果分析。
 
 ## 本地运行
@@ -18,7 +20,7 @@ npm run build
 npm run preview
 ```
 
-生产文件在 `dist/`，可交给静态文件服务器从站点根路径提供。静态部署时可为 `showcase-bundle/` 下的 JS、CSS 和 WASM 启用 gzip。已有 `/showcase.html` 入口的部署可将 `dist/index.html` 同时作为该路径的页面。带仓库名的 GitHub Pages 子路径需要额外配置资源路径。
+生产文件在 `dist/`，可交给静态文件服务器从站点根路径提供。静态部署时可为 `showcase-bundle/` 下的 JS、CSS 和 WASM 启用 gzip。已有 `/showcase.html` 入口的部署可将 `dist/index.html` 同时作为该路径的页面。推送到本仓库的 `main` 分支后，GitHub Actions 会构建并发布到 GitHub Pages。
 
 ## 在线预览与分享
 
@@ -35,13 +37,11 @@ python3 -m http.server 5197 --bind 127.0.0.1 --directory dist
 cloudflared tunnel --url http://127.0.0.1:5197 --no-autoupdate --protocol http2
 ```
 
-在输出的地址后添加 `/?lang=zh` 或 `/?lang=en#results` 即可分享。访问者无需 GitHub 登录；地址为公开临时预览，仅在静态服务器与隧道均运行时有效，重建隧道会更换地址，不作为正式发布地址。固定地址需要由仓库管理员配置支持私有仓库的 GitHub Pages 或独立静态托管；推送代码不会自动发布网页，也不需要将源码仓库改为公开。
+在输出的地址后添加 `/?lang=zh` 或 `/?lang=en#results` 即可分享。访问者无需 GitHub 登录；地址为公开临时预览，仅在静态服务器与隧道均运行时有效，重建隧道会更换地址，不作为正式发布地址。
 
 ## 引用与发布检查
 
 文末提供中英文引用说明、BibTeX 与下载链接，展示和下载均使用 `src/showcase/duckgo.bib`，避免内容不一致。
-
-**正式发布前记得补充 `src/showcase/duckgo.bib` 中的 `url` 字段。** 当前按约定留空，不使用临时预览地址；补填后重新运行 `npm run build`。
 
 ## 从哪里改
 

@@ -2263,5 +2263,5 @@
   "right_knee",
   "right_ankle"
  ],
- "mesh_dir": "/robot/mjlab/meshes"
+ "mesh_dir": "./robot/mjlab/meshes"
 }

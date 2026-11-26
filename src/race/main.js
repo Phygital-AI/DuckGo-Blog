@@ -70,7 +70,7 @@ const room = new RoomEnvironment();
 scene.environment = generator.fromScene(room).texture;
 scene.environmentIntensity = 1;
 room.dispose();
-new RGBELoader().load('/assets/venue/daylight.hdr', (texture) => { scene.environment = generator.fromEquirectangular(texture).texture; texture.dispose(); });
+new RGBELoader().load('./assets/venue/daylight.hdr', (texture) => { scene.environment = generator.fromEquirectangular(texture).texture; texture.dispose(); });
 scene.add(new THREE.HemisphereLight(0xbfd9ff, 0x8a8070, 2));
 const key = new THREE.DirectionalLight(0xfff2dd, 3.6);
 key.position.set(12, 28, 16);

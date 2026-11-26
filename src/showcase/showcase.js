@@ -294,11 +294,11 @@ const stageNotes = {
   14: { assessment: { en: 'Transfer sliding-panel timing to a new route position; regain the route after being pushed sideways.', zh: '将横移挡板的时序判断应用到新的赛道位置；被侧向推偏后重新找回路线。' }, description: { en: 'This stage reuses the same three single sliding panels as stage 6, with matching dimensions, travel and simulation-time motion. It is not a telescopic closing-door mechanism.', zh: '本关复用第 6 关的三道单体横移挡板，尺寸、行程和仿真运动时序一致，位于另一段赛道。' } },
 };
 const strategies = [
-  { title: { en: 'Walk', zh: '行走' }, detail: { en: 'Steady biped walking and heading control.', zh: '稳定双足行走与方向控制。' }, image: '/showcase/strategy-posters/walk.jpg', video: '/showcase/strategy-videos/walk.mp4' },
-  { title: { en: 'Straight-line Run', zh: '直线跑' }, detail: { en: 'Faster forward movement on straight sections.', zh: '用于在直线路段快速向前移动。' }, image: '/showcase/strategy-posters/run-straight.jpg', video: '/showcase/strategy-videos/run-straight.mp4' },
-  { title: { en: 'Sit → Stand', zh: '坐下 → 起立' }, detail: { en: 'A continuous sit-then-stand policy demonstration.', zh: '连续展示坐下与起立的姿态切换策略。' }, image: '/showcase/strategy-posters/sit-stand.jpg', video: '/showcase/strategy-videos/sit-stand.mp4' },
-  { title: { en: 'Roulade · Forward Roll', zh: '前滚翻' }, detail: { en: 'One-shot forward-roll skill and landing.', zh: '一次性完成前滚翻并重新落地。' }, image: '/showcase/strategy-posters/roulade.jpg', video: '/showcase/strategy-videos/roulade.mp4' },
-  { title: { en: 'Automatic Stand-up', zh: '自动起身' }, detail: { en: 'System-assisted stand-up after falls.', zh: '系统辅助完成跌倒起身。' }, image: '/showcase/strategy-posters/recover.jpg', video: '/showcase/strategy-videos/recover.mp4' },
+  { title: { en: 'Walk', zh: '行走' }, detail: { en: 'Steady biped walking and heading control.', zh: '稳定双足行走与方向控制。' }, image: './showcase/strategy-posters/walk.jpg', video: './showcase/strategy-videos/walk.mp4' },
+  { title: { en: 'Straight-line Run', zh: '直线跑' }, detail: { en: 'Faster forward movement on straight sections.', zh: '用于在直线路段快速向前移动。' }, image: './showcase/strategy-posters/run-straight.jpg', video: './showcase/strategy-videos/run-straight.mp4' },
+  { title: { en: 'Sit → Stand', zh: '坐下 → 起立' }, detail: { en: 'A continuous sit-then-stand policy demonstration.', zh: '连续展示坐下与起立的姿态切换策略。' }, image: './showcase/strategy-posters/sit-stand.jpg', video: './showcase/strategy-videos/sit-stand.mp4' },
+  { title: { en: 'Roulade · Forward Roll', zh: '前滚翻' }, detail: { en: 'One-shot forward-roll skill and landing.', zh: '一次性完成前滚翻并重新落地。' }, image: './showcase/strategy-posters/roulade.jpg', video: './showcase/strategy-videos/roulade.mp4' },
+  { title: { en: 'Automatic Stand-up', zh: '自动起身' }, detail: { en: 'System-assisted stand-up after falls.', zh: '系统辅助完成跌倒起身。' }, image: './showcase/strategy-posters/recover.jpg', video: './showcase/strategy-videos/recover.mp4' },
 ];
 const metrics = [
   { en: 'Finish & progress', zh: '完赛与进度', detail: { en: 'Valid finish, ordered checkpoints, route reached', zh: '有效冲线、有序检查点、最远路线进度' } },
