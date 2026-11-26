@@ -23,7 +23,6 @@ const copy = {
     multiCompleted: '已完成动作', multiOutcome: '退赛',
     multiCaption: '同一场七鸭实时比赛 · 2026-11-09',
     multiNote: '单场试跑，尚待物理有效性验证，不作为正式同条件排名。第 5 名并列。来源对所有鸭子的终止原因统一记为「越界或超时」，无法再细分。',
-    multiSource: '来源记录', multiRun: '比赛 ID', multiHash: '分析文件 SHA-256',
     foot: '成绩来自不同时期的选定试跑，未统一重测；不作为同条件正式排名。平均响应仅统计比赛期间的成功请求；接受动作含开赛准备，不含程序内部片段。Gemini 场次有 64 次请求 ID 冲突、7 次过期画面错误，原生历史恢复风险尚未排除。— 表示未记录。',
     source: '选用来源', low: 'LOW 推理档位',
     tokens: 'Token（输入 / 输出）', noTokens: 'Token 未报告', seconds: '秒',
@@ -46,7 +45,6 @@ const copy = {
     multiCompleted: 'Completed\nactions', multiOutcome: 'Retired',
     multiCaption: 'One simultaneous seven-agent real-time race · 2026-11-09',
     multiNote: 'One observed race; physical validation is pending, so this is not an official same-condition ranking. Fifth place is tied. The source uses “boundary or timeout” for every entrant and does not separate the two causes.',
-    multiSource: 'Source record', multiRun: 'Race ID', multiHash: 'Analysis SHA-256',
     foot: 'Selected trials span different dates and conditions; they were not rerun uniformly and are not an official same-condition ranking. Mean response counts successful requests during the race; accepted actions include READY arming but not program segments. Gemini had 64 request-ID conflicts and 7 expired-frame errors; native history restoration risk remains unresolved. — means unrecorded.',
     source: 'SELECTED SOURCE', low: 'LOW REASONING EFFORT',
     tokens: 'Tokens (input / output)', noTokens: 'Token usage not reported', seconds: 's',
@@ -311,10 +309,6 @@ function renderMultiLeaderboard(lang, number) {
   mountStandings(scroll, table, thead, tbody, lang, caption);
 
   const note = element('p', 'multi-note', t.multiNote);
-  const source = element('details', 'multi-source');
-  source.append(element('summary', '', t.multiSource),
-    element('p', '', `${t.multiRun}: ${multi.raceId}`),
-    element('p', '', `${t.multiHash}: ${multi.sourceSha256}`));
-  root.replaceChildren(facts, scroll, note, source);
+  root.replaceChildren(facts, scroll, note);
   body.replaceChildren(root);
 }

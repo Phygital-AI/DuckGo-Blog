@@ -437,9 +437,6 @@ summary { color: var(--green); }
   .compact-fields dd { margin: 0; text-align: right; overflow-wrap: anywhere; }
 }
 .multi-note { margin: 18px 0 0; padding: 14px 16px; border-left: 3px solid #b9885c; background: #fbf8f3; color: #64594d; font: 12px/1.65 var(--font-sans); }
-.multi-source { margin-top: 12px; color: var(--muted); font: 11px/1.6 var(--font-sans); }
-.multi-source summary { color: #8a623e; }
-.multi-source p { margin: 5px 0 0; overflow-wrap: anywhere; font-size: 11px; }
 .board-footnote { font-size: 13px; color: var(--muted); line-height: 1.75; margin: 18px 0 0; }
 .board-intro, .board-foot { color: var(--muted); font-size: 14px; line-height: 1.75; }
 .board-intro { margin-top: 14px; }
