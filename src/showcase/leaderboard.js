@@ -9,7 +9,7 @@ const copy = {
     label: '单人赛 · 实时运行',
     configurations: 'AI 配置', measured: '项实测', compatibility: '项工具兼容失败',
     best: '最高路线进度', finishers: 'AI 完赛',
-    rank: '名次', agent: 'Agent / 模型', progress: '路线进度 / 检查点', time: '仿真用时',
+    rank: '名次', agent: 'Agent / 模型', progress: '路线进度', time: '仿真用时',
     falls: '跌倒', recovery: '恢复时长', pauses: '暂停次数', api: '模型请求', response: '平均响应', actions: '接受动作', ending: '结束原因',
     checkpoints: 'CP', finishRule: '完赛标准：通过 16 个检查点', audited: '审计修订', human: '人类参考',
     limit: '达到 1 小时时限', early: '提前结束',
@@ -20,7 +20,7 @@ const copy = {
     humanPlay: '亲自体验赛道 ↗',
     aiRunsLabel: 'AI 试跑', aiRunsCount: '15 场实测 · 1 项未实测',
     multiParticipants: '同场 Agent', multiBest: '最高路线进度', multiFinishers: '完赛', multiClock: '实时系数',
-    multiProgress: '检查点 / 路线进度', multiCompleted: '已完成动作', multiOutcome: '退赛',
+    multiCompleted: '已完成动作', multiOutcome: '退赛',
     multiCaption: '同一场七鸭实时比赛 · 2026-11-09',
     multiNote: '单场试跑，尚待物理有效性验证，不作为正式同条件排名。第 5 名并列。来源对所有鸭子的终止原因统一记为「越界或超时」，无法再细分。',
     multiSource: '来源记录', multiRun: '比赛 ID', multiHash: '分析文件 SHA-256',
@@ -32,8 +32,8 @@ const copy = {
     label: 'SOLO · REAL-TIME',
     configurations: 'AI CONFIGURATIONS', measured: 'measured', compatibility: 'tool incompatibility',
     best: 'BEST ROUTE PROGRESS', finishers: 'AI FINISHERS',
-    rank: 'RANK', agent: 'AGENT / MODEL', progress: 'PROGRESS / CHECKPOINTS', time: 'SIM TIME',
-    falls: 'FALLS', recovery: 'RECOVERY', pauses: 'PAUSES', api: 'MODEL REQUESTS', response: 'MEAN RESPONSE', actions: 'ACCEPTED ACTIONS', ending: 'ENDING',
+    rank: 'Rank', agent: 'Agent / model', progress: 'Progress', time: 'Sim time',
+    falls: 'Falls', recovery: 'Recovery', pauses: 'PAUSES', api: 'Model\nrequests', response: 'Mean\nresponse', actions: 'Accepted\nactions', ending: 'End reason',
     checkpoints: 'CP', finishRule: 'FINISH REQUIRES ALL 16 CHECKPOINTS', audited: 'AUDITED', human: 'HUMAN REFERENCE',
     limit: 'One-hour limit', early: 'Ended early',
     infrastructure: 'Client exited · infrastructure failure', retired: 'Rule retirement · out-of-order checkpoint', finished: 'Finished',
@@ -43,7 +43,7 @@ const copy = {
     humanPlay: 'Try the course yourself ↗',
     aiRunsLabel: 'AI AGENT RUNS', aiRunsCount: '15 measured · 1 unmeasured',
     multiParticipants: 'AGENTS IN ONE RACE', multiBest: 'BEST ROUTE PROGRESS', multiFinishers: 'FINISHERS', multiClock: 'REAL-TIME FACTOR',
-    multiProgress: 'CHECKPOINTS / PROGRESS', multiCompleted: 'COMPLETED ACTIONS', multiOutcome: 'Retired',
+    multiCompleted: 'Completed\nactions', multiOutcome: 'Retired',
     multiCaption: 'One simultaneous seven-agent real-time race · 2026-11-09',
     multiNote: 'One observed race; physical validation is pending, so this is not an official same-condition ranking. Fifth place is tied. The source uses “boundary or timeout” for every entrant and does not separate the two causes.',
     multiSource: 'Source record', multiRun: 'Race ID', multiHash: 'Analysis SHA-256',
@@ -116,12 +116,21 @@ function mountStandings(scroll, table, thead, tbody, lang, caption) {
     const fields = element('dl', 'compact-fields');
     fields.append(element('dt', '', 'Harness'), element('dd', '', harness.textContent));
     for (const metric of metrics) {
-      fields.append(element('dt', '', headers[metric.cellIndex].textContent), element('dd', '', metric.textContent));
+      fields.append(element('dt', '', headers[metric.cellIndex].textContent.replace(/\s+/g, ' ')), element('dd', '', metric.textContent));
     }
     entry.append(summary, fields);
     compact.append(entry);
   }
   scroll.append(table, compact);
+}
+
+function progressBar(percent) {
+  const bar = element('div', 'board-bar');
+  const fill = element('span');
+  fill.style.width = `${percent}%`;
+  bar.setAttribute('aria-hidden', 'true');
+  bar.append(fill);
+  return bar;
 }
 
 function rankCell(rank, lang, className) {
@@ -203,11 +212,7 @@ export function renderLeaderboard(lang) {
     tr.append(name);
     const progress = element('td', 'board-progress');
     progress.append(element('strong', '', `${number(row.progressPercent, 2)}%`), element('small', '', `${t.checkpoints} ${String(row.cp).padStart(2, '0')} / 16`));
-    const bar = element('div', 'board-bar');
-    const fill = element('span');
-    fill.style.width = `${row.progressPercent}%`;
-    bar.append(fill);
-    progress.append(bar);
+    progress.append(progressBar(row.progressPercent));
     tr.append(progress);
     for (const value of [duration(row.sim), number(row.falls), `${number(row.recovery, 2)} ${t.seconds}`, number(row.api), `${number(row.responseMeanSeconds, 2)} ${t.seconds}`, number(row.acceptedActions)]) tr.append(element('td', 'board-number', value));
     const outcome = element('td', 'board-ending', ending(row, t));
@@ -278,7 +283,7 @@ function renderMultiLeaderboard(lang, number) {
   const caption = element('caption', '', t.multiCaption);
   const thead = element('thead');
   const header = element('tr');
-  for (const label of [t.rank, t.agent, t.multiProgress, t.falls, t.recovery, t.api, t.multiCompleted, t.ending]) {
+  for (const label of [t.rank, t.agent, t.progress, t.falls, t.recovery, t.api, t.multiCompleted, t.ending]) {
     const cell = element('th', '', label);
     cell.scope = 'col';
     header.append(cell);
@@ -294,9 +299,7 @@ function renderMultiLeaderboard(lang, number) {
     name.append(entrantName(row.model, row.harness));
     const progress = element('td', 'multi-progress');
     progress.append(element('strong', '', `${number(row.progressPercent, 2)}%`), element('small', '', `CP ${String(row.checkpoints).padStart(2, '0')} / 16`));
-    const bar = element('span', 'multi-progress-bar');
-    bar.style.width = `${row.progressPercent}%`;
-    progress.append(bar);
+    progress.append(progressBar(row.progressPercent));
     tr.append(rank, name, progress,
       element('td', 'multi-number', number(row.falls)),
       element('td', 'multi-number', `${number(row.recoverySeconds, 2)} ${t.seconds}`),
