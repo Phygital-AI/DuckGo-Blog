@@ -33,7 +33,7 @@ const text = {
     models: '项配置', humanFamily: 'Human · 手柄操控', humanDesc: '手柄操作参考。',
     compatibilityNote: '工具兼容失败，未开展正式比赛。', inputDetails: '查看观察信息与动作接口',
     conclusionsKicker: '结论', conclusionsTitle: '初步观察',
-    conclusionsIntro: '现有 AI 试跑尚未完成全程。后续将通过重复实验与统一条件对照，分析实时决策与物理执行中的主要瓶颈。',
+    conclusionsIntro: '现有 AI 试跑尚未完成全程。',
     citationTitle: '引用本工作', citationIntro: '如在研究中使用 DuckGo、仿真环境或评测协议，请引用这篇交互式文章。', citationDownload: '下载 BibTeX',
   },
   en: {
@@ -64,7 +64,7 @@ const text = {
     models: 'configurations', humanFamily: 'Human · Gamepad', humanDesc: 'A gamepad-operated reference run.',
     compatibilityNote: 'Tool compatibility failed; no formal race was run.', inputDetails: 'Observation channels & action interface',
     conclusionsKicker: 'FINDINGS', conclusionsTitle: 'Early observations',
-    conclusionsIntro: 'No AI run has completed the course yet. Repeated trials under matched conditions will help identify the main bottlenecks in real-time decisions and physical execution.',
+    conclusionsIntro: 'No AI run has completed the course yet.',
     citationTitle: 'Cite this work', citationIntro: 'If you use DuckGo, its simulation environment, or its evaluation protocol in your work, please cite this interactive article.', citationDownload: 'Download BibTeX',
   },
 };

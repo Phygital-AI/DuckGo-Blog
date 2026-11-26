@@ -179,8 +179,8 @@
         <figure><solo-cost-chart></solo-cost-chart></figure>
         <details>
           <summary><span class="cost-en" lang="en">How cost was estimated</span><span class="cost-zh" lang="zh-CN">成本估算方法</span></summary>
-          <p class="cost-en" lang="en">Logged uncached input, cache reads, cache writes and output were priced separately at public API rates. The DeepSeek run took place on a Saturday and uses off-peak rates ($2.03 at peak rates for the same tokens). Relay billing, cache storage and hardware are outside this estimate. The selected runs span course versions.</p>
-          <p class="cost-zh" lang="zh-CN">按公开 API 费率对未缓存输入、缓存读取、缓存写入和输出分别计价。DeepSeek 这轮发生在周六，采用非高峰费率，同样的 token 用量按高峰费率为 2.03 美元。估算范围为 API token 费用，试跑来自不同赛道版本。</p>
+          <p class="cost-en" lang="en">Logged uncached input, cache reads, cache writes and output were priced separately at public API rates. The DeepSeek run cost an estimated $1.02 at off-peak rates. The same token usage would cost $2.03 at peak rates. Relay billing, cache storage and hardware are outside this estimate. The selected runs span course versions.</p>
+          <p class="cost-zh" lang="zh-CN">按公开 API 费率对未缓存输入、缓存读取、缓存写入和输出分别计价。DeepSeek 这轮按非高峰费率估算为 1.02 美元，同样的 token 用量按高峰费率为 2.03 美元。估算范围为 API token 费用，试跑来自不同赛道版本。</p>
           <p><a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek</a> · <a href="https://developers.openai.com/api/docs/pricing">OpenAI</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic</a> · <a href="https://docs.qwencloud.com/developer-guides/getting-started/model-prices">QwenCloud</a> · <a href="https://docs.z.ai/guides/overview/pricing">Z.AI</a> · <a href="https://www.kimi.com/en/blog/kimi-k3">Kimi</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini</a></p>
         </details>
       </li>
@@ -204,18 +204,18 @@
       </li>
       <li id="solo-s-bend-finding">
         <h3><span class="cost-en" lang="en">What makes Stage 9 difficult? A DeepSeek case study</span><span class="cost-zh" lang="zh-CN">阻碍在第 9 关的原因是什么？以 DeepSeek 为例分析</span></h3>
-        <p class="cost-en" lang="en">After clearing CP 8, DeepSeek reached the first divider of the Stage 9 S-bend four times. None of the four attempts cleared the stage. The replays show what the duck could see, how far it moved between observations, and how it interpreted its position at the opening.</p>
-        <p class="cost-zh" lang="zh-CN">通过 CP 8 后，DeepSeek 四次来到第 9 关 S 弯的第一道隔墙前，四次都没能过关。下面三段回放分别看：鸭子当时能看见什么、两次观测之间它走了多远，以及它如何判断自己是否已到入口。</p>
+        <p class="cost-en" lang="en">After clearing CP 8, DeepSeek reached the first divider of the Stage 9 S-bend four times. None of the four attempts cleared the stage.</p>
+        <p class="cost-zh" lang="zh-CN">通过 CP 8 后，DeepSeek 四次来到第 9 关 S 弯的第一道隔墙前，四次都没能过关。</p>
 
         <h4 id="solo-s-bend-visibility"><span class="cost-en" lang="en">First approach · The opening was out of view</span><span class="cost-zh" lang="zh-CN">第一次：缺口在视野外</span></h4>
         <p class="cost-en" lang="en">At 31:40, the near wall filled almost the entire frame. From behind, the opening was visible to the duck’s right. Its own image showed no clear wall end to steer around.</p>
         <p class="cost-zh" lang="zh-CN">31:40，近墙几乎占满画面。后方跟拍能看到缺口在鸭子右侧，但鸭子自己的画面里看不清墙在哪里结束，也就缺少了往哪边绕的线索。</p>
         <figure>
-          <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-approach-1-en.jpg" aria-labelledby="solo-s-bend-visibility-caption">
+          <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-approach-1-en.jpg" aria-labelledby="solo-s-bend-visibility" aria-describedby="solo-s-bend-visibility-caption">
             <source src="./showcase/s-bend-approach-1-en.mp4" type="video/mp4" />
             <track kind="descriptions" src="./showcase/s-bend-approach-1-en.vtt" srclang="en" label="English visual descriptions" />
           </video>
-          <figcaption id="solo-s-bend-visibility-caption"><span class="cost-en" lang="en">Approach 1 · The wall fills the frame · Silent replay with English captions · 0:17.5</span><span class="cost-zh" lang="zh-CN">第 1 次到墙 · 近墙占满视野 · 无声回放，英文字幕 · 17.5 秒</span></figcaption>
+          <figcaption id="solo-s-bend-visibility-caption"><span class="cost-en" lang="en">All three replays are silent with English captions.</span><span class="cost-zh" lang="zh-CN">三段回放均为无声视频，配有英文字幕。</span></figcaption>
         </figure>
 
         <h4 id="solo-s-bend-timing"><span class="cost-en" lang="en">Approaches 2 and 4 · The duck can miss the opening between observations</span><span class="cost-zh" lang="zh-CN">第二、四次：动作仍在执行，等下一帧到来时可能已错过缺口</span></h4>
@@ -235,22 +235,20 @@
         <p class="cost-en" lang="en">On the fourth approach at 52:05.14, the near wall filled most of the frame. The duck walked along it toward the opening. In the next observation at 52:14.06, <strong>8.92 seconds later</strong>, the end of the divider and the floor beside it were visible. The duck then drew level with the opening and turned before another image arrived at 52:25.16.</p>
         <p class="cost-zh" lang="zh-CN">第四次，52:05.14 的画面里大半是近墙。鸭子沿隔板向缺口靠近，<strong>8.92 秒后</strong>收到下一帧（52:14.06），这时已经能看见隔板端面和旁边的地面。随后它走到与缺口齐平的位置并开始转向，直到 52:25.16 才再次取图。</p>
         <figure>
-          <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-timing-en.jpg" aria-labelledby="solo-s-bend-timing-caption">
+          <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-timing-en.jpg" aria-labelledby="solo-s-bend-timing">
             <source src="./showcase/s-bend-timing-en.mp4" type="video/mp4" />
             <track kind="descriptions" src="./showcase/s-bend-timing-en.vtt" srclang="en" label="English visual descriptions" />
           </video>
-          <figcaption id="solo-s-bend-timing-caption"><span class="cost-en" lang="en">Approaches 2 and 4 · Motion between observations · Silent replay with English captions · 0:53</span><span class="cost-zh" lang="zh-CN">第 2、4 次到墙 · 两次观测之间的移动 · 无声回放，英文字幕 · 53 秒</span></figcaption>
         </figure>
 
         <h4 id="solo-s-bend-position"><span class="cost-en" lang="en">Third approach · DeepSeek saw the opening but misjudged its position</span><span class="cost-zh" lang="zh-CN">第三次：看见了缺口，却误判了自己的位置</span></h4>
         <p class="cost-en" lang="en">At 49:39 it saw the gap on the right and thought it was already passing the divider. The trajectory still placed it in front of the wall. At 49:43 it interpreted the wall ahead as the course’s western boundary and expected the route to turn south. Facing west, it chose a left turn. The similar color of the two walls may have made their relative depth harder to judge.</p>
         <p class="cost-zh" lang="zh-CN">49:39，DeepSeek 看到了右侧空隙，以为自己正在从隔板旁通过。俯视轨迹显示，它还在门前。49:43，它又把前方的墙当成赛道西侧边界，预判路线该向南，于是从朝西的方向左转。前后两道墙颜色相近，可能增加了判断纵深的难度。</p>
         <figure>
-          <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-approach-3-en.jpg" aria-labelledby="solo-s-bend-position-caption">
+          <video controls playsinline preload="none" width="1440" height="864" poster="./showcase/s-bend-approach-3-en.jpg" aria-labelledby="solo-s-bend-position">
             <source src="./showcase/s-bend-approach-3-en.mp4" type="video/mp4" />
             <track kind="descriptions" src="./showcase/s-bend-approach-3-en.vtt" srclang="en" label="English visual descriptions" />
           </video>
-          <figcaption id="solo-s-bend-position-caption"><span class="cost-en" lang="en">Approach 3 · A left turn away from the opening · Silent replay with English captions · 0:20</span><span class="cost-zh" lang="zh-CN">第 3 次到墙 · 左转离开右侧入口 · 无声回放，英文字幕 · 20 秒</span></figcaption>
         </figure>
       </li>
     </ol>
