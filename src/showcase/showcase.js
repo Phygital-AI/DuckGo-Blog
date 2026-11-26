@@ -11,7 +11,7 @@ const courseStageTitle = (stage, lang) => {
   return stage.index === 8 ? '四道交错窄门' : stage.title;
 };
 const { lapLength, trackWidth, stageCount } = GAUNTLET_CIRCUIT.circuit;
-let currentLanguage = 'zh';
+let currentLanguage = 'en';
 
 const courseInfo = document.createElement('div');
 courseInfo.className = 'course-info';
@@ -419,7 +419,6 @@ function render(lang) {
   renderLeaderboard(lang);
   renderNarrative(lang);
   renderStage(lang);
-  try { localStorage.setItem('microduck-showcase-lang', lang); } catch { /* storage disabled */ }
 }
 function openStrategy(item, lang) {
   const dialog = document.querySelector('#strategy-dialog');
@@ -495,11 +494,8 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden) heroVideo.pause();
 });
 
-const url = new URL(location.href);
-let saved;
-try { saved = localStorage.getItem('microduck-showcase-lang'); } catch { /* storage disabled */ }
-const initial = ['en', 'zh'].includes(url.searchParams.get('lang')) ? url.searchParams.get('lang') : ['en', 'zh'].includes(saved) ? saved : navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en';
-render(initial);
+const requestedLanguage = new URLSearchParams(location.search).get('lang');
+render(requestedLanguage === 'zh' ? 'zh' : 'en');
 mountArticleNavigation();
 for (const button of document.querySelectorAll('[data-lang]')) button.addEventListener('click', () => {
   const lang = button.dataset.lang;
