@@ -25,7 +25,6 @@
     .solo-findings-list h3 { margin: 0 0 9px; font-size: 1.15rem; line-height: 1.35; }
     #solo-cost-finding figure { margin: 16px 0 0; }
     #solo-cost-finding figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line, #dbe4e8); border-radius: 10px; }
-    #solo-cost-finding figcaption { margin-top: 9px; font-size: .84rem; line-height: 1.55; }
     #solo-cost-finding details { margin-top: 12px; font-size: .84rem; line-height: 1.55; }
     #solo-cost-finding details summary { cursor: pointer; }
     #solo-latency-finding figure { margin: 16px 0 0; }
@@ -168,15 +167,14 @@
         <p class="cost-en" lang="en">DeepSeek reached CP 8 in 31:08 and ended at 49.94% progress. Its estimated full-run API cost was <strong>$1.02</strong>. Astra reached CP 8 in 58:10 and ended at 50.85% progress, with an estimated full-run cost of <strong>$41.90</strong>. The DeepSeek API reported cache hits for 99.6% of its input tokens.</p>
         <p class="cost-zh" lang="zh-CN">DeepSeek 用 31 分 08 秒到达 CP 8，最终路线进度为 49.94%，整轮 API 成本估算为 <strong>1.02 美元</strong>。Astra 用 58 分 10 秒到达 CP 8，最终进度为 50.85%，整轮成本估算为 <strong>41.90 美元</strong>。DeepSeek 日志记录的输入 token 缓存命中率为 99.6%。</p>
         <figure>
-          <a href="./showcase/solo-cost-progress-20261123.svg" aria-labelledby="solo-cost-caption">
-            <img src="./showcase/solo-cost-progress-20261123.svg" width="1060" height="640" loading="lazy" decoding="async" alt="" aria-describedby="solo-cost-caption" />
+          <a href="./showcase/solo-cost-progress-20261123.svg?v=2" aria-labelledby="solo-cost-title">
+            <img src="./showcase/solo-cost-progress-20261123.svg?v=2" width="1060" height="640" loading="lazy" decoding="async" alt="" />
           </a>
-          <figcaption id="solo-cost-caption"><span class="cost-en" lang="en">Each point is a selected solo run. The horizontal axis shows estimated API cost on a log scale. Open circles indicate missing token counts for at least one successful request.</span><span class="cost-zh" lang="zh-CN">每个点是一条选定的单人试跑。横轴是估算 API 成本（对数刻度），纵轴是最终路线进度。空心点表示至少有一条成功请求缺少 token 用量记录。</span></figcaption>
         </figure>
         <details>
           <summary><span class="cost-en" lang="en">How cost was estimated</span><span class="cost-zh" lang="zh-CN">成本估算方法</span></summary>
-          <p class="cost-en" lang="en">Logged uncached input, cache reads, cache writes and output were priced separately at public API rates. The DeepSeek run took place on a Saturday and uses off-peak rates ($2.03 at peak rates for the same tokens). Relay billing, cache storage and hardware are outside this estimate. The selected runs span course versions.</p>
-          <p class="cost-zh" lang="zh-CN">按公开 API 费率对未缓存输入、缓存读取、缓存写入和输出分别计价。DeepSeek 这轮发生在周六，采用非高峰费率，同样的 token 用量按高峰费率为 2.03 美元。估算范围为 API token 费用，试跑来自不同赛道版本。</p>
+          <p class="cost-en" lang="en">Logged uncached input, cache reads, cache writes and output were priced separately at public API rates. The DeepSeek run took place on a Saturday and uses off-peak rates ($2.03 at peak rates for the same tokens). Relay billing, cache storage and hardware are outside this estimate. The selected runs span course versions. Open circles mark runs missing token counts for at least one successful request.</p>
+          <p class="cost-zh" lang="zh-CN">按公开 API 费率对未缓存输入、缓存读取、缓存写入和输出分别计价。DeepSeek 这轮发生在周六，采用非高峰费率，同样的 token 用量按高峰费率为 2.03 美元。估算范围为 API token 费用，试跑来自不同赛道版本。空心点表示该场至少有一次成功请求缺少 token 用量记录。</p>
           <p><a href="https://api-docs.deepseek.com/quick_start/pricing/">DeepSeek</a> · <a href="https://developers.openai.com/api/docs/pricing">OpenAI</a> · <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic</a> · <a href="https://docs.qwencloud.com/developer-guides/getting-started/model-prices">QwenCloud</a> · <a href="https://docs.z.ai/guides/overview/pricing">Z.AI</a> · <a href="https://www.kimi.com/en/blog/kimi-k3">Kimi</a> · <a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini</a></p>
         </details>
       </li>
