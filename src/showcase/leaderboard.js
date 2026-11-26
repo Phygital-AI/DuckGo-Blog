@@ -108,7 +108,7 @@ export function renderLeaderboard(lang) {
   if (!root) {
     root = element('section', 'solo-results');
     root.id = 'solo-results';
-    document.querySelector('.leaderboard-group.solo .leaderboard-group-body').append(root);
+    document.querySelector('.leaderboard-group.solo .leaderboard-group-body').prepend(root);
   }
   root.setAttribute('aria-label', t.label);
   const measured = selected.rows.map(source => ({ ...data.rows.find(row => row.model === source.model), ...source }));
