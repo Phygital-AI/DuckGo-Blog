@@ -43,6 +43,7 @@ const copy = {
     heroTitle: 'DuckGo: Can AI Control a Microduck?',
     heroName: 'DuckGo:',
     heroQuestion: 'Can AI Control a Microduck?',
+    projectLinksLabel: 'Project links',
     articleInfoLabel: 'Article information', publishedLabel: 'Updated', publishedDate: 'Nov 26, 2026', teamLabel: 'Team', topicsLabel: 'Topics',
     topicRobotics: 'Robotics', topicBenchmarks: 'Benchmarks', topicAgent: 'Agent', metadataMore: 'See more...',
     heroLead: 'General-purpose agents control Microduck through one skill interface, confronting body constraints, moving obstacles and execution errors in a continuously running MuJoCo world.',
@@ -93,6 +94,7 @@ const copy = {
     heroTitle: 'DuckGo：AI 能控制 Microduck 吗？',
     heroName: 'DuckGo：',
     heroQuestion: 'AI 能控制 Microduck 吗？',
+    projectLinksLabel: '项目链接',
     articleInfoLabel: '文章信息', publishedLabel: '更新日期', publishedDate: '2026年11月26日', teamLabel: '团队', topicsLabel: '主题',
     topicRobotics: '机器人', topicBenchmarks: '评测基准', topicAgent: 'Agent', metadataMore: '了解更多...',
     heroLead: '让通用 Agent 通过统一技能接口控制 Microduck，在持续运行的 MuJoCo 物理世界中，应对身体约束、动态障碍和执行误差。',
@@ -267,14 +269,12 @@ Object.assign(copy.en, {
   heroExplore: 'Read the article', heroSimulatorTitle: 'Enter the simulator', heroSimulatorNote: 'Run in your browser',
   heroVideoLabel: 'DuckGO film introducing the obstacle course, agent control and selected results.',
   heroVideoPlay: 'Watch the film', heroVideoDownload: 'Open the DuckGO film',
-  heroVideoCaption: 'A 70-second introduction to DuckGO’s course, agent control and selected results.', heroVideoNote: '70 seconds · DuckGO overview',
   arenaAlt: 'Overview of the Microduck obstacle course in MuJoCo', arenaCaption: 'The Microduck obstacle course in MuJoCo.',
 });
 Object.assign(copy.zh, {
   heroSimulatorTitle: '进入仿真', heroSimulatorNote: '在浏览器中体验',
   heroVideoLabel: '介绍 DuckGO 障碍赛道、Agent 控制和选定成绩的影片。',
   heroVideoPlay: '观看影片', heroVideoDownload: '打开 DuckGO 影片',
-  heroVideoCaption: '70 秒了解 DuckGO 的赛道、Agent 控制和选定成绩。', heroVideoNote: '70 秒 · DuckGO 项目介绍',
   arenaAlt: 'MuJoCo 中的 Microduck 障碍赛道全景', arenaCaption: 'MuJoCo 中的 Microduck 障碍赛道。',
 });
 

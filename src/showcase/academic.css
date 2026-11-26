@@ -63,6 +63,41 @@ h1 { margin: 0 auto; font-size: clamp(30px, 3.3vw, 42px); line-height: 1.16; let
 .button-hot:hover { background: #e3e3df; }
 .hero-feature { grid-column: 2; grid-row: 1; min-width: 0; }
 .hero-figure { width: 100%; margin: 0; }
+.hero-resources {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 14px;
+  margin-top: clamp(16px, 3vw, 28px);
+}
+.hero-resources a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 0 15px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 500 14px/1.25 var(--font-sans);
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+.hero-resources a:is(:hover, :focus-visible) {
+  border-color: #b1c5d0;
+  background: #edf3f6;
+  color: #26485e;
+}
+.hero-resource-arrow {
+  display: inline-block;
+  color: var(--muted);
+  transition: color 160ms ease, transform 160ms ease;
+}
+.hero-resources a:is(:hover, :focus-visible) .hero-resource-arrow {
+  color: currentColor;
+  transform: translate(2px, -2px);
+}
 .hero-metadata { grid-column: 3; grid-row: 1 / 3; align-self: start; font-family: var(--font-sans); font-size: 13px; line-height: 1.6; }
 .hero-metadata dl { margin: 0; }
 .hero-metadata dl > div { padding: 14px 0; border-top: 1px solid var(--line); }
@@ -477,6 +512,8 @@ summary { color: var(--green); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .hero-resources a, .hero-resource-arrow { transition: none; }
+  .hero-resources a:is(:hover, :focus-visible) .hero-resource-arrow { transform: none; }
 }
 
 html:lang(zh-CN) .article-body { line-height: 1.8; }
