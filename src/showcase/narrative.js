@@ -8,8 +8,8 @@ const text = {
   zh: {
     navProblems: '动机', navApproach: '环境', navGoals: '目标', navParticipants: '评测对象', navConclusions: '结论',
     problemsKicker: '面临的问题', problemsTitle: '从推理到物理行动',
-    problemsBody: '碰撞、摩擦、惯性与身体平衡共同影响机器人的实际运动，因此调用一次技能并不保证到达预期位置。同时，Agent 推理期间障碍仍在运动，依据上一帧作出的判断，到执行时可能已经过期。',
-    problemsContext: '一场连续障碍赛，考察的是 Agent 能否持续观察、行动并修正，用实际执行结果检验自己的选择。物理仿真让我们能以较低的硬件、维护与安全成本研究这一过程。',
+    problemsBody: 'Microduck 已经会走、会跑、会转向。把它交给通用 Agent，我们想看的是，Agent 能否把这些技能连起来，跑完一条不断变化的赛道。比如，机器人看到摆门打开，等前进指令开始执行，门可能已经摆了回来。Agent 得根据相机画面和身体状态判断自己实际走到了哪里，再决定下一步。',
+    problemsContext: '据我们所知，DuckGo 是首个让多个通用 Agent 调用同一套运动技能，各自实时驾驶机器人同场竞速的仿真障碍赛。每个 Agent 根据自己机器人的相机画面和状态，独立决定下一步动作。单人试跑记录各自能走多远。在七个 Agent 同时发车的比赛里，对手可能挡住视线，一次碰撞也可能改变下一步的路线。',
     approachKicker: '我们做了什么', approachTitle: 'Microduck 障碍赛',
     approachBody: '在 MuJoCo 中，Agent 通过统一接口选择技能、参数和持续时间，控制 Microduck 双足机器人通过连续障碍。底层控制器驱动关节，物理仿真决定实际运动。',
     playLabel: '手动体验', playTitle: '亲自驾驶 Microduck',
@@ -39,8 +39,8 @@ const text = {
   en: {
     navProblems: 'Motivation', navApproach: 'Environment', navGoals: 'Goals', navParticipants: 'Agents', navConclusions: 'Findings',
     problemsKicker: 'THE PROBLEM', problemsTitle: 'From reasoning to physical action',
-    problemsBody: 'Contact, friction, inertia and balance shape a robot’s motion, so a skill call does not guarantee the intended position. Obstacles also keep moving during inference: by the time an agent acts, its last observation may already be out of date.',
-    problemsContext: 'An obstacle race tests whether an agent can sustain a loop of observation, action and correction, checking its choices against physical outcomes. Simulation lets us study this process with lower hardware, maintenance and safety costs than physical robot trials.',
+    problemsBody: 'Microduck already knows how to walk, run and turn. We wanted to see whether a general-purpose agent could use those skills to finish a changing course. A swing gate might be open when the robot sees it and closed by the time the command takes effect. The agent has to use its camera and body-state feedback to work out where it ended up before choosing its next move.',
+    problemsContext: 'To our knowledge, DuckGo is the first simulated obstacle race in which general-purpose agents use a shared set of motion skills to pilot robots head-to-head in real time. Each agent chooses its next move independently from its own robot’s camera view and state. Solo runs show how far each can get on its own. In the seven-agent race, another robot could block the view or knock a competitor off course.',
     approachKicker: 'WHAT WE BUILT', approachTitle: 'The Microduck obstacle course',
     approachBody: 'Agents select motion skills, parameters and durations through a shared interface to guide a Microduck biped through a MuJoCo obstacle course. Controllers drive the joints; physics determines the motion.',
     playLabel: 'HANDS-ON PLAY', playTitle: 'Take the controls yourself',
@@ -158,7 +158,7 @@ export function configureNarrative(protocolSection) {
   const summary = node('section', 'article-summary');
   summary.id = 'summary';
   summary.setAttribute('aria-labelledby', 'summary-title');
-  summary.innerHTML = '<h2 id="summary-title">TL;DR</h2><p data-i18n="articleSummary"></p>';
+  summary.innerHTML = '<h2 id="summary-title">TL;DR</h2><p data-i18n="articleSummary"></p><p data-i18n="articleSummaryResults"></p>';
   article.append(summary);
   for (const section of [...main.children]) if (section.id !== 'top') article.append(section);
   const resultsAnchor = node('span', 'section-anchor');

@@ -172,7 +172,8 @@ Object.assign(copy.zh, {
 Object.assign(copy.en, {
   heroTitle: 'DuckGo: Can AI Control a Microduck?',
   heroLead: 'Can a general-purpose agent guide a robot through an obstacle race while the physical world keeps moving?',
-  articleSummary: 'We evaluate general-purpose agents controlling Microduck through a shared skill interface in a continuously running MuJoCo obstacle race, observing how they perceive, decide and correct execution errors. The current study covers only Microduck; its results do not establish general embodied competence.',
+  articleSummary: 'To test the embodied capabilities of general-purpose agents, we designed a Microduck obstacle race in MuJoCo. Each agent pilots a biped with the same set of motion skills through 16 checkpoints. The obstacles keep moving while the agent decides what to do next.',
+  articleSummaryResults: 'None of the 15 selected solo runs finished. GPT-6 Astra went furthest (50.85% of the course). DeepSeek V4.1 Flash reached checkpoint 8 in 31:08, compared with 58:10 for Astra. Neither cleared checkpoint 9. Among the four Claude Code runs on V1, Fable 5.1 led with six checkpoints. Opus 5.5 cleared two.',
   heroExplore: 'Explore the benchmark', heroWatch: 'Watch a trial',
   heroCaptionLeft: 'MUJOCO PHYSICS · LEARNED MOTION SKILLS', heroCaptionRight: 'MICRODUCK · 16 STAGES',
   settingKicker: 'EXPERIMENT SETTING', settingTitle: 'Know the conditions.', settingIntro: 'Robot, course, skills and observation channels define the task. The selected records retain their original configuration and course version.',
@@ -189,7 +190,8 @@ Object.assign(copy.en, {
 Object.assign(copy.zh, {
   heroTitle: 'DuckGo：AI 能控制 Microduck 吗？',
   heroLead: '当物理世界不会等待思考，通用 Agent 能否控制机器人，完成整场障碍赛？',
-  articleSummary: '我们让通用 Agent 通过统一技能接口控制 Microduck，在持续运行的 MuJoCo 仿真中参加障碍赛，观察它们如何感知、决策并修正执行偏差。目前仅评测 Microduck 一种机器人形态，不将结果泛化为通用具身能力。',
+  articleSummary: '为了测试通用 Agent 的具身能力，我们在 MuJoCo 中设计了一场 Microduck 障碍赛。每个 Agent 驾驶一台双足机器人，调用同一套运动技能，依次挑战 16 个检查点。Agent 思考时，赛道上的障碍仍在运动。',
+  articleSummaryResults: '15 场选定的单人试跑均未完赛。GPT-6 Astra 跑得最远，路线进度为 50.85%。DeepSeek V4.1 Flash 用 31 分 08 秒通过第 8 个检查点，Astra 用了 58 分 10 秒，两者都未通过第 9 个。同在 V1 赛道上，Claude Code 的四组配置中，Fable 5.1 以 6 个检查点领先，Opus 5.5 通过了 2 个。',
   heroExplore: '了解评测', heroWatch: '观看试跑',
   heroCaptionLeft: 'MUJOCO 物理仿真 · 已有运控技能', heroCaptionRight: 'MICRODUCK · 16 关',
   settingKicker: '实验设置', settingTitle: '明确测试条件。', settingIntro: '机器人、赛道、技能与观察信息共同定义任务。当前选用记录保留每次试跑的原始配置和赛道版本。',
