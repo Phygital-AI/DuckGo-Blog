@@ -1,26 +1,23 @@
 // Published solo-run estimates, rounded to cents and hundredths of a percent.
 const runs = [
-  {"name": "GPT-6 Astra", "cost": 41.9, "progress": 50.85, "partial": false},
-  {"name": "DeepSeek V4.1 Flash", "cost": 1.02, "progress": 49.94, "partial": false},
-  {"name": "GPT-6 Sol", "cost": 13.88, "progress": 40.7, "partial": true},
-  {"name": "GPT-6.1 Sol", "cost": 3.33, "progress": 40.12, "partial": false},
-  {"name": "Claude Fable 5.1", "cost": 13.69, "progress": 37.43, "partial": false},
-  {"name": "Qwen3.8 Flash", "cost": 0.72, "progress": 31.85, "partial": false},
-  {"name": "GLM-5.3 Flash", "cost": 1.14, "progress": 31.17, "partial": false},
-  {"name": "Claude Haiku 5.5", "cost": 0.92, "progress": 31.17, "partial": true},
-  {"name": "Qwen3.8 27B", "cost": 7.85, "progress": 30.01, "partial": false},
-  {"name": "Kimi K3", "cost": 14.62, "progress": 23.28, "partial": false},
-  {"name": "Claude Sonnet 5.5", "cost": 4.24, "progress": 18.66, "partial": true},
-  {"name": "Qwen3.8 Max", "cost": 10.8, "progress": 18.66, "partial": false},
-  {"name": "Claude Opus 5.5", "cost": 5.78, "progress": 15.96, "partial": true},
-  {"name": "GPT-6 Luna", "cost": 0.23, "progress": 13.61, "partial": false},
-  {"name": "Gemini 3.8 Flash", "cost": 17.13, "progress": 3.41, "partial": true},
+  {"name": "GPT-6 Astra", "cost": 41.9, "progress": 50.85},
+  {"name": "DeepSeek V4.1 Flash", "cost": 1.02, "progress": 49.94},
+  {"name": "GPT-6 Sol", "cost": 13.88, "progress": 40.7},
+  {"name": "GPT-6.1 Sol", "cost": 3.33, "progress": 40.12},
+  {"name": "Claude Fable 5.1", "cost": 13.69, "progress": 37.43},
+  {"name": "Qwen3.8 Flash", "cost": 0.72, "progress": 31.85},
+  {"name": "GLM-5.3 Flash", "cost": 1.14, "progress": 31.17},
+  {"name": "Claude Haiku 5.5", "cost": 0.92, "progress": 31.17},
+  {"name": "Qwen3.8 27B", "cost": 7.85, "progress": 30.01},
+  {"name": "Kimi K3", "cost": 14.62, "progress": 23.28},
+  {"name": "Claude Sonnet 5.5", "cost": 4.24, "progress": 18.66},
+  {"name": "Qwen3.8 Max", "cost": 10.8, "progress": 18.66},
+  {"name": "Claude Opus 5.5", "cost": 5.78, "progress": 15.96},
+  {"name": "GPT-6 Luna", "cost": 0.23, "progress": 13.61},
+  {"name": "Gemini 3.8 Flash", "cost": 17.13, "progress": 3.41},
 ];
 
-const highlights = new Map([
-  ['DeepSeek V4.1 Flash', '#1755ae'],
-  ['GPT-6 Astra', '#17624f'],
-]);
+const highlights = new Set(['DeepSeek V4.1 Flash', 'GPT-6 Astra']);
 
 const families = {
   GPT: '#17624f', DeepSeek: '#1755ae', Claude: '#a45631', Qwen: '#79539a',
@@ -88,32 +85,48 @@ class SoloCostChart extends HTMLElement {
       label(left - 6, y(tick) + 4, tick + '%', { 'text-anchor': 'end' });
     }
     for (const tick of (small ? [0.2, 1, 5, 10, 50] : [0.2, 0.5, 1, 2, 5, 10, 20, 50])) {
-      label(x(tick), bottom + 19, '$' + tick, { 'text-anchor': 'middle' });
+      const xx = x(tick);
+      add('line', { x1: xx, x2: xx, y1: bottom, y2: bottom + 5, stroke: '#aabac2' });
+      label(xx, bottom + 20, '$' + tick, { 'text-anchor': 'middle' });
     }
     label(width / 2, height - 7, money, { 'text-anchor': 'middle' });
     const selection = runs.find(r => r.name === this.select.value);
-    for (const run of runs) {
+    if (selection) {
+      const xx = x(selection.cost), yy = y(selection.progress);
+      add('path', { d: `M ${left} ${yy} H ${xx} V ${bottom}`, fill: 'none',
+        stroke: '#73868d', 'stroke-dasharray': '3 4', 'pointer-events': 'none' });
+    }
+    // Draw the selected point last so it stays visible in a cluster.
+    const ordered = selection ? [...runs.filter(run => run !== selection), selection] : runs;
+    for (const run of ordered) {
       const active = run === selection;
       const color = families[run.name.match(/^[A-Za-z]+/)[0]];
       const xx = x(run.cost), yy = y(run.progress);
-      const dot = add('circle', { cx: xx, cy: yy, r: highlights.has(run.name) || active ? 5 : 3.4,
-        fill: run.partial ? 'white' : color, stroke: color, 'stroke-width': 1.5 });
+      const dot = add('circle', { cx: xx, cy: yy, r: active ? 6 : highlights.has(run.name) ? 5.8 : 4.3,
+        fill: color, stroke: '#fff', 'stroke-width': 1 });
       const title = document.createElementNS(dot.namespaceURI, 'title');
       title.textContent = `${run.name} · $${run.cost.toFixed(2)} · ${run.progress.toFixed(2)}%`;
       dot.append(title);
       dot.style.cursor = 'pointer';
-      dot.onclick = () => { this.select.value = run.name; this.draw(); };
+      const choose = () => { this.select.value = run.name; this.draw(); };
+      dot.onclick = choose;
       if (highlights.has(run.name)) {
         const isLeft = run.cost < 10;
         const style = { fill: color, 'font-weight': 650, 'text-anchor': isLeft ? 'start' : 'end' };
         const labelY = small && !isLeft ? yy - 61 : yy - 27;
+        if (small && !isLeft) {
+          add('line', { x1: xx, x2: xx, y1: labelY + 22, y2: yy - 8,
+            stroke: color, 'stroke-opacity': 0.48, 'pointer-events': 'none' });
+        }
         label(xx, labelY, small && isLeft ? 'DeepSeek Flash' : run.name, style);
         label(xx, labelY + 17, `$${run.cost.toFixed(2)} · ${run.progress.toFixed(2)}%`, style);
       } else if (!small) {
         const [dx, dy] = offsets[run.name] ?? [7, -5];
-        label(xx + dx, yy + dy, run.name, {
-          fill: color, 'font-size': 12, 'text-anchor': dx < 0 ? 'end' : 'start', 'pointer-events': 'none',
+        const name = label(xx + dx, yy + dy, run.name, {
+          fill: color, 'font-size': 12, 'text-anchor': dx < 0 ? 'end' : 'start',
+          'font-weight': active ? 700 : 400, cursor: 'pointer',
         });
+        name.onclick = choose;
       }
     }
     const table = this.querySelector('table');
@@ -131,6 +144,7 @@ class SoloCostChart extends HTMLElement {
       body.replaceChildren();
       for (const run of runs) {
         const row = body.insertRow();
+        row.classList.toggle('cost-selected', run === selection);
         for (const value of [run.name, '$' + run.cost.toFixed(2), run.progress.toFixed(2) + '%']) {
           row.insertCell().textContent = value;
         }
