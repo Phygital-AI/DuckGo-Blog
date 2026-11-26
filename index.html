@@ -208,8 +208,8 @@
       </li>
       <li id="solo-s-bend-finding">
         <h3><span class="cost-en" lang="en">What makes Stage 9 difficult? A DeepSeek case study</span><span class="cost-zh" lang="zh-CN">阻碍在第 9 关的原因是什么？以 DeepSeek 为例分析</span></h3>
-        <p class="cost-en" lang="en">After clearing CP 8, DeepSeek approached the first divider four times. The replays pair the images the agent received with its recorded trajectory and actions. The rear and first-person camera sequences are reconstructed from the recorded poses.</p>
-        <p class="cost-zh" lang="zh-CN">通过 CP 8 后，DeepSeek 四次走到 S 弯的第一道隔墙前。回放把它实际收到的图像、运动轨迹和执行的动作对齐。连续的后方跟拍和第一视角画面由记录的姿态重建。</p>
+        <p class="cost-en" lang="en">After clearing CP 8, DeepSeek reached the first divider of the Stage 9 S-bend four times. None of the four attempts cleared the stage. The replays show two difficulties. First, from close to the wall, the duck can lose sight of the opening or misjudge where it leads. Second, the duck keeps moving between observations, so its position can change before a turn based on the last image takes effect.</p>
+        <p class="cost-zh" lang="zh-CN">通过 CP 8 后，DeepSeek 四次来到第 9 关 S 弯的第一道隔墙前，四次都没能过关。回看这四次尝试，可以看到两个问题。第一，贴墙时，鸭子从第一视角可能看不到缺口，也可能看见了墙端却判断错入口方向。第二，鸭子在两次观测之间仍会移动，等根据上一帧画面做出的转向开始执行，它可能已经走到了另一个位置。</p>
 
         <h4 id="solo-s-bend-visibility"><span class="cost-en" lang="en">A close wall can hide the opening or make its depth hard to judge</span><span class="cost-zh" lang="zh-CN">贴近隔墙时，入口可能被遮住，也可能看不出纵深</span></h4>
         <p class="cost-en" lang="en">On the first approach, the wall filled the frame. On the third, DeepSeek saw a gap on the right, with another orange wall beyond it. It initially took the gap as a sign that it was passing the divider. Seconds later it interpreted the near wall as the course boundary and turned left, away from the opening.</p>
