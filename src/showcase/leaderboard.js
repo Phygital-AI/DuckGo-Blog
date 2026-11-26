@@ -7,7 +7,7 @@ import { HUMAN_PLAY_SPACE } from './links.js';
 const copy = {
   zh: {
     label: '单人赛 · 实时运行',
-    snapshot: '数据快照', configurations: 'AI 配置', measured: '项实测', compatibility: '项工具兼容失败',
+    configurations: 'AI 配置', measured: '项实测', compatibility: '项工具兼容失败',
     best: '最高路线进度', finishers: 'AI 完赛',
     rank: '名次', agent: 'Agent / 模型', progress: '路线进度 / 检查点', time: '仿真用时',
     falls: '跌倒', recovery: '恢复时长', pauses: '暂停次数', api: '模型请求', response: '平均响应', actions: '接受动作', ending: '结束原因',
@@ -30,7 +30,7 @@ const copy = {
   },
   en: {
     label: 'SOLO · REAL-TIME',
-    snapshot: 'SNAPSHOT', configurations: 'AI CONFIGURATIONS', measured: 'measured', compatibility: 'tool incompatibility',
+    configurations: 'AI CONFIGURATIONS', measured: 'measured', compatibility: 'tool incompatibility',
     best: 'BEST ROUTE PROGRESS', finishers: 'AI FINISHERS',
     rank: 'RANK', agent: 'AGENT / MODEL', progress: 'PROGRESS / CHECKPOINTS', time: 'SIM TIME',
     falls: 'FALLS', recovery: 'RECOVERY', pauses: 'PAUSES', api: 'MODEL REQUESTS', response: 'MEAN RESPONSE', actions: 'ACCEPTED ACTIONS', ending: 'ENDING',
@@ -59,16 +59,63 @@ function element(tag, className, text) {
   if (text != null) node.textContent = text;
   return node;
 }
-function populateStandingsTable(table, caption, thead, tbody) {
-  const headers = thead.rows[0].cells;
-  for (const row of tbody.rows) {
-    for (const cell of row.cells) {
-      const label = element('span', 'standings-field-label', headers[cell.cellIndex].textContent);
-      label.setAttribute('aria-hidden', 'true');
-      cell.prepend(label);
-    }
+const providers = [
+  ['gpt', 'openai', '#72aaff'], ['deepseek', 'deepseek', '#49cbd7'],
+  ['claude', 'anthropic', '#f6a27c'], ['qwen', 'qwen', '#ae9aff'],
+  ['glm', 'zai', '#79c6bd'], ['kimi', 'moonshot', '#e29ac7'],
+  ['gemini', 'google', '#8ec3fa'],
+];
+
+function entrantName(model, harness) {
+  const identity = element('div', 'entrant-identity');
+  const provider = providers.find(([prefix]) => model.startsWith(prefix));
+  const mark = element('span', 'entrant-mark');
+  mark.setAttribute('aria-hidden', 'true');
+  if (provider) {
+    const [, brand, color] = provider;
+    identity.style.setProperty('--entrant-color', color);
+    const logo = element('img');
+    logo.src = `/showcase/brands/${brand}.svg`;
+    logo.alt = '';
+    mark.append(logo);
+  } else {
+    mark.textContent = model.charAt(0).toUpperCase();
   }
-  table.append(caption, thead, tbody);
+  const text = element('span', 'entrant-text');
+  text.append(element('strong', '', modelName(model)), element('small', '', harness));
+  identity.append(mark, text);
+  return identity;
+}
+
+function mountStandings(scroll, table, thead, tbody, lang, caption) {
+  if (caption) table.append(caption);
+  table.append(thead, tbody);
+  const compact = element('div', 'compact-standings');
+  if (caption) compact.append(element('div', 'compact-caption', caption.textContent));
+  const heading = element('div', 'compact-heading');
+  const headers = thead.rows[0].cells;
+  heading.append(element('span', '', headers[0].textContent), element('span', '', headers[1].textContent),
+    element('span', '', lang === 'zh' ? '路线进度' : 'Progress'));
+  compact.append(heading);
+  for (const row of tbody.rows) {
+    const [rank, name, progress, ...metrics] = row.cells;
+    const entry = element('details', 'compact-entrant');
+    const summary = element('summary');
+    const score = element('span', 'compact-score');
+    score.append(progress.querySelector('strong').cloneNode(true), progress.querySelector('small').cloneNode(true));
+    const identity = name.querySelector('.entrant-identity').cloneNode(true);
+    const harness = identity.querySelector('small');
+    harness.remove();
+    summary.append(element('span', 'compact-rank', rank.textContent), identity, score);
+    const fields = element('dl', 'compact-fields');
+    fields.append(element('dt', '', 'Harness'), element('dd', '', harness.textContent));
+    for (const metric of metrics) {
+      fields.append(element('dt', '', headers[metric.cellIndex].textContent), element('dd', '', metric.textContent));
+    }
+    entry.append(summary, fields);
+    compact.append(entry);
+  }
+  scroll.append(table, compact);
 }
 
 function rankCell(rank, lang, className) {
@@ -129,7 +176,6 @@ export function renderLeaderboard(lang) {
   scroll.setAttribute('role', 'region');
   scroll.setAttribute('aria-label', t.label);
   const table = element('table', 'results-table');
-  const caption = element('caption', '', `${t.snapshot} · ${selected.snapshotDate}`);
   const thead = element('thead');
   const header = element('tr');
   for (const label of [t.rank, t.agent, t.progress, t.time, t.falls, t.recovery, t.api, t.response, t.actions, t.ending]) {
@@ -139,7 +185,7 @@ export function renderLeaderboard(lang) {
   }
   thead.append(header);
   const tbody = element('tbody');
-  tbody.id = 'runs';
+  scroll.id = 'runs';
   for (const row of measured) {
     const tr = element('tr');
     tr.dataset.runId = row.id;
@@ -147,8 +193,7 @@ export function renderLeaderboard(lang) {
     tr.append(rankCell(row.rank, lang, 'board-rank'));
     const name = element('th', 'board-agent');
     name.scope = 'row';
-    name.title = row.model;
-    name.append(element('strong', '', modelName(row.model)), element('small', '', `${row.harness} · ${row.effort.toUpperCase()}`));
+    name.append(entrantName(row.model, `${row.harness} · ${row.effort.toUpperCase()}`));
     tr.append(name);
     const progress = element('td', 'board-progress');
     progress.append(element('strong', '', `${number(row.progressPercent, 2)}%`), element('small', '', `${t.checkpoints} ${String(row.cp).padStart(2, '0')} / 16`));
@@ -169,8 +214,7 @@ export function renderLeaderboard(lang) {
     tr.append(element('td', 'board-rank', '—'));
     const name = element('th', 'board-agent');
     name.scope = 'row';
-    name.title = row.model;
-    name.append(element('strong', '', modelName(row.model)), element('small', '', row.harness));
+    name.append(entrantName(row.model, row.harness));
     tr.append(name);
     const progress = element('td', 'board-progress');
     progress.append(element('strong', '', '—'), element('small', '', t.unmeasured));
@@ -179,8 +223,7 @@ export function renderLeaderboard(lang) {
     tr.append(element('td', 'board-ending', t.failed));
     tbody.append(tr);
   }
-  populateStandingsTable(table, caption, thead, tbody);
-  scroll.append(table);
+  mountStandings(scroll, table, thead, tbody, lang);
   const humanCard = element('aside', 'board-human');
   const humanScore = element('div');
   humanScore.append(element('small', '', t.human), element('strong', '', duration(human.finish, true)), element('span', '', 'CP 16 / 16 · 100%'));
@@ -242,7 +285,7 @@ function renderMultiLeaderboard(lang, number) {
     const rank = rankCell(row.rank, lang, 'multi-rank');
     const name = element('th', 'multi-agent');
     name.scope = 'row';
-    name.append(element('strong', '', modelName(row.model)), element('small', '', row.harness));
+    name.append(entrantName(row.model, row.harness));
     const progress = element('td', 'multi-progress');
     progress.append(element('strong', '', `${number(row.progressPercent, 2)}%`), element('small', '', `CP ${String(row.checkpoints).padStart(2, '0')} / 16`));
     const bar = element('span', 'multi-progress-bar');
@@ -256,8 +299,7 @@ function renderMultiLeaderboard(lang, number) {
       element('td', 'multi-outcome', t.multiOutcome));
     tbody.append(tr);
   }
-  populateStandingsTable(table, caption, thead, tbody);
-  scroll.append(table);
+  mountStandings(scroll, table, thead, tbody, lang, caption);
 
   const note = element('p', 'multi-note', t.multiNote);
   const source = element('details', 'multi-source');
