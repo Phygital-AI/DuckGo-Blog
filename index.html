@@ -181,15 +181,17 @@
         <p class="cost-en" lang="en">Fable 5.1 reached CP 6 and placed fifth overall. Haiku 5.5, Sonnet 5.5, and Opus 5.5 reached CP 4, CP 3, and CP 2, respectively.</p>
         <p class="cost-zh" lang="zh-CN">Fable 5.1 到达 CP 6，位列总榜第五。Haiku 5.5、Sonnet 5.5 和 Opus 5.5 分别到达 CP 4、CP 3 和 CP 2。</p>
       </li>
-      <li id="solo-latency-finding" lang="en">
-        <h3>API latency shapes the pace of real-time control</h3>
-        <p>In the DeepSeek trials, average API response time rose from 5.03 to 12.10 to 24.38 seconds, and accepted actions fell from 229 to 141 to 70. Final progress dropped by 12.51 percentage points in the first comparison and by 0.74 in the second. The slowest run also cleared one fewer checkpoint than the middle run.</p>
-        <p>Similar response times and action counts can still yield very different results. DeepSeek and Gemini both averaged about five seconds per request and each had about 230 accepted actions. They cleared eight and zero checkpoints, respectively. In the second group, three runs averaged 13.70–14.18 seconds and had 123–126 accepted actions. Their final progress ranged from 18.66% to 31.17%.</p>
+      <li id="solo-latency-finding">
+        <h3 id="solo-latency-title"><span class="cost-en" lang="en">The slower DeepSeek trials recorded fewer accepted actions</span><span class="cost-zh" lang="zh-CN">DeepSeek 的两轮较慢试跑，接受动作数更少</span></h3>
+        <p class="cost-en" lang="en">The three DeepSeek runs averaged 5.03, 12.10 and 24.38 seconds per API request, with 229, 141 and 70 accepted actions, respectively. They cleared eight, six and five checkpoints and reached 49.94%, 37.43% and 36.68% of the course.</p>
+        <p class="cost-zh" lang="zh-CN">DeepSeek 三轮试跑的 API 平均响应时间分别为 5.03、12.10 和 24.38 秒，对应的接受动作数分别为 229、141 和 70。三轮分别通过 8、6 和 5 个检查点，最终路线进度为 49.94%、37.43% 和 36.68%。</p>
+        <p class="cost-en" lang="en">DeepSeek and Gemini averaged 5.03 and 5.50 seconds per request in the two selected runs, with about 230 accepted actions each. DeepSeek cleared eight checkpoints and Gemini cleared zero. Gemini’s run also logged 64 request-ID conflicts and seven stale-frame errors. Three other runs averaged 13.70–14.18 seconds per request and recorded 123–126 accepted actions, with final course progress of 18.66%–31.17%.</p>
+        <p class="cost-zh" lang="zh-CN">选定的 DeepSeek 和 Gemini 场次平均响应分别为 5.03 和 5.50 秒，接受动作数都在 230 次左右。两场分别通过了 8 和 0 个检查点。Gemini 这轮还记录到 64 次请求 ID 冲突和 7 次画面过期错误。另一组三场试跑的平均响应时间为 13.70–14.18 秒，接受动作数为 123–126 次，最终路线进度介于 18.66% 和 31.17% 之间。</p>
         <figure>
-          <a href="/showcase/solo-api-latency-progress-refined-20261124.svg?v=2" aria-label="Open the full-size API latency and course progress figure">
-            <img src="/showcase/solo-api-latency-progress-refined-20261124.svg?v=2" width="1800" height="830" loading="lazy" decoding="async" alt="Three DeepSeek channels show a large first drop in progress and a smaller second drop. Two groups of solo leaderboard runs show differences in course progress across similar action counts."/>
+          <a href="/showcase/solo-api-latency-progress-refined-20261124.svg?v=2" aria-labelledby="solo-latency-title" aria-describedby="solo-latency-caption">
+            <img src="/showcase/solo-api-latency-progress-refined-20261124.svg?v=2" width="1800" height="830" loading="lazy" decoding="async" alt=""/>
           </a>
-          <figcaption>Each channel contributed one 60-minute trial. API protocols, output limits and runtime code differed across channels. The selected leaderboard runs span course revisions.</figcaption>
+          <figcaption id="solo-latency-caption"><span class="cost-en" lang="en">Panel A compares one 60-minute run per DeepSeek channel. The channels used different API protocols, output limits and runtime code. Panel B draws from the selected solo runs on V1 and V3.</span><span class="cost-zh" lang="zh-CN">图 A 对比三个 DeepSeek 渠道各自的一轮 60 分钟试跑，各渠道的 API 协议、输出限制和运行代码不同。图 B 的场次取自 V1 和 V3 两版赛道的单人榜。</span></figcaption>
         </figure>
       </li>
     </ol>
