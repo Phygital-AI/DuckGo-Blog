@@ -60,10 +60,10 @@ function element(tag, className, text) {
   return node;
 }
 const providers = [
-  ['gpt', 'openai', '#72aaff'], ['deepseek', 'deepseek', '#49cbd7'],
-  ['claude', 'anthropic', '#f6a27c'], ['qwen', 'qwen', '#ae9aff'],
-  ['glm', 'zai', '#79c6bd'], ['kimi', 'moonshot', '#e29ac7'],
-  ['gemini', 'google', '#8ec3fa'],
+  ['gpt', 'openai', '#242424'], ['deepseek', 'deepseek', '#315fed'],
+  ['claude', 'anthropic', '#b65b3e'], ['qwen', 'qwen-symbol', '#694abb'],
+  ['glm', 'zai-symbol', '#252525'], ['kimi', 'moonshot', '#343434'],
+  ['gemini', 'google', null],
 ];
 
 function entrantName(model, harness) {
@@ -73,11 +73,17 @@ function entrantName(model, harness) {
   mark.setAttribute('aria-hidden', 'true');
   if (provider) {
     const [, brand, color] = provider;
-    identity.style.setProperty('--entrant-color', color);
-    const logo = element('img');
-    logo.src = `/showcase/brands/${brand}.svg`;
-    logo.alt = '';
-    mark.append(logo);
+    const src = `/showcase/brands/${brand}.svg`;
+    if (color) {
+      mark.classList.add('entrant-symbol');
+      mark.style.setProperty('--mark-image', `url("${src}")`);
+      mark.style.color = color;
+    } else {
+      const logo = element('img');
+      logo.src = src;
+      logo.alt = '';
+      mark.append(logo);
+    }
   } else {
     mark.textContent = model.charAt(0).toUpperCase();
   }
